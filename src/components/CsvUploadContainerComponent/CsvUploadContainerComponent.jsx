@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ProductTable } from "../TableComponent/SortableTableComponent";
 
 export const CsvUploadContainerComponent = () => {
    const [file, setFile] = useState();
@@ -39,50 +40,56 @@ export const CsvUploadContainerComponent = () => {
       }
    };
 
-   const headerKeys = Object.keys(Object.assign({}, ...array));
-   console.log(headerKeys);
+   // const headerKeys = Object.keys(Object.assign({}, ...array));
+   console.log(array);
 
    return (
-      <div style={{ textAlign: "center" }}>
-         <h1>csv import </h1>
-         <form>
-            <input
-               type={"file"}
-               id={"csvFileInput"}
-               accept={".csv"}
-               onChange={handleOnChange}
-            />
+      <>
+         <ProductTable
+            products={array}
+         />
 
-            <button
-               onClick={(e) => {
-                  handleOnSubmit(e);
-               }}
-            >
-               Отобразить в таблице
-            </button>
-         </form>
+         <div style={{ textAlign: "center" }}>
+            <h1>csv import </h1>
+            <form>
+               <input
+                  type={"file"}
+                  id={"csvFileInput"}
+                  accept={".csv"}
+                  onChange={handleOnChange}
+               />
 
-         <br />
+               <button
+                  onClick={(e) => {
+                     handleOnSubmit(e);
+                  }}
+               >
+                  Отобразить в таблице
+               </button>
+            </form>
 
-         <table>
-            <thead>
-               <tr key={"header"}>
-                  {headerKeys.map((key) => (
-                     <th>{key}</th>
-                  ))}
-               </tr>
-            </thead>
+            <br />
 
-            <tbody>
-               {array.map((item) => (
-                  <tr key={item.id}>
-                     {Object.values(item).map((val) => (
-                        <td>{val}</td>
+            {/* <table>
+               <thead>
+                  <tr key={"header"}>
+                     {headerKeys.map((key) => (
+                        <th>{key}</th>
                      ))}
                   </tr>
-               ))}
-            </tbody>
-         </table>
-      </div>
+               </thead>
+
+               <tbody>
+                  {array.map((item) => (
+                     <tr key={item.id}>
+                        {Object.values(item).map((val) => (
+                           <td>{val}</td>
+                        ))}
+                     </tr>
+                  ))}
+               </tbody>
+            </table> */}
+         </div>
+      </>
    );
 };
