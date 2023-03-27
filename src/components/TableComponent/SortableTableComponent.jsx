@@ -1,72 +1,153 @@
-import React from "react";
+import { useState, useMemo } from "react";
+import { sortRows, filterRows, paginateRows } from "./helpers";
+import { Pagination } from "./Pagination";
+import "./TableComponent.css";
 
-const SortableTable = (items, config = null) => {
-   const [sortConfig, setSortConfig] = React.useState(config);
+export const TableComponent = ({ columns, rows }) => {
+   const [activePage, setActivePage] = useState(1);
+   const [filters, setFilters] = useState({});
+   const [sort, setSort] = useState({ order: "asc", orderBy: "id" });
+   const rowsPerPage = 15;
 
-   const sortedItems = React.useMemo(() => {
-      let sortableItems = [...items];
-      if (sortConfig !== null) {
-         sortableItems.sort((a, b) => {
-            if (a[sortConfig.key] < b[sortConfig.key]) {
-               return sortConfig.direction === "ascending" ? -1 : 1;
-            }
-            if (a[sortConfig.key] > b[sortConfig.key]) {
-               return sortConfig.direction === "ascending" ? 1 : -1;
-            }
-            return 0;
+   const filteredRows = useMemo(
+      () => filterRows(rows, filters),
+      [rows, filters]
+   );
+   const sortedRows = useMemo(
+      () => sortRows(filteredRows, sort),
+      [filteredRows, sort]
+   );
+   const calculatedRows = paginateRows(sortedRows, activePage, rowsPerPage);
+
+   const count = filteredRows.length;
+   const totalPages = Math.ceil(count / rowsPerPage);
+
+   const handleSearch = (value, accessor) => {
+      setActivePage(1);
+
+      if (value) {
+         setFilters((prevFilters) => ({
+            ...prevFilters,
+            [accessor]: value,
+         }));
+      } else {
+         setFilters((prevFilters) => {
+            const updatedFilters = { ...prevFilters };
+            delete updatedFilters[accessor];
+
+            return updatedFilters;
          });
       }
-      return sortableItems;
-   }, [items, sortConfig]);
-
-   const requestSort = (key) => {
-      let direction = "ascending";
-      if (
-         sortConfig &&
-         sortConfig.key === key &&
-         sortConfig.direction === "ascending"
-      ) {
-         direction = "descending";
-      }
-      setSortConfig({ key, direction });
    };
 
-   return { items: sortedItems, requestSort, sortConfig };
-};
-
-export const ProductTable = (props) => {
-   const { items, requestSort, sortConfig } = SortableTable(props.products);
-   const getClassNamesFor = (name) => {
-      if (!sortConfig) {
-         return;
-      }
-      return sortConfig.key === name ? sortConfig.direction : undefined;
+   const handleSort = (accessor) => {
+      setActivePage(1);
+      setSort((prevSort) => ({
+         order:
+            prevSort.order === "asc" && prevSort.orderBy === accessor
+               ? "desc"
+               : "asc",
+         orderBy: accessor,
+      }));
    };
 
-   const tableHead = Object.keys(items[0] || {});
+   const clearAll = () => {
+      setSort({ order: "asc", orderBy: "id" });
+      setActivePage(1);
+      setFilters({});
+   };
+
    return (
-      <table>
-         <caption>Products</caption>
-         <thead>
-            <tr>
-               {tableHead.map((item) => (
-                  <th>
-                     <button type="button" onClick={() => requestSort(item)}>
-                        {item}
-                     </button>
-                  </th>
-               ))}
-            </tr>
-         </thead>
-         <tbody>
-            {items.map((item) => (
-               <tr key={item.id}>
-                  {Object.keys(item).map((field) => (
-                     <td>{item[field]}</td>
-                  ))}
+      <>
+         <table>
+            <thead>
+               <tr>
+                  {columns.map((column) => {
+                     const sortIcon = () => {
+                        if (column.accessor === sort.orderBy) {
+                           if (sort.order === "asc") {
+                              return "⬆️";
+                           }
+                           return "⬇️";
+                        } else {
+                           return "️↕️";
+                        }
+                     };
+                     return (
+                        <th key={column.accessor}>
+                           <span>{column.label}</span>
+                           <button onClick={() => handleSort(column.accessor)}>
+                              {sortIcon()}
+                           </button>
+                        </th>
+                     );
+                  })}
                </tr>
-            ))}
-         </tbody>
-      </table>
+               <tr>
+                  {columns.map((column) => {
+                     return (
+                        <th>
+                           <input
+                              key={`${column.accessor}-search`}
+                              className="searchField"
+                              type="search"
+                              placeholder=""
+                              value={filters[column.accessor]}
+                              onChange={(event) =>
+                                 handleSearch(
+                                    event.target.value,
+                                    column.accessor
+                                 )
+                              }
+                           />
+                        </th>
+                     );
+                  })}
+               </tr>
+            </thead>
+            <tbody>
+               {calculatedRows.map((row) => {
+                  return (
+                     <tr key={row.id}>
+                        {columns.map((column) => {
+                           if (column.format) {
+                              return (
+                                 <td key={column.accessor}>
+                                    {column.format(row[column.accessor])}
+                                 </td>
+                              );
+                           }
+                           return (
+                              <td key={column.accessor}>
+                                 {row[column.accessor]}
+                              </td>
+                           );
+                        })}
+                     </tr>
+                  );
+               })}
+            </tbody>
+         </table>
+         <br />
+         {count > 0 ? (
+            <Pagination
+               activePage={activePage}
+               count={count}
+               rowsPerPage={rowsPerPage}
+               totalPages={totalPages}
+               setActivePage={setActivePage}
+            />
+         ) : (
+            <p>Ничего не найдено</p>
+         )}
+
+         <div>
+            <p>
+               <button className="defaultButton" onClick={clearAll}>
+                  Сбросить фильтры
+               </button>
+            </p>
+         </div>
+      </>
    );
 };

@@ -1,0 +1,62 @@
+table {
+   background-color: rgb(241, 240, 255);
+   opacity: 0.9;
+   border: 1px solid rgb(255, 255, 255);
+   border-collapse: collapse;
+   font-family: "Montserrat", sans-serif;
+   margin: 0 auto;
+}
+
+th,
+td {
+   border: 1px solid rgb(222, 229, 255);
+   padding: 0.6rem;
+   font-size: 0.7rem;
+}
+
+.tableHeader {
+   width: 13rem;
+   font-family: "Montserrat", sans-serif;
+}
+
+.searchField {
+   font-family: "Montserrat", sans-serif;
+   margin: 0.3rem;
+   border-radius: 50px;
+   border-width: 1px;
+   border-color: rgb(211, 211, 211);
+   padding: 0.5rem 1rem;
+   width: 8rem;
+   font-size: 1rem;
+}
+
+textarea:focus,
+input:focus {
+   outline: none;
+}
+
+.defaultButton {
+   font-family: "Montserrat", sans-serif;
+   color: rgb(8, 8, 8);
+   background-color: rgb(226, 231, 253);
+   margin: 0.3rem;
+   border-radius: 50px;
+   border-width: 0px;
+   padding: 0.9rem;
+   width: 10rem;
+   cursor: pointer;
+   font-size: 0.7rem;
+}
+
+.tablePaginationButton {
+   font-family: "Montserrat", sans-serif;
+   color: rgb(8, 8, 8);
+   background-color: rgb(226, 231, 253);
+   margin: 0.3rem;
+   border-radius: 50px;
+   border-width: 0px;
+   padding: 0.9rem;
+   width: 10rem;
+   font-size: 0.7rem;
+   cursor: pointer;
+}

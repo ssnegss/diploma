@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { ProductTable } from "../TableComponent/SortableTableComponent";
+import { TableComponent } from "../TableComponent/SortableTableComponent";
 
 export const CsvUploadContainerComponent = () => {
    const [file, setFile] = useState();
    const [array, setArray] = useState([]);
+   const [tableVisible, setTableVisible] = useState(0);
 
    const fileReader = new FileReader();
 
@@ -33,24 +34,31 @@ export const CsvUploadContainerComponent = () => {
       if (file) {
          fileReader.onload = function (event) {
             const text = event.target.result;
-            csvFileToArray(text);
+            csvFileToArray(text)
+            setTableVisible(1);
          };
 
          fileReader.readAsText(file);
       }
    };
 
-   // const headerKeys = Object.keys(Object.assign({}, ...array));
-   console.log(array);
+   const tableHeadArray = Object.keys(array[0] || {}).map((item) => {
+      return item;
+   });
+
+   const tableHead = tableHeadArray.map((name) => {
+      return {
+         label: name,
+         accessor: name,
+         // accessor: name.replace(/\s+/g, "_").replace(",", "").toLowerCase(),
+      };
+   });
+
+   const tableRows = array;
 
    return (
       <>
-         <ProductTable
-            products={array}
-         />
-
          <div style={{ textAlign: "center" }}>
-            <h1>csv import </h1>
             <form>
                <input
                   type={"file"}
@@ -60,6 +68,7 @@ export const CsvUploadContainerComponent = () => {
                />
 
                <button
+                  className="defaultButton"
                   onClick={(e) => {
                      handleOnSubmit(e);
                   }}
@@ -68,27 +77,11 @@ export const CsvUploadContainerComponent = () => {
                </button>
             </form>
 
+            {tableVisible ? (
+               <TableComponent rows={tableRows} columns={tableHead} />
+            ) : null}
+
             <br />
-
-            {/* <table>
-               <thead>
-                  <tr key={"header"}>
-                     {headerKeys.map((key) => (
-                        <th>{key}</th>
-                     ))}
-                  </tr>
-               </thead>
-
-               <tbody>
-                  {array.map((item) => (
-                     <tr key={item.id}>
-                        {Object.values(item).map((val) => (
-                           <td>{val}</td>
-                        ))}
-                     </tr>
-                  ))}
-               </tbody>
-            </table> */}
          </div>
       </>
    );
