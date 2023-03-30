@@ -20,8 +20,8 @@ export const SelectivesContainerComponent = () => {
    };
 
    return (
-      <>
-         <h1> selectives container</h1>
+      <div className="SelectivesContainerComponent">
+         <h1> Selectives container</h1>
          <SelectActionComponent
             elementId="uploadSelect"
             header="Данные по:"
@@ -36,6 +36,6 @@ export const SelectivesContainerComponent = () => {
             />
          ) : null}
          {uploadCsvVisible ? <CsvUploadContainerComponent /> : null}
-      </>
+      </div>
    );
 };
