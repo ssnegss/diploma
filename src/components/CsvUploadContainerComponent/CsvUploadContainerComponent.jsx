@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { saveCsvData } from "../../redux/actions/actionCreator";
+
 import { TableComponent } from "../TableComponent/SortableTableComponent";
 
 export const CsvUploadContainerComponent = () => {
    const [file, setFile] = useState();
    const [array, setArray] = useState([]);
    const [tableVisible, setTableVisible] = useState(0);
+
+   const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
+   const dispatch = useDispatch();
 
    const fileReader = new FileReader();
 
@@ -26,6 +32,7 @@ export const CsvUploadContainerComponent = () => {
       });
 
       setArray(array);
+      dispatch(saveCsvData(array));
    };
 
    const handleOnSubmit = (e) => {
@@ -34,7 +41,7 @@ export const CsvUploadContainerComponent = () => {
       if (file) {
          fileReader.onload = function (event) {
             const text = event.target.result;
-            csvFileToArray(text)
+            csvFileToArray(text);
             setTableVisible(1);
          };
 
