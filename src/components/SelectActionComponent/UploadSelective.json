@@ -1,11 +1,13 @@
 [
    {
       "id": 0,
+      "className": "getDataFrom",
       "value": 0,
       "name": "Данные по TOUCH"
    },
    {
       "id": 1,
+      "className": "getDataFrom",
       "value": 1,
       "name": "Загрузить файл .csv"
    }
