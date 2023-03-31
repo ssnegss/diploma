@@ -23,7 +23,6 @@ export const SelectivesContainerComponent = () => {
 
    return (
       <div className="SelectivesContainerComponent">
-         <h1> Selectives container</h1>
          <SelectActionComponent
             elementId="uploadSelect"
             header="Данные по:"

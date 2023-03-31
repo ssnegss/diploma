@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { saveCsvData } from "../../redux/actions/actionCreator";
-
 import { TableComponent } from "../TableComponent/SortableTableComponent";
+import Button from "@mui/material/Button";
 
 export const CsvUploadContainerComponent = () => {
    const [file, setFile] = useState();
    const [array, setArray] = useState([]);
    const [tableVisible, setTableVisible] = useState(0);
+   const [showButtonVisible, setShowButtonVisible] = useState(0);
+   const [fileName, setFileName] = useState("");
 
    const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
    const dispatch = useDispatch();
@@ -16,6 +18,20 @@ export const CsvUploadContainerComponent = () => {
 
    const handleOnChange = (e) => {
       setFile(e.target.files[0]);
+      if (
+         (e.target.files[0].name.substring(
+            e.target.files[0].name.lastIndexOf(".") + 1,
+            e.target.files[0].name.length
+         ) || e.target.files[0].name) === "csv"
+      ) {
+         setShowButtonVisible(1);
+         setFileName(e.target.files[0].name);
+      } else {
+         setShowButtonVisible(0);
+         setFileName("");
+         setTableVisible(0);
+         setTimeout(() => alert("Файл не загружен"), 100);
+      }
    };
 
    const csvFileToArray = (string) => {
@@ -67,21 +83,32 @@ export const CsvUploadContainerComponent = () => {
       <>
          <div style={{ textAlign: "center" }}>
             <form>
-               <input
-                  type={"file"}
-                  id={"csvFileInput"}
-                  accept={".csv"}
-                  onChange={handleOnChange}
-               />
-
-               <button
-                  className="defaultButton"
-                  onClick={(e) => {
-                     handleOnSubmit(e);
-                  }}
+               <Button
+                  variant="contained"
+                  component="label"
+                  sx={{ margin: "10px", fontSize: "0.75rem" }}
                >
-                  Отобразить в таблице
-               </button>
+                  Выбрать файл
+                  <input
+                     hidden
+                     id={"csvFileInput"}
+                     accept={".csv"}
+                     type={"file"}
+                     onChange={handleOnChange}
+                  />
+               </Button>
+               <div>{fileName}</div>
+               {showButtonVisible ? (
+                  <Button
+                     variant="contained"
+                     onClick={(e) => {
+                        handleOnSubmit(e);
+                     }}
+                     sx={{ margin: "10px", fontSize: "0.75rem" }}
+                  >
+                     Отобразить в таблице
+                  </Button>
+               ) : null}
             </form>
 
             {tableVisible ? (
