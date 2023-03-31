@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import Button from "@mui/material/Button";
 import { sortRows, filterRows, paginateRows } from "./helpers";
 import { Pagination } from "./Pagination";
 import "./TableComponent.css";
@@ -75,10 +76,24 @@ export const TableComponent = ({ columns, rows }) => {
                      };
                      return (
                         <th key={column.accessor}>
-                           <span>{column.label}</span>
-                           <button onClick={() => handleSort(column.accessor)}>
+                           {/* <span>{column.label}</span> */}
+                           <Button
+                              variant="outlined"
+                              sx={{
+                                 textTransform: "capitalize",
+                                 margin: 0,
+                                 // minHeight: "5rem",
+                              }}
+                              fullWidth
+                              fullHeight
+                              onClick={() => handleSort(column.accessor)}
+                           >
+                              {column.label}
                               {sortIcon()}
-                           </button>
+                           </Button>
+                           {/* <button onClick={() => handleSort(column.accessor)}>
+                              {sortIcon()}
+                           </button> */}
                         </th>
                      );
                   })}
@@ -143,9 +158,14 @@ export const TableComponent = ({ columns, rows }) => {
 
          <div>
             <p>
-               <button className="defaultButton" onClick={clearAll}>
+               <Button
+                  variant="contained"
+                  component="label"
+                  sx={{ margin: "10px", fontSize: "0.75rem" }}
+                  onClick={clearAll}
+               >
                   Сбросить фильтры
-               </button>
+               </Button>
             </p>
          </div>
       </>

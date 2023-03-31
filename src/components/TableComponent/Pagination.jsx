@@ -1,3 +1,5 @@
+import Button from "@mui/material/Button";
+
 export const Pagination = ({
    activePage,
    count,
@@ -11,34 +13,46 @@ export const Pagination = ({
    return (
       <>
          <div className="pagination">
-            <button
+            <Button
+               variant="contained"
+               component="label"
+               sx={{ margin: "10px", fontSize: "0.75rem" }}
                className="tablePaginationButton"
                disabled={activePage === 1}
                onClick={() => setActivePage(1)}
             >
                ⏮️ В начало
-            </button>
-            <button
+            </Button>
+            <Button
+               variant="contained"
+               component="label"
+               sx={{ margin: "10px", fontSize: "0.75rem" }}
                className="tablePaginationButton"
                disabled={activePage === 1}
                onClick={() => setActivePage(activePage - 1)}
             >
                ⬅️ Назад
-            </button>
-            <button
+            </Button>
+            <Button
+               variant="contained"
+               component="label"
+               sx={{ margin: "10px", fontSize: "0.75rem" }}
                className="tablePaginationButton"
                disabled={activePage === totalPages}
                onClick={() => setActivePage(activePage + 1)}
             >
                Вперед ➡️
-            </button>
-            <button
+            </Button>
+            <Button
+               variant="contained"
+               component="label"
+               sx={{ margin: "10px", fontSize: "0.75rem" }}
                className="tablePaginationButton"
                disabled={activePage === totalPages}
                onClick={() => setActivePage(totalPages)}
             >
                В конец ⏭️
-            </button>
+            </Button>
          </div>
          <p>
             Страница {activePage} из {totalPages}

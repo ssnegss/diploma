@@ -1,5 +1,5 @@
 table {
-   background-color: rgb(241, 240, 255);
+   /* background-color: rgb(241, 240, 255); */
    opacity: 0.9;
    border: 1px solid rgb(255, 255, 255);
    border-collapse: collapse;
@@ -7,7 +7,6 @@ table {
    margin: 0 auto;
 }
 
-th,
 td {
    border: 1px solid rgb(222, 229, 255);
    padding: 0.6rem;
@@ -49,14 +48,5 @@ input:focus {
 }
 
 .tablePaginationButton {
-   font-family: "Montserrat", sans-serif;
-   color: rgb(8, 8, 8);
-   background-color: rgb(226, 231, 253);
-   margin: 0.3rem;
-   border-radius: 50px;
-   border-width: 0px;
-   padding: 0.9rem;
-   width: 10rem;
-   font-size: 0.7rem;
-   cursor: pointer;
+   width: 8rem;
 }
