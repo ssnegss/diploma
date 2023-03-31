@@ -71,13 +71,14 @@ export const CsvUploadContainerComponent = () => {
 
    const tableHead = tableHeadArray.map((name) => {
       return {
-         label: name,
-         accessor: name,
-         // accessor: name.replace(/\s+/g, "_").replace(",", "").toLowerCase(),
+         header: name,
+         accessorKey: name,
+         // accessorKey: name.replace(/\s+/g, "_").replace(",", "").toLowerCase(),
       };
    });
 
    const tableRows = array;
+   console.log(tableHead);
 
    return (
       <>
