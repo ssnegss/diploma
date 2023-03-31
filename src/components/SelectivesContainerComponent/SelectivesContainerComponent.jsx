@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getDataFromDropdown } from "../../redux/actions/actionCreator";
+
 import { SelectActionComponent } from "../SelectActionComponent/SelectActionComponent";
 import { CsvUploadContainerComponent } from "../CsvUploadContainerComponent/CsvUploadContainerComponent";
 import UploadSelective from "../SelectActionComponent/UploadSelective.json";
@@ -7,16 +10,15 @@ import TouchUploadSelective from "../SelectActionComponent/TouchUploadSelective.
 import "./SelectContainerComponent.css";
 
 export const SelectivesContainerComponent = () => {
-   const [reportSelectVisible, setReportSelectVisible] = useState(0);
-   const [uploadCsvVisible, setUploadCsvVisible] = useState(0);
+   const dropdownOption = useSelector(
+      (store) => store?.dropdownOptionReducer?.dropdownOption
+   );
+   const dispatch = useDispatch();
 
    const checkUploadSelect = () => {
-      document.getElementById("uploadSelect").value === "0"
-         ? setReportSelectVisible(1)
-         : setReportSelectVisible(0);
-      document.getElementById("uploadSelect").value === "1"
-         ? setUploadCsvVisible(1)
-         : setUploadCsvVisible(0);
+      dispatch(
+         getDataFromDropdown(document.getElementById("uploadSelect").value)
+      );
    };
 
    return (
@@ -26,16 +28,16 @@ export const SelectivesContainerComponent = () => {
             elementId="uploadSelect"
             header="Данные по:"
             options={UploadSelective}
-            onChange={() => checkUploadSelect()}
+            onChange={checkUploadSelect}
          />{" "}
-         {reportSelectVisible ? (
+         {dropdownOption == 0 ? (
             <SelectActionComponent
                elementId="reportSelect"
                header="Данные по:"
                options={TouchUploadSelective}
             />
          ) : null}
-         {uploadCsvVisible ? <CsvUploadContainerComponent /> : null}
+         {dropdownOption == 1 ? <CsvUploadContainerComponent /> : null}
       </div>
    );
 };
