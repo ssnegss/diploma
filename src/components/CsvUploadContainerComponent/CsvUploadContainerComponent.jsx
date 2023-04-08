@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { saveCsvData } from "../../redux/actions/actionCreator";
 import { TableComponent } from "../TableComponent/SortableTableComponent";
+import { PredictionComponent } from "../PredictionVisualizationComponent/PredictionComponent";
+
 import Button from "@mui/material/Button";
 
 export const CsvUploadContainerComponent = () => {
@@ -73,12 +75,10 @@ export const CsvUploadContainerComponent = () => {
       return {
          header: name,
          accessorKey: name,
-         // accessorKey: name.replace(/\s+/g, "_").replace(",", "").toLowerCase(),
       };
    });
 
    const tableRows = array;
-   console.log(tableHead);
 
    return (
       <>
@@ -113,7 +113,10 @@ export const CsvUploadContainerComponent = () => {
             </form>
 
             {tableVisible ? (
-               <TableComponent rows={tableRows} columns={tableHead} />
+               <>
+                  <PredictionComponent />
+                  <TableComponent rows={tableRows} columns={tableHead} />
+               </>
             ) : null}
 
             <br />
