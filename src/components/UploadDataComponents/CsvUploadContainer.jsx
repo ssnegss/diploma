@@ -1,22 +1,20 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { saveCsvData } from "../../redux/actions/actionCreator";
-import { TableComponent } from "../TableComponent/SortableTableComponent";
-import { PredictionComponent } from "../PredictionVisualizationComponent/PredictionComponent";
-
+import { dataIsUploaded } from "../../redux/actions/actionCreator";
 import Button from "@mui/material/Button";
 
-export const CsvUploadContainerComponent = () => {
+export const CsvUploadContainer = () => {
    const [file, setFile] = useState();
-   const [array, setArray] = useState([]);
-   const [tableVisible, setTableVisible] = useState(0);
    const [showButtonVisible, setShowButtonVisible] = useState(0);
    const [fileName, setFileName] = useState("");
 
-   const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
    const dispatch = useDispatch();
 
    const fileReader = new FileReader();
+
+   //    Загрузка выбранного файла. Если формат файла == .csv, отображается кнопка "Отобразить в таблице".
+   //    Если формат другой, всплывает окно, что файл не загружен.
 
    const handleOnChange = (e) => {
       setFile(e.target.files[0]);
@@ -31,10 +29,12 @@ export const CsvUploadContainerComponent = () => {
       } else {
          setShowButtonVisible(0);
          setFileName("");
-         setTableVisible(0);
+         dispatch(dataIsUploaded(0));
          setTimeout(() => alert("Файл не загружен"), 100);
       }
    };
+
+   //    Конвертирование полученного файла .csv в массив
 
    const csvFileToArray = (string) => {
       const csvHeader = string.slice(0, string.indexOf("\n")).split(";");
@@ -49,9 +49,11 @@ export const CsvUploadContainerComponent = () => {
          return obj;
       });
 
-      setArray(array);
       dispatch(saveCsvData(array));
    };
+
+   //    По нажатии на кнопку "Отобразить в таблице" загруженный файл конвертируется в массив,
+   //    Флаг, сигнализирующий о том, что данные получены и сконвертированы, = 1
 
    const handleOnSubmit = (e) => {
       e.preventDefault();
@@ -60,25 +62,16 @@ export const CsvUploadContainerComponent = () => {
          fileReader.onload = function (event) {
             const text = event.target.result;
             csvFileToArray(text);
-            setTableVisible(1);
+            dispatch(dataIsUploaded(1));
          };
 
          fileReader.readAsText(file);
       }
    };
 
-   const tableHeadArray = Object.keys(array[0] || {}).map((item) => {
-      return item;
-   });
-
-   const tableHead = tableHeadArray.map((name) => {
-      return {
-         header: name,
-         accessorKey: name,
-      };
-   });
-
-   const tableRows = array;
+   //    Разметка
+   //    Кнопки "Выбрать файл", "Отобразить в таблице"
+   //    Отображение имени загруженного файла
 
    return (
       <>
@@ -111,15 +104,6 @@ export const CsvUploadContainerComponent = () => {
                   </Button>
                ) : null}
             </form>
-
-            {tableVisible ? (
-               <>
-                  <PredictionComponent />
-                  <TableComponent rows={tableRows} columns={tableHead} />
-               </>
-            ) : null}
-
-            <br />
          </div>
       </>
    );

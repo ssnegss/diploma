@@ -1,6 +1,8 @@
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_RU } from "./_locales/ru.ts";
 
+//    Компонент таблицы
+
 export const TableComponent = ({ columns, rows }) => {
    return (
       <>

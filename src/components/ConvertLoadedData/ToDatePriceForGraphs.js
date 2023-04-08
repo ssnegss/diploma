@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { saveCsvData } from "../../redux/actions/actionCreator";
 
-export const ConvertedLoadedDataToDatePrice = () => {
+export const ConvertedLoadedDataToDatePriceForGraphs = () => {
    const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
    //    const dispatch = useDispatch();
+   var getDate;
 
-   //   Полоучаем массив объектов с полями date и price
+   //   Получаем массив объектов с полями date и price
 
    const intermediateData = csvData.map((item) => ({
-      date: Number(item["Дата старта"].split(".")[0]),
+      date: item["Дата старта"].split(" ")[0].split(".").reverse().join("-"),
       price: Number(
          item["Стоимость за потреблённую энергию, Р"].replace(",", ".")
       ),
    }));
+
+   console.log(intermediateData);
 
    //    Суммируем прибыль за каждый день
 

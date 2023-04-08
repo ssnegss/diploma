@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
+
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,18 +10,25 @@ import Select from "@mui/material/Select";
 import { getDataFromDropdown } from "../../redux/actions/actionCreator";
 
 export const SelectActionComponent = (props) => {
-   const [age, setAge] = React.useState("");
+   const [selectValue, setSelectValue] = React.useState("");
    const dispatch = useDispatch();
 
+   //    Получение выбранной опции
+
    const handleChange = (event) => {
-      setAge(event.target.value);
+      setSelectValue(event.target.value);
    };
 
-   const menuItemClicked = (option, e) => {
+   //    Получение значения из первого выпадающего списка.
+   //    Сохранение значения первого выпадающего списка для дальнейшего отображения второго
+
+   const menuItemClicked = (option) => {
       if (option.className === "getDataFrom") {
          dispatch(getDataFromDropdown(option.value));
       }
    };
+
+   //    Компонент - выпадающий список
 
    return (
       <>
@@ -32,8 +40,8 @@ export const SelectActionComponent = (props) => {
                <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={age}
-                  label="Age"
+                  value={selectValue}
+                  label="Select"
                   onChange={handleChange}
                >
                   {props.options.map((option) => (
@@ -49,20 +57,6 @@ export const SelectActionComponent = (props) => {
                </Select>
             </FormControl>
          </Box>
-         {/* <select
-            id={props.elementId}
-            defaultValue="default"
-            onChange={props.onChange}
-         >
-            <option value="default" disabled hidden>
-               {props.header}
-            </option>
-            {props.options.map((option) => (
-               <option key={option.id} value={option.value}>
-                  {option.name}
-               </option>
-            ))}
-         </select> */}
       </>
    );
 };

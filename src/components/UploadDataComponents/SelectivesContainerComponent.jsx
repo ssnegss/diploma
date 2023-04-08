@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getDataFromDropdown } from "../../redux/actions/actionCreator";
 
 import { SelectActionComponent } from "../SelectActionComponent/SelectActionComponent";
-import { CsvUploadContainerComponent } from "../CsvUploadContainerComponent/CsvUploadContainerComponent";
+import { CsvUploadContainer } from "./CsvUploadContainer";
+
 import UploadSelective from "../SelectActionComponent/UploadSelective.json";
 import TouchUploadSelective from "../SelectActionComponent/TouchUploadSelective.json";
 
-import "./SelectContainerComponent.css";
+// Компонент с выпадающими списками для выбора вида получения данных: вручную либо напрямую из TOUCH
 
 export const SelectivesContainerComponent = () => {
    const dropdownOption = useSelector(
@@ -15,11 +15,17 @@ export const SelectivesContainerComponent = () => {
    );
    const dispatch = useDispatch();
 
+   // Получаем состояние выпадающего списка с выбором вида получения данных
+
    const checkUploadSelect = () => {
       dispatch(
          getDataFromDropdown(document.getElementById("uploadSelect").value)
       );
    };
+
+   //    Разметка
+   //    Если выбрано "Получение по TOUCH", отобразить второй выпадающий список с вариантами загрузки данных из TOUCh
+   //    Если выбратно "Загрузить файл .csv", отобразить контейнер для загрузки файла
 
    return (
       <div className="SelectivesContainerComponent">
@@ -36,7 +42,7 @@ export const SelectivesContainerComponent = () => {
                options={TouchUploadSelective}
             />
          ) : null}
-         {dropdownOption == 1 ? <CsvUploadContainerComponent /> : null}
+         {dropdownOption == 1 ? <CsvUploadContainer /> : null}
       </div>
    );
 };

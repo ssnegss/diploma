@@ -10,7 +10,7 @@ export const BrowserRouter = createBrowserRouter(
    createRoutesFromElements(
       <Route>
          <Route index element={<MainPageComponent />} />
-         <Route path="graph" element={<Graph />} />
+         {/* <Route path="graph" element={<Graph />} /> */}
       </Route>
    )
 );

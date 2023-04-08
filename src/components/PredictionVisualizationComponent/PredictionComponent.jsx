@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import { ModelTrainer } from "../Predictions/ModelTrainer";
-import { ConvertedLoadedDataToDatePrice } from "../ConvertLoadedData/ToDatePrice";
+import { ConvertedLoadedDataToDatePriceForPredictions } from "../ConvertLoadedData/ToDatePriceForPredictions";
 
 import { TrainModelComponent } from "../Predictions/TrainModelComponent";
 import { PredictComponent } from "../Predictions/PredictionComponent";
@@ -11,10 +11,11 @@ export const PredictionComponent = () => {
    const [model, setModel] = useState(null);
    const [predictions, setPredictions] = useState([]);
 
-   const data = ConvertedLoadedDataToDatePrice().map((item) => ({
-      x: item.date,
-      y: item.price,
-   }));
+   const data = ConvertedLoadedDataToDatePriceForPredictions();
+   // .map((item) => ({
+   //    x: item.date,
+   //    y: item.price,
+   // }));
    console.log(data);
    return (
       <div>
