@@ -1,52 +1,35 @@
-import React, { Component } from "react";
-import * as d3 from "d3";
+import React, { useRef, useEffect, useState } from "react";
+import { Chart } from "react-chartjs-2";
 
-class Graph extends Component {
-   componentDidMount() {
-      this.drawChart();
-   }
+// const options = {
+//    maintainAspectRatio: false, // график адаптивен по ширине страницы
+// };
 
-   drawChart() {
-      const data = this.props.data;
-      const svg = d3.select("svg");
-      const width = svg.attr("width");
-      const height = svg.attr("height");
+const Graph = ({ data }) => {
+   const chartData = {
+      labels: data.map(({ date }) => date), // массив значений шкалы date
+      datasets: [
+         {
+            label: "Общая стоимость, Р",
+            data: data.map(({ price }) => price), // массив значений price
+            fill: false, // заполнение области под графиком не нужно
+            borderColor: "#4A90E2", // цвет графика
+            borderWidth: 2, // толщина графика
+            lineTension: 0,
+            pointHoverRadius: 7, // радиус точки при наведении
+            pointHoverBackgroundColor: "blue", // цвет точки при наведении
+         },
+      ],
+   };
 
-      // create x-axis
-      const x = d3
-         .scaleTime()
-         .range([0, width])
-         .domain(d3.extent(data, (d) => new Date(d.date)));
-
-      svg.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(x));
-
-      // create y-axis
-      const y = d3
-         .scaleLinear()
-         .range([height, 0])
-         .domain([0, d3.max(data, (d) => d.price)]);
-
-      svg.append("g").call(d3.axisLeft(y));
-
-      // create line
-      const line = d3
-         .line()
-         .x((d) => x(new Date(d.date)))
-         .y((d) => y(d.price));
-
-      svg.append("path")
-         .datum(data)
-         .attr("fill", "none")
-         .attr("stroke", "steelblue")
-         .attr("stroke-width", 1.5)
-         .attr("d", line);
-   }
-
-   render() {
-      return <svg width="400" height="400"></svg>;
-   }
-}
-
+   return (
+      <div className="graph-container">
+         <Chart
+            type="line"
+            data={chartData}
+            // options={options}
+         />
+      </div>
+   );
+};
 export default Graph;

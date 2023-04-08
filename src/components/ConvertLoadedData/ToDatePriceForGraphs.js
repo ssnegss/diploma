@@ -1,10 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-export const ConvertedLoadedDataToDatePriceForGraphs = () => {
-   const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
-   //    const dispatch = useDispatch();
-   var getDate;
-
+export const ConvertedLoadedDataToDatePriceForGraphs = (csvData) => {
    //   Получаем массив объектов с полями date и price
 
    const intermediateData = csvData.map((item) => ({
@@ -32,7 +28,7 @@ export const ConvertedLoadedDataToDatePriceForGraphs = () => {
 
    //   Сортируем массив по возрастанию дат месяца
 
-   const resultData = intermediateData2.sort((a, b) => a.date - b.date);
+   const resultData = intermediateData2.reverse();
 
    return resultData;
 };
