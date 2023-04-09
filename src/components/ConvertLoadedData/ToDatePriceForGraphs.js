@@ -5,7 +5,6 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
 ) => {
    //   Получаем массив объектов с полями date value, name
    const filteredData = csvData.filter((item) => item[valueColumn] !== 0);
-   
 
    const intermediateData = filteredData.map((item) => ({
       date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
