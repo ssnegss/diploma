@@ -1,4 +1,3 @@
-import React, { useRef, useEffect, useState } from "react";
 import { Chart } from "react-chartjs-2";
 
 const options = {
@@ -10,12 +9,13 @@ const options = {
    },
 };
 
-const Graph = ({ dataFirst, dataSecond }) => {
+const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
+   console.log(dataFirst.name);
    const chartData = {
       labels: dataFirst.map(({ date }) => date), // массив значений шкалы date
       datasets: [
          {
-            label: "Общая стоимость, Р",
+            label: dataFirst[0].name,
             data: dataFirst.map(({ price }) => price), // массив значений price
             fill: false, // заполнение области под графиком не нужно
             backgroundColor: "rgba(75, 192, 192, 0.4)",
@@ -26,26 +26,26 @@ const Graph = ({ dataFirst, dataSecond }) => {
             pointHoverBackgroundColor: "blue", // цвет точки при наведении
          },
          {
-            label: "Стоимость за потреблённую энергию, Р",
-            data: dataSecond.map(({ price }) => price), // массив значений price
-            fill: false, // заполнение области под графиком не нужно
+            label: dataSecond[0].name,
+            data: dataSecond.map(({ price }) => price), 
+            fill: false, 
             backgroundColor: "rgba(255, 99, 132, 0.4)",
             borderColor: "rgba(255,99,132,1)",
-            borderWidth: 2, // толщина графика
+            borderWidth: 2, 
             lineTension: 0,
-            pointHoverRadius: 7, // радиус точки при наведении
-            pointHoverBackgroundColor: "blue", // цвет точки при наведении
+            pointHoverRadius: 7, 
+            pointHoverBackgroundColor: "blue", 
          },
          {
-            label: "Оплачено, Р",
-            data: dataSecond.map(({ price }) => price), // массив значений price
-            fill: false, // заполнение области под графиком не нужно
+            label: dataThird[0].name,
+            data: dataThird.map(({ price }) => price), 
+            fill: false, 
             backgroundColor: "rgba(65, 31, 132, 0.4)",
             borderColor: "rgba(65, 31, 132, 1)",
-            borderWidth: 2, // толщина графика
+            borderWidth: 2, 
             lineTension: 0,
-            pointHoverRadius: 7, // радиус точки при наведении
-            pointHoverBackgroundColor: "blue", // цвет точки при наведении
+            pointHoverRadius: 7, 
+            pointHoverBackgroundColor: "blue", 
          },
       ],
    };
@@ -60,4 +60,4 @@ const Graph = ({ dataFirst, dataSecond }) => {
       </div>
    );
 };
-export default Graph;
+export default ChartGraph;

@@ -1,7 +1,7 @@
 import sess from "../../sess.json";
 import { PredictionComponent } from "../PredictionVisualizationComponent/PredictionComponent";
 import { ConvertedLoadedDataToDatePriceForGraphs } from "../ConvertLoadedData/ToDatePriceForGraphs";
-import Graph from "../LineChart/Graph";
+import Graph from "../Graphs/ChartGraph";
 
 // export const Graph = () => {
 //    return (

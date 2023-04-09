@@ -8,9 +8,8 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
    const intermediateData = csvData.map((item) => ({
       date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
       price: Number(item[valueColumn].replace(",", ".")),
+      name: valueColumn,
    }));
-
-   console.log(intermediateData);
 
    //    Суммируем прибыль за каждый день
 

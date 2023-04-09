@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { ConvertedLoadedDataToDatePriceForGraphs } from "../ConvertLoadedData/ToDatePriceForGraphs";
-import Graph from "../LineChart/Graph";
+import ChartGraph from "../Graphs/ChartGraph";
 
 export const SessionDashboardComponent = () => {
    const csvdataWithFilters = useSelector(
@@ -39,11 +39,14 @@ export const SessionDashboardComponent = () => {
    return (
       <>
          {dropdownCsvOption === 0 && showGraphs ? (
-            <Graph
-               dataFirst={dataFullPrice}
-               dataSecond={dataConsumedEneryPrice}
-               dataThird={dataPayedPrice}
-            />
+            <>
+               <h1>Прибыль за период</h1>
+               <ChartGraph
+                  dataFirst={dataFullPrice}
+                  dataSecond={dataConsumedEneryPrice}
+                  dataThird={dataPayedPrice}
+               />
+            </>
          ) : null}
       </>
    );
