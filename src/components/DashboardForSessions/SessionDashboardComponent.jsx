@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { ConvertedLoadedDataToDatePriceForGraphs } from "../ConvertLoadedData/ToDatePriceForGraphs";
 import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedData/ConvertedLoadedDataToLocationsForPieGraph";
-import { LineChart } from "../Graphs/LineChart";
+import { SingleLineChart } from "../Graphs/SingleLineChart";
+import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
 // import { DoughnutChart } from "../Graphs/DoughnutChart";
 
@@ -20,7 +21,7 @@ export const SessionDashboardComponent = () => {
       (store) => store?.dropdownCsvOptionReducer?.dropdownOption
    );
 
-   //    Формирование входных данных для LineChart
+   //    Формирование входных данных для MultiLineChart
 
    const dataFullPrice = ConvertedLoadedDataToDatePriceForGraphs(
       csvdataWithFilters,
@@ -39,6 +40,8 @@ export const SessionDashboardComponent = () => {
       "Дата старта",
       "Оплачено, Р"
    );
+
+   //    Формирование входных данных для SingleLineChart
 
    const dataConsumedEnergy = ConvertedLoadedDataToDatePriceForGraphs(
       csvdataWithFilters,
@@ -62,11 +65,13 @@ export const SessionDashboardComponent = () => {
       "Название станции"
    );
 
-   // const ChartraphDatePriceArray = [
-   //    dataFullPrice,
-   //    dataConsumedEneryPrice,
-   //    dataPayedPrice,
-   // ];
+   //    Формирование массива с данными для построения MultiLineChart
+
+   const ChartraphDatePriceArray = [
+      dataFullPrice,
+      dataConsumedEneryPrice,
+      dataPayedPrice,
+   ];
 
    //    Рендер комппонента если dropdownCsvOption === 0 (В выпадающем списке выбрана загрузка отчета по сессиям)
    //    И если нажата кнока "Отобразить графики"
@@ -77,39 +82,20 @@ export const SessionDashboardComponent = () => {
             <>
                <h1>Оплаты за период</h1>
                <div className="LineChartContainer">
-                  <LineChart
-                     dataFirst={dataFullPrice}
-                     dataSecond={dataConsumedEneryPrice}
-                     dataThird={dataPayedPrice}
-                     // data={ChartraphDatePriceArray}
-                  />
+                  <MultiLineChart data={ChartraphDatePriceArray} />
                </div>
                <h1>Потребленная энергия за период</h1>
                <div className="LineChartContainer">
-                  <LineChart
-                     dataFirst={dataConsumedEnergy}
-                     dataSecond={dataConsumedEnergy}
-                     dataThird={dataConsumedEnergy}
-                  />
+                  <SingleLineChart data={dataConsumedEnergy} />
                </div>
                <div className="PieChartsContainer">
                   <div className="PieChart">
                      <h1>Активность комплексов за период</h1>
-                     <PieChart
-                        data={dataLocationPieChart}
-                        width={100}
-                        height={50}
-                        options={{ maintainAspectRatio: false }}
-                     />
+                     <PieChart data={dataLocationPieChart} />
                   </div>
                   <div className="PieChart">
                      <h1>Активность станций за период</h1>
-                     <PieChart
-                        data={dataStationsPieChart}
-                        width={100}
-                        height={50}
-                        options={{ maintainAspectRatio: false }}
-                     />
+                     <PieChart data={dataStationsPieChart} />
                   </div>
                </div>
             </>
