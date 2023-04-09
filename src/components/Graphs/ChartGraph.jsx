@@ -1,3 +1,4 @@
+import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 
 const options = {
@@ -27,25 +28,25 @@ const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
          },
          {
             label: dataSecond[0].name,
-            data: dataSecond.map(({ price }) => price), 
-            fill: false, 
+            data: dataSecond.map(({ price }) => price),
+            fill: false,
             backgroundColor: "rgba(255, 99, 132, 0.4)",
             borderColor: "rgba(255,99,132,1)",
-            borderWidth: 2, 
+            borderWidth: 2,
             lineTension: 0,
-            pointHoverRadius: 7, 
-            pointHoverBackgroundColor: "blue", 
+            pointHoverRadius: 7,
+            pointHoverBackgroundColor: "blue",
          },
          {
             label: dataThird[0].name,
-            data: dataThird.map(({ price }) => price), 
-            fill: false, 
+            data: dataThird.map(({ price }) => price),
+            fill: false,
             backgroundColor: "rgba(65, 31, 132, 0.4)",
             borderColor: "rgba(65, 31, 132, 1)",
-            borderWidth: 2, 
+            borderWidth: 2,
             lineTension: 0,
-            pointHoverRadius: 7, 
-            pointHoverBackgroundColor: "blue", 
+            pointHoverRadius: 7,
+            pointHoverBackgroundColor: "blue",
          },
       ],
    };

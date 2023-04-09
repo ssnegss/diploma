@@ -4,7 +4,7 @@ import {
    Route,
 } from "react-router-dom";
 import { MainPageComponent } from "../MainPageComponent/MainPageComponent";
-import { Graph } from "../GraphVisualizationComponent/GraphVizualizationComponent";
+// import { Graph } from "../GraphVisualizationComponent/GraphVizualizationComponent";
 
 export const BrowserRouter = createBrowserRouter(
    createRoutesFromElements(
