@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { ConvertedLoadedDataToDatePriceForGraphs } from "../ConvertLoadedData/ToDatePriceForGraphs";
 import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedData/ConvertedLoadedDataToLocationsForPieGraph";
-import { ChartGraph } from "../Graphs/ChartGraph";
+import { LineChart } from "../Graphs/LineChart";
 import { PieChart } from "../Graphs/PieChart";
-// import { DoughnutChart } from "../Graphs/Doughnut";
+// import { DoughnutChart } from "../Graphs/DoughnutChart";
 
 import "./SessionDashboartComponent.css";
 
@@ -19,6 +19,8 @@ export const SessionDashboardComponent = () => {
    const dropdownCsvOption = useSelector(
       (store) => store?.dropdownCsvOptionReducer?.dropdownOption
    );
+
+   //    Формирование входных данных для LineChart
 
    const dataFullPrice = ConvertedLoadedDataToDatePriceForGraphs(
       csvdataWithFilters,
@@ -38,21 +40,33 @@ export const SessionDashboardComponent = () => {
       "Оплачено, Р"
    );
 
+   const dataConsumedEnergy = ConvertedLoadedDataToDatePriceForGraphs(
+      csvdataWithFilters,
+      "Дата старта",
+      "Потреблённая энергия, Вт*ч"
+   );
+
+   // console.log(dataConsumedEnergy);
+
+   //    Формирование входных данных для PieChart
+
    const dataLocationPieChart = ConvertedLoadedDataToLocationsForPieGraph(
       csvdataWithFilters,
       "Название локации"
    );
+
+   //    Формирование входных данных для PieChart
 
    const dataStationsPieChart = ConvertedLoadedDataToLocationsForPieGraph(
       csvdataWithFilters,
       "Название станции"
    );
 
-   const ChartraphDatePriceArray = [
-      dataFullPrice,
-      dataConsumedEneryPrice,
-      dataPayedPrice,
-   ];
+   // const ChartraphDatePriceArray = [
+   //    dataFullPrice,
+   //    dataConsumedEneryPrice,
+   //    dataPayedPrice,
+   // ];
 
    //    Рендер комппонента если dropdownCsvOption === 0 (В выпадающем списке выбрана загрузка отчета по сессиям)
    //    И если нажата кнока "Отобразить графики"
@@ -62,12 +76,20 @@ export const SessionDashboardComponent = () => {
          {dropdownCsvOption === 0 && showGraphs ? (
             <>
                <h1>Оплаты за период</h1>
-               <div classname="LineChartContainer">
-                  <ChartGraph
+               <div className="LineChartContainer">
+                  <LineChart
                      dataFirst={dataFullPrice}
                      dataSecond={dataConsumedEneryPrice}
                      dataThird={dataPayedPrice}
                      // data={ChartraphDatePriceArray}
+                  />
+               </div>
+               <h1>Потребленная энергия за период</h1>
+               <div className="LineChartContainer">
+                  <LineChart
+                     dataFirst={dataConsumedEnergy}
+                     dataSecond={dataConsumedEnergy}
+                     dataThird={dataConsumedEnergy}
                   />
                </div>
                <div className="PieChartsContainer">

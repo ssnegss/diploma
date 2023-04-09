@@ -3,7 +3,7 @@ import { Chart } from "react-chartjs-2";
 
 const options = {
    maintainAspectRatio: false, // график адаптивен по ширине страницы
-   responsive: true, 
+   responsive: true,
    // plugins: {
    //    legend: {
    //       display: false,
@@ -11,7 +11,7 @@ const options = {
    // },
 };
 
-export const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
+export const LineChart = ({ dataFirst, dataSecond, dataThird }) => {
    const chartData = {
       labels: dataFirst.map(({ date }) => date), // массив значений шкалы date
       datasets: [
@@ -68,11 +68,7 @@ export const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
 
    return (
       <div className="graph-container">
-         <Chart
-            type="line"
-            data={chartData}
-            options={options}
-         />
+         <Chart type="line" data={chartData} options={options} />
       </div>
    );
 };
