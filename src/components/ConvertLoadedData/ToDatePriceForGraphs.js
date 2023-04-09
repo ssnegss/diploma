@@ -4,13 +4,15 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
    valueColumn
 ) => {
    //   Получаем массив объектов с полями date value, name
-   const filteredData = csvData.filter((item) => item[valueColumn] !== 0);
+   // const filteredData = csvData.filter((item) => item[valueColumn] !== 0);
 
-   const intermediateData = filteredData.map((item) => ({
+   const intermediateData = csvData.map((item) => ({
       date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
-      price: Number(item[valueColumn].replace(",", ".")),
+      value: Number(item[valueColumn].replace(",", ".")),
       name: valueColumn,
    }));
+
+   console.log(intermediateData.value)
 
    //    Суммируем прибыль за каждый день
 
@@ -21,7 +23,7 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
       if (!existingObject) {
          accumulator.push(current);
       } else {
-         existingObject.price += current.price;
+         existingObject.value += current.value;
       }
       return accumulator;
    }, []);

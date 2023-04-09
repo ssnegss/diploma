@@ -12,7 +12,7 @@ export const SingleLineChart = ({ data }) => {
       datasets: [
          {
             label: data[0].name,
-            data: data.map(({ price }) => price), // массив значений price
+            data: data.map(({ value }) => value), // массив значений value
             fill: false, // заполнение области под графиком не нужно
             backgroundColor: "rgba(75, 192, 192, 0.4)",
             borderColor: "rgba(75,192,192,1)",

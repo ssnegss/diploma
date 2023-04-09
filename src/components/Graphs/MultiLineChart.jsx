@@ -35,7 +35,7 @@ export const MultiLineChart = ({ data }) => {
       labels: data[0].map(({ date }) => date), // массив значений шкалы date
       datasets: data.map((item) => ({
          label: item[0].name,
-         data: item.map(({ price }) => price), // массив значений price
+         data: item.map(({ value }) => value), // массив значений value
          fill: false, // заполнение области под графиком не нужно
          borderWidth: 2, // толщина графика
          lineTension: 0,

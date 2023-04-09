@@ -49,8 +49,6 @@ export const SessionDashboardComponent = () => {
       "Потреблённая энергия, Вт*ч"
    );
 
-   // console.log(dataConsumedEnergy);
-
    //    Формирование входных данных для PieChart
 
    const dataLocationPieChart = ConvertedLoadedDataToLocationsForPieGraph(
