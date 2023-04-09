@@ -1,0 +1,14 @@
+[
+   {
+      "id": 0,
+      "className": "getDataFromCsv",
+      "value": 0,
+      "name": "Отчет по сессиям"
+   },
+   {
+      "id": 1,
+      "className": "getDataFromCsv",
+      "value": 1,
+      "name": "Отчет по заказам"
+   }
+]

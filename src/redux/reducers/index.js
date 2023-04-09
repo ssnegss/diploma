@@ -4,6 +4,7 @@ import csv_data_for_filtering_reducer from "./csv_data_for_filtering";
 import dropdownOptionReducer from "./dropdownOptionReducer";
 import data_is_uploaded_reducer from "./dataIsUploaded";
 import show_graphs_button_is_pressed_reducer from "./show_graphs_button_is_pressed";
+import dropdownCsvOptionReducer from './dropdownCsvOptionReducer'
 
 const reducer = combineReducers({
    csv_data_reducer,
@@ -11,6 +12,8 @@ const reducer = combineReducers({
    data_is_uploaded_reducer,
    csv_data_for_filtering_reducer,
    show_graphs_button_is_pressed_reducer,
+   dropdownCsvOptionReducer
+   
 });
 
 export default reducer;
