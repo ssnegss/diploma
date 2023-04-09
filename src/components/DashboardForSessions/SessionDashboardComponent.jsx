@@ -33,6 +33,12 @@ export const SessionDashboardComponent = () => {
       "Оплачено, Р"
    );
 
+   // const ChartraphDatePriceArray = [
+   //    dataFullPrice,
+   //    dataConsumedEneryPrice,
+   //    dataPayedPrice,
+   // ];
+
    //    Рендер комппонента если dropdownCsvOption === 0 (В выпадающем списке выбрана загрузка отчета по сессиям)
    //    И если нажата кнока "Отобразить графики"
 

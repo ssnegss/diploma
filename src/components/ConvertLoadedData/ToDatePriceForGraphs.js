@@ -3,7 +3,7 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
    dateColumn,
    valueColumn
 ) => {
-   //   Получаем массив объектов с полями date и price
+   //   Получаем массив объектов с полями date price, name
 
    const intermediateData = csvData.map((item) => ({
       date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
