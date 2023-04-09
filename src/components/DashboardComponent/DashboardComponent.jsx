@@ -29,13 +29,35 @@ export const DashboardComponent = () => {
    const tableRows = csvData;
    console.log(dataIsUploaded);
 
-   const data = ConvertedLoadedDataToDatePriceForGraphs(csvdataWithFilters);
+   const dataFullPrice = ConvertedLoadedDataToDatePriceForGraphs(
+      csvdataWithFilters,
+      "Дата старта",
+      "Общая стоимость, Р"
+   );
+
+   const dataConsumedEneryPrice = ConvertedLoadedDataToDatePriceForGraphs(
+      csvdataWithFilters,
+      "Дата старта",
+      "Стоимость за потреблённую энергию, Р"
+   );
+
+   const dataPayedPrice = ConvertedLoadedDataToDatePriceForGraphs(
+      csvdataWithFilters,
+      "Дата старта",
+      "Оплачено, Р"
+   );
 
    return (
       <>
          {dataIsUploaded ? (
             <>
-               {showGraphs ? <Graph data={data} /> : null}
+               {showGraphs ? (
+                  <Graph
+                     dataFirst={dataFullPrice}
+                     dataSecond={dataConsumedEneryPrice}
+                     dataThird={dataPayedPrice}
+                  />
+               ) : null}
                {/* <PredictionComponent /> */}
                <TableComponent rows={tableRows} columns={tableHead} />
             </>

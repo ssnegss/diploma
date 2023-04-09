@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
+import Button from "@mui/material/Button";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_RU } from "./_locales/ru.ts";
+
 import { saveCsvDataForFiltering } from "../../redux/actions/actionCreator";
 import { showButtonIsPressed } from "../../redux/actions/actionCreator";
 
@@ -31,9 +33,13 @@ export const TableComponent = ({ columns, rows }) => {
             data={rows}
             localization={MRT_Localization_RU}
             renderTopToolbarCustomActions={() => (
-               <button onClick={() => addFiltrationHandler()}>
+               <Button
+                  variant="contained"
+                  onClick={() => addFiltrationHandler()}
+                  sx={{ margin: "10px", fontSize: "0.75rem" }}
+               >
                   Отобразить графики
-               </button>
+               </Button>
             )}
             tableInstanceRef={tableInstanceRef}
          />

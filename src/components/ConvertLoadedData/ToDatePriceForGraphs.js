@@ -1,13 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-
-export const ConvertedLoadedDataToDatePriceForGraphs = (csvData) => {
+export const ConvertedLoadedDataToDatePriceForGraphs = (
+   csvData,
+   dateColumn,
+   valueColumn
+) => {
    //   Получаем массив объектов с полями date и price
 
    const intermediateData = csvData.map((item) => ({
-      date: item["Дата старта"].split(" ")[0].split(".").reverse().join("-"),
-      price: Number(
-         item["Стоимость за потреблённую энергию, Р"].replace(",", ".")
-      ),
+      date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
+      price: Number(item[valueColumn].replace(",", ".")),
    }));
 
    console.log(intermediateData);
