@@ -2,15 +2,16 @@ import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 
 const options = {
-   // maintainAspectRatio: false, // график адаптивен по ширине страницы
-   plugins: {
-      legend: {
-         display: false,
-      },
-   },
+   maintainAspectRatio: false, // график адаптивен по ширине страницы
+   responsive: true, 
+   // plugins: {
+   //    legend: {
+   //       display: false,
+   //    },
+   // },
 };
 
-const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
+export const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
    const chartData = {
       labels: dataFirst.map(({ date }) => date), // массив значений шкалы date
       datasets: [
@@ -70,9 +71,8 @@ const ChartGraph = ({ dataFirst, dataSecond, dataThird }) => {
          <Chart
             type="line"
             data={chartData}
-            // options={options}
+            options={options}
          />
       </div>
    );
 };
-export default ChartGraph;
