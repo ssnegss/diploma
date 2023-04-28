@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveCsvData } from "../../redux/actions/actionCreator";
 import { dataIsUploaded } from "../../redux/actions/actionCreator";
+import { showButtonIsPressed } from "../../redux/actions/actionCreator";
 import Button from "@mui/material/Button";
 
 export const CsvUploadContainer = () => {
@@ -25,6 +26,8 @@ export const CsvUploadContainer = () => {
          ) || e.target.files[0].name) === "csv"
       ) {
          setShowButtonVisible(1);
+         dispatch(dataIsUploaded(0));
+         dispatch(showButtonIsPressed(0))
          setFileName(e.target.files[0].name);
       } else {
          setShowButtonVisible(0);
