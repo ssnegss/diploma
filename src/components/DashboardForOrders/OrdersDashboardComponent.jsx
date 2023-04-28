@@ -5,9 +5,9 @@ import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
 
-import "./SessionDashboartComponent.css";
+// import "./SessionDashboartComponent.css";
 
-export const SessionDashboardComponent = () => {
+export const OrdersDashboardComponent = () => {
    const csvdataWithFilters = useSelector(
       (store) => store?.csv_data_for_filtering_reducer?.csvData
    );

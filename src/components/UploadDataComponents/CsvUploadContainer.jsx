@@ -27,7 +27,7 @@ export const CsvUploadContainer = () => {
       ) {
          setShowButtonVisible(1);
          dispatch(dataIsUploaded(0));
-         dispatch(showButtonIsPressed(0))
+         dispatch(showButtonIsPressed(0));
          setFileName(e.target.files[0].name);
       } else {
          setShowButtonVisible(0);

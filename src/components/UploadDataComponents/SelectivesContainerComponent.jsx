@@ -50,7 +50,10 @@ export const SelectivesContainerComponent = () => {
                options={CsvUploadSelective}
             />
          ) : null}
-         {dropdownCsvOption === 1 || dropdownCsvOption === 0 ? (
+         {dropdownOption === 1 && dropdownCsvOption === 0 ? (
+            <CsvUploadContainer />
+         ) : null}
+         {dropdownOption === 1 && dropdownCsvOption === 1 ? (
             <CsvUploadContainer />
          ) : null}
       </div>

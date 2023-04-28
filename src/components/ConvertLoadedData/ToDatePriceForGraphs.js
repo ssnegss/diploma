@@ -12,7 +12,7 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
       name: valueColumn,
    }));
 
-   console.log(intermediateData.value)
+   // console.log(intermediateData.value)
 
    //    Суммируем прибыль за каждый день
 
