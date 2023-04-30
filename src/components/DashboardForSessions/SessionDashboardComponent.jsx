@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { ConvertedLoadedDataToDatePriceForSessionsGraphs } from "../ConvertLoadedSessionsData/ToDatePriceForSessionsGraphs";
-import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedSessionsData/ConvertedLoadedSessionsDataToLocationsForPieGraph";
+import { ConvertedLoadedSessionsDataForPieGraph } from "../ConvertLoadedSessionsData/ConvertedLoadedSessionsDataForPieGraph";
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
@@ -47,14 +47,14 @@ export const SessionDashboardComponent = () => {
 
    //    Формирование входных данных для PieChart
 
-   const dataLocationPieChart = ConvertedLoadedDataToLocationsForPieGraph(
+   const dataLocationPieChart = ConvertedLoadedSessionsDataForPieGraph(
       csvdataWithFilters,
       "Название локации"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataStationsPieChart = ConvertedLoadedDataToLocationsForPieGraph(
+   const dataStationsPieChart = ConvertedLoadedSessionsDataForPieGraph(
       csvdataWithFilters,
       "Название станции"
    );

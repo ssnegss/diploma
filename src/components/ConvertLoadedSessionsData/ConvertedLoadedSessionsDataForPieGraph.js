@@ -1,4 +1,4 @@
-export const ConvertedLoadedDataToLocationsForPieGraph = (
+export const ConvertedLoadedSessionsDataForPieGraph = (
    csvData,
    locationColumn
 ) => {

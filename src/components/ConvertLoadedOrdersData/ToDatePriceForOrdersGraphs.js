@@ -4,7 +4,7 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
    dateColumn,
    valueColumn
 ) => {
-   //   Получаем массив объектов с полями date value, name
+   //   Получаем массив объектов с полями id, date, value, name
 
    const objectData = csvData.map((item) => ({
       id: item[id] ? item[id] : undefined,
@@ -51,10 +51,7 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
       const existingObjectByDate = accumulator.find(
          (item) => item.date === current.date
       );
-      const existingObjectById = accumulator.find(
-         (item) => item.id === current.id
-      );
-      if (!existingObjectByDate && !existingObjectById) {
+      if (!existingObjectByDate) {
          accumulator.push(current);
       } else {
          existingObjectByDate.value += current.value;
