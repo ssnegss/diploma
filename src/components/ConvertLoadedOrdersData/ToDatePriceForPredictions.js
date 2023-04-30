@@ -1,18 +1,16 @@
-export const ConvertedLoadedDataToDatePriceForGraphs = (
-   csvData,
-   dateColumn,
-   valueColumn
-) => {
-   //   Получаем массив объектов с полями date value, name
-   // const filteredData = csvData.filter((item) => item[valueColumn] !== 0);
+import { useSelector, useDispatch } from "react-redux";
+
+export const ConvertedLoadedDataToDatePriceForPredictions = () => {
+   const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
+
+   //   Получаем массив объектов с полями date и prvalueice
 
    const intermediateData = csvData.map((item) => ({
-      date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
-      value: Number(item[valueColumn].replace(",", ".")),
-      name: valueColumn,
+      date: Number(item["Дата старта"].split(".")[0]),
+      value: Number(
+         item["Стоимость за потреблённую энергию, Р"].replace(",", ".")
+      ),
    }));
-
-   // console.log(intermediateData.value)
 
    //    Суммируем прибыль за каждый день
 
@@ -30,7 +28,7 @@ export const ConvertedLoadedDataToDatePriceForGraphs = (
 
    //   Сортируем массив по возрастанию дат месяца
 
-   const resultData = intermediateData2.reverse();
+   const resultData = intermediateData2.sort((a, b) => a.date - b.date);
 
    return resultData;
 };

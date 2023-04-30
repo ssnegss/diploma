@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { ConvertedLoadedDataToDatePriceForGraphs } from "../ConvertLoadedData/ToDatePriceForGraphs";
-import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedData/ConvertedLoadedDataToLocationsForPieGraph";
+import { ConvertedLoadedOrdersDataToDatePriceForGraphs } from "../ConvertLoadedOrdersData/ToDatePriceForOrdersGraphs";
+import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedOrdersData/ConvertedLoadedOrdersDataToLocationsForPieGraph";
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
@@ -18,45 +18,48 @@ export const OrdersDashboardComponent = () => {
 
    //    Формирование входных данных для MultiLineChart
 
-   const dataFullPrice = ConvertedLoadedDataToDatePriceForGraphs(
+   const dataFullPrice = ConvertedLoadedOrdersDataToDatePriceForGraphs(
       csvdataWithFilters,
+      "Идентификатор резерва или зарядной сессии",
       "Дата старта",
       "Общая стоимость, Р"
    );
 
-   const dataConsumedEneryPrice = ConvertedLoadedDataToDatePriceForGraphs(
+   const dataConsumedEneryPrice = ConvertedLoadedOrdersDataToDatePriceForGraphs(
       csvdataWithFilters,
+      "Идентификатор резерва или зарядной сессии",
       "Дата старта",
       "Стоимость за потреблённую энергию, Р"
    );
 
-   const dataPayedPrice = ConvertedLoadedDataToDatePriceForGraphs(
+   const dataPayedPrice = ConvertedLoadedOrdersDataToDatePriceForGraphs(
       csvdataWithFilters,
+      "Идентификатор резерва или зарядной сессии",
       "Дата старта",
       "Оплачено, Р"
    );
 
    //    Формирование входных данных для SingleLineChart
 
-   const dataConsumedEnergy = ConvertedLoadedDataToDatePriceForGraphs(
-      csvdataWithFilters,
-      "Дата старта",
-      "Потреблённая энергия, Вт*ч"
-   );
+   // const dataConsumedEnergy = ConvertedLoadedOrdersDataToDatePriceForGraphs(
+   //    csvdataWithFilters,
+   //    "Дата старта",
+   //    "Потреблённая энергия, Вт*ч"
+   // );
 
-   //    Формирование входных данных для PieChart
+   // //    Формирование входных данных для PieChart
 
-   const dataLocationPieChart = ConvertedLoadedDataToLocationsForPieGraph(
-      csvdataWithFilters,
-      "Название локации"
-   );
+   // const dataLocationPieChart = ConvertedLoadedDataToLocationsForPieGraph(
+   //    csvdataWithFilters,
+   //    "Название локации"
+   // );
 
-   //    Формирование входных данных для PieChart
+   // //    Формирование входных данных для PieChart
 
-   const dataStationsPieChart = ConvertedLoadedDataToLocationsForPieGraph(
-      csvdataWithFilters,
-      "Название станции"
-   );
+   // const dataStationsPieChart = ConvertedLoadedDataToLocationsForPieGraph(
+   //    csvdataWithFilters,
+   //    "Название станции"
+   // );
 
    //    Формирование массива с данными для построения MultiLineChart
 
@@ -65,6 +68,8 @@ export const OrdersDashboardComponent = () => {
       dataConsumedEneryPrice,
       dataPayedPrice,
    ];
+
+   console.log(ChartGraphDatePriceArray)
 
    //    Рендер комппонента если dropdownCsvOption === 0 (В выпадающем списке выбрана загрузка отчета по сессиям)
    //    И если нажата кнока "Отобразить графики"
@@ -77,7 +82,7 @@ export const OrdersDashboardComponent = () => {
                <div className="LineChartContainer">
                   <MultiLineChart data={ChartGraphDatePriceArray} />
                </div>
-               <h1>Потребленная энергия за период</h1>
+               {/* <h1>Потребленная энергия за период</h1>
                <div className="LineChartContainer">
                   <SingleLineChart data={dataConsumedEnergy} />
                </div>
@@ -90,7 +95,7 @@ export const OrdersDashboardComponent = () => {
                      <h1>Активность станций за период</h1>
                      <PieChart data={dataStationsPieChart} />
                   </div>
-               </div>
+               </div> */}
             </>
          ) : null}
       </>

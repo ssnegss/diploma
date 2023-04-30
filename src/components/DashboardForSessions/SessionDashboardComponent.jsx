@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { ConvertedLoadedDataToDatePriceForGraphs } from "../ConvertLoadedData/ToDatePriceForGraphs";
-import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedData/ConvertedLoadedDataToLocationsForPieGraph";
+import { ConvertedLoadedDataToDatePriceForSessionsGraphs } from "../ConvertLoadedSessionsData/ToDatePriceForSessionsGraphs";
+import { ConvertedLoadedDataToLocationsForPieGraph } from "../ConvertLoadedSessionsData/ConvertedLoadedSessionsDataToLocationsForPieGraph";
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
@@ -18,19 +18,20 @@ export const SessionDashboardComponent = () => {
 
    //    Формирование входных данных для MultiLineChart
 
-   const dataFullPrice = ConvertedLoadedDataToDatePriceForGraphs(
+   const dataFullPrice = ConvertedLoadedDataToDatePriceForSessionsGraphs(
       csvdataWithFilters,
       "Дата старта",
       "Общая стоимость, Р"
    );
 
-   const dataConsumedEneryPrice = ConvertedLoadedDataToDatePriceForGraphs(
-      csvdataWithFilters,
-      "Дата старта",
-      "Стоимость за потреблённую энергию, Р"
-   );
+   const dataConsumedEneryPrice =
+      ConvertedLoadedDataToDatePriceForSessionsGraphs(
+         csvdataWithFilters,
+         "Дата старта",
+         "Стоимость за потреблённую энергию, Р"
+      );
 
-   const dataPayedPrice = ConvertedLoadedDataToDatePriceForGraphs(
+   const dataPayedPrice = ConvertedLoadedDataToDatePriceForSessionsGraphs(
       csvdataWithFilters,
       "Дата старта",
       "Оплачено, Р"
@@ -38,7 +39,7 @@ export const SessionDashboardComponent = () => {
 
    //    Формирование входных данных для SingleLineChart
 
-   const dataConsumedEnergy = ConvertedLoadedDataToDatePriceForGraphs(
+   const dataConsumedEnergy = ConvertedLoadedDataToDatePriceForSessionsGraphs(
       csvdataWithFilters,
       "Дата старта",
       "Потреблённая энергия, Вт*ч"
