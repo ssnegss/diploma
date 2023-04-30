@@ -11,6 +11,12 @@ const options = {
          },
          bodyFont: { size: 18 }, // изменяем размер текста
       },
+      legend: {
+         labels: {
+            boxHeight: 20, // change label font size here
+            font: { size: 18 },
+         },
+      },
    },
 };
 
