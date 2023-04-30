@@ -6,7 +6,7 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
 ) => {
    //   Получаем массив объектов с полями date value, name
 
-   const intermediateData = csvData.map((item) => ({
+   const objectData = csvData.map((item) => ({
       id: item[id] ? item[id] : undefined,
       date: item[dateColumn]
          ? item[dateColumn].split(" ")[0].split(".").reverse().join("-")
@@ -17,9 +17,13 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
       name: item[valueColumn] ? valueColumn : undefined,
    }));
 
+   //   Сортируем массив по возрастанию дат месяца
+
+   const correctlySortedData = objectData.reverse();
+
    //    Удаляем объекты с полями undefined
 
-   const removedUndefinedData = intermediateData.filter((obj) => {
+   const removedUndefinedData = correctlySortedData.filter((obj) => {
       return (
          Object.keys(obj).some((key) => {
             return obj[key] === undefined;
@@ -43,29 +47,20 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
 
    //    Суммируем прибыль за каждый день
 
-   const intermediateData2 = removedDuplicateIdData.reduce(
-      (accumulator, current) => {
-         const existingObjectByDate = accumulator.find(
-            (item) => item.date === current.date
-         );
-         const existingObjectById = accumulator.find(
-            (item) => item.id === current.id
-         );
-         if (!existingObjectByDate && !existingObjectById) {
-            accumulator.push(current);
-         } else {
-            existingObjectByDate.value += current.value;
-         }
-         return accumulator;
-      },
-      []
-   );
-
-   console.log(removedDuplicateIdData);
-
-   //   Сортируем массив по возрастанию дат месяца
-
-   const resultData = intermediateData2.reverse();
+   const resultData = removedDuplicateIdData.reduce((accumulator, current) => {
+      const existingObjectByDate = accumulator.find(
+         (item) => item.date === current.date
+      );
+      const existingObjectById = accumulator.find(
+         (item) => item.id === current.id
+      );
+      if (!existingObjectByDate && !existingObjectById) {
+         accumulator.push(current);
+      } else {
+         existingObjectByDate.value += current.value;
+      }
+      return accumulator;
+   }, []);
 
    return resultData;
 };

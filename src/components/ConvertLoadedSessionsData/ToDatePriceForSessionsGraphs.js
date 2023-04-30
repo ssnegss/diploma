@@ -5,15 +5,33 @@ export const ConvertedLoadedDataToDatePriceForSessionsGraphs = (
 ) => {
    //   Получаем массив объектов с полями date value, name
 
-   const intermediateData = csvData.map((item) => ({
-      date: item[dateColumn].split(" ")[0].split(".").reverse().join("-"),
-      value: Number(item[valueColumn].replace(",", ".")),
-      name: valueColumn,
+   const objectData = csvData.map((item) => ({
+      date: item[dateColumn]
+         ? item[dateColumn].split(" ")[0].split(".").reverse().join("-")
+         : undefined,
+      value: item[valueColumn]
+         ? Number(item[valueColumn].replace(",", "."))
+         : undefined,
+      name: item[valueColumn] ? valueColumn : undefined,
    }));
+
+   //   Сортируем массив по возрастанию дат месяца
+
+   const correctlySortedData = objectData.reverse();
+
+   //    Удаляем объекты с полями undefined
+
+   const removedUndefinedData = correctlySortedData.filter((obj) => {
+      return (
+         Object.keys(obj).some((key) => {
+            return obj[key] === undefined;
+         }) === false
+      );
+   });
 
    //    Суммируем прибыль за каждый день
 
-   const intermediateData2 = intermediateData.reduce((accumulator, current) => {
+   const resultData = removedUndefinedData.reduce((accumulator, current) => {
       const existingObject = accumulator.find(
          (item) => item.date === current.date
       );
@@ -24,10 +42,6 @@ export const ConvertedLoadedDataToDatePriceForSessionsGraphs = (
       }
       return accumulator;
    }, []);
-
-   //   Сортируем массив по возрастанию дат месяца
-
-   const resultData = intermediateData2.reverse();
 
    return resultData;
 };
