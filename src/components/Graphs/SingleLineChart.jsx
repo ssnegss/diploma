@@ -4,6 +4,14 @@ import { Chart } from "react-chartjs-2";
 const options = {
    maintainAspectRatio: false, // график адаптивен по ширине страницы
    responsive: true,
+   plugins: {
+      tooltip: {
+         titleFont: {
+            size: 22,
+         },
+         bodyFont: { size: 18 }, // изменяем размер текста
+      },
+   },
 };
 
 export const SingleLineChart = ({ data }) => {

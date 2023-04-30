@@ -36,5 +36,16 @@ export const PieChart = ({ data }) => {
       ],
    };
 
-   return <Pie data={chartData} />;
+   const chartOptions = {
+      plugins: {
+         tooltip: {
+            titleFont: {
+               size: 16,
+            },
+            bodyFont: { size: 20 }, // изменяем размер текста
+         },
+      },
+   };
+
+   return <Pie data={chartData} options={chartOptions} />;
 };
