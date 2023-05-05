@@ -14,12 +14,6 @@ export const FullDashboardComponent = () => {
       (store) => store?.data_is_uploaded_reducer?.isUploaded
    );
 
-   //    Получение флага, отображающего, что мы обрабатываем csv
-
-   const dropdownOption = useSelector(
-      (store) => store?.dropdownOptionReducer?.dropdownOption
-   );
-
    //    Получение флага, отображающего, какой отчет нужно обрабатывать (по сессиям или заказам)
 
    const dropdownCsvOption = useSelector(
@@ -52,12 +46,8 @@ export const FullDashboardComponent = () => {
       <>
          {dataIsUploaded ? (
             <>
-               {dropdownOption === 1 && dropdownCsvOption === 0 ? (
-                  <SessionDashboardComponent />
-               ) : null}
-               {dropdownOption === 1 && dropdownCsvOption === 1 ? (
-                  <OrdersDashboardComponent />
-               ) : null}
+               {dropdownCsvOption === 0 ? <SessionDashboardComponent /> : null}
+               {dropdownCsvOption === 1 ? <OrdersDashboardComponent /> : null}
                <TableComponent rows={tableRows} columns={tableHead} />
             </>
          ) : null}

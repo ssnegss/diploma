@@ -8,10 +8,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import { dataIsUploaded } from "../../redux/actions/actionCreator";
-import { getDataFromDropdown } from "../../redux/actions/actionCreator";
 import { getDataFromCsvDropdown } from "../../redux/actions/actionCreator";
 import { showButtonIsPressed } from "../../redux/actions/actionCreator";
-
 
 export const SelectActionComponent = (props) => {
    const [selectValue, setSelectValue] = React.useState("");
@@ -23,15 +21,12 @@ export const SelectActionComponent = (props) => {
       setSelectValue(event.target.value);
       dispatch(showButtonIsPressed(0));
       dispatch(dataIsUploaded(0));
-         };
+   };
 
    //    Получение значения из выпадающего списка.
    //    Сохранение значения выпадающего списка
 
    const menuItemClicked = (option) => {
-      if (option.className === "getDataFrom") {
-         dispatch(getDataFromDropdown(option.value));
-      }
       if (option.className === "getDataFromCsv") {
          dispatch(getDataFromCsvDropdown(option.value));
       }
