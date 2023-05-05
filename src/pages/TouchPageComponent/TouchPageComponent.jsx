@@ -2,29 +2,18 @@ import { TouchSelectivesContainerComponent } from "../../components/UploadDataCo
 import { FullDashboardComponent } from "../../components/FullDashboardComponent/FullDashboardComponent";
 import axios from "axios";
 import React, { useState } from "react";
+import { login } from "../../services/serverInteraction";
 
 import { useDispatch } from "react-redux";
 
 export const TouchPageComponent = () => {
    const dispatch = useDispatch();
 
-   async function login(username, password) {
-      try {
-         const response = await axios.post("http://localhost:5000/login", {
-            username: username,
-            password: password,
-         });
-         return response.data;
-      } catch (error) {
-         throw error.response.data;
-      }
-   }
-
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
    const [error, setError] = useState("");
 
-   const [dropdownVisible, setdropdownVisible] = useState(0);
+   const [dropdownVisible, setdropdownVisible] = useState(1);
 
    const handleSubmit = async (event) => {
       event.preventDefault();
