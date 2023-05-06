@@ -45,18 +45,24 @@ export const CsvUploadContainer = () => {
 
    const csvFileToArray = (string) => {
       const csvHeader = string.slice(0, string.indexOf("\n")).split(";");
+      const filteredCvsHeader = csvHeader.filter((item) => item !== "");
       const csvRows = string.slice(string.indexOf("\n") + 1).split("\n");
 
       const array = csvRows.map((i) => {
          const values = i.split(";");
-         const obj = csvHeader.reduce((object, header, index) => {
+
+         const obj = filteredCvsHeader.reduce((object, header, index) => {
             object[header] = values[index];
+            // if (header.length > 0) {
+            // console.log(object);
             return object;
+            // }
          }, {});
          return obj;
       });
 
       dispatch(saveCsvData(array));
+      console.log(array);
    };
 
    //    По нажатии на кнопку "Отобразить в таблице" загруженный файл конвертируется в массив,
