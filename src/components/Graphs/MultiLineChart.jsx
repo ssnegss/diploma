@@ -46,6 +46,7 @@ const options = {
 };
 
 export const MultiLineChart = ({ data }) => {
+   // console.log(data)
    const chartData = {
       labels: data[0].map(({ date }) => date), // массив значений шкалы date
       datasets: data.map((item) => ({
@@ -58,13 +59,13 @@ export const MultiLineChart = ({ data }) => {
       })),
    };
 
-   console.log(chartData)
-
    return (
       <div className="SessionDashboardComponent__LineChartContainer">
          {chartData.labels.length > 0 ? (
             <Chart type="line" data={chartData} options={options} />
-         ) : <h1 className="Graph__NoDataFoundHeader">No data found</h1>}
+         ) : (
+            <h1 className="Graph__NoDataFoundHeader">No data found</h1>
+         )}
       </div>
    );
 };

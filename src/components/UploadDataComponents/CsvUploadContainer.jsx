@@ -59,7 +59,6 @@ export const CsvUploadContainer = () => {
       });
 
       dispatch(saveCsvData(array));
-      console.log(array);
    };
 
    //    По нажатии на кнопку "Отобразить в таблице" загруженный файл конвертируется в массив,

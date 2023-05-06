@@ -59,13 +59,15 @@ export const SessionDashboardComponent = () => {
       "Название станции"
    );
 
+   console.log(dataStationsPieChart)
+
    //    Формирование массива с данными для построения MultiLineChart
 
    const ChartGraphDatePriceArray = [
       dataFullPrice,
       dataConsumedEneryPrice,
       dataPayedPrice,
-   ];
+   ].filter((item) => item !== 0);
 
    //    Рендер комппонента если dropdownCsvOption === 0 (В выпадающем списке выбрана загрузка отчета по сессиям)
    //    И если нажата кнока "Отобразить графики"
@@ -78,26 +80,42 @@ export const SessionDashboardComponent = () => {
                   <h1 className="SessionDashboardComponent__block_header">
                      Оплаты за период
                   </h1>
-                  <MultiLineChart data={ChartGraphDatePriceArray} />
+                  {ChartGraphDatePriceArray != 0 ? (
+                     <MultiLineChart data={ChartGraphDatePriceArray} />
+                  ) : (
+                     <h1>No data found</h1>
+                  )}
                </div>
                <div className="SessionDashboardComponent__block">
                   <h1 className="SessionDashboardComponent__block_header">
                      Потребленная энергия за период
-                  </h1>
-                  <SingleLineChart data={dataConsumedEnergy} />
+                  </h1>{" "}
+                  {dataConsumedEnergy != 0 ? (
+                     <SingleLineChart data={dataConsumedEnergy} />
+                  ) : (
+                     <h1>No data found</h1>
+                  )}
                </div>
                <div className="SessionDashboardComponent__PieChartsContainer">
                   <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
                      <h1 className="SessionDashboardComponent__block_header">
                         Активность комплексов за период
-                     </h1>
-                     <PieChart data={dataLocationPieChart} />
+                     </h1>{" "}
+                     {dataLocationPieChart != 0 ? (
+                        <PieChart data={dataLocationPieChart} />
+                     ) : (
+                        <h1>No data found</h1>
+                     )}
                   </div>
                   <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
                      <h1 className="SessionDashboardComponent__block_header">
                         Активность станций за период
                      </h1>
-                     <PieChart data={dataStationsPieChart} />
+                     {dataStationsPieChart != 0 ? (
+                        <PieChart data={dataStationsPieChart} />
+                     ) : (
+                        <h1>No data found</h1>
+                     )}
                   </div>
                </div>
             </>

@@ -1,38 +1,42 @@
 export const ConvertedLoadedOrdersDataForPieGraph = (csvData, id, column) => {
-   //   Получаем массив объектов с полями id, name
+   //    Проверка, что данные существуют
 
-   const objectData = csvData.map((item) => ({
-      id: item[id] ? item[id] : undefined,
-      name: item[column] ? item[column] : undefined,
-   }));
+   if (csvData.length > 0) {
+      //   Получаем массив объектов с полями id, name
 
-   //    Удаляем объекты с полями undefined и ''
+      const objectData = csvData.map((item) => ({
+         id: item[id] ? item[id] : undefined,
+         name: item[column] ? item[column] : undefined,
+      }));
 
-   const removedUndefinedData = objectData.filter((obj) => {
-      return (
-         Object.keys(obj).some((key) => {
-            return obj[key] === undefined || obj[key] === "";
-         }) === false
-      );
-   });
+      //    Удаляем объекты с полями undefined и ''
 
-   //    Удаляем дубликаты объектов с одинаковым id
-   //    Для корректного дальнейшего подсчета сессионного количества
+      const removedUndefinedData = objectData.filter((obj) => {
+         return (
+            Object.keys(obj).some((key) => {
+               return obj[key] === undefined || obj[key] === "";
+            }) === false
+         );
+      });
 
-   const uniqueObjects = new Map();
+      //    Удаляем дубликаты объектов с одинаковым id
+      //    Для корректного дальнейшего подсчета сессионного количества
 
-   const removedDuplicateIdData = removedUndefinedData.filter((obj) => {
-      if (uniqueObjects.has(obj.id)) {
-         return false;
-      } else {
-         uniqueObjects.set(obj.id, obj);
-         return true;
-      }
-   });
+      const uniqueObjects = new Map();
 
-   //    Для формирования графика вохвращаем name
+      const removedDuplicateIdData = removedUndefinedData.filter((obj) => {
+         if (uniqueObjects.has(obj.id)) {
+            return false;
+         } else {
+            uniqueObjects.set(obj.id, obj);
+            return true;
+         }
+      });
 
-   const resultData = removedDuplicateIdData.map((item) => item.name);
+      //    Для формирования графика вохвращаем name
 
-   return resultData;
+      const resultData = removedDuplicateIdData.map((item) => item.name);
+
+      return resultData;
+   } else return 0;
 };

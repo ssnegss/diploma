@@ -1,9 +1,13 @@
 export const ConvertedLoadedOrdersFullDataForPieGraph = (csvData, column) => {
-   const resultData = csvData.map((item) => item[column]);
+   //    Проверка, что данные существуют
 
-   const filteredResultData = resultData.filter(
-      (item) => item !== "" && item !== undefined
-   );
+   if (csvData.length > 0) {
+      const resultData = csvData.map((item) => item[column]);
 
-   return filteredResultData;
+      const filteredResultData = resultData.filter(
+         (item) => item !== "" && item !== undefined
+      );
+
+      return filteredResultData;
+   } else return 0;
 };
