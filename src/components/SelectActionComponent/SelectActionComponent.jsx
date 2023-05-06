@@ -9,6 +9,7 @@ import Select from "@mui/material/Select";
 
 import { dataIsUploaded } from "../../redux/actions/actionCreator";
 import { getDataFromCsvDropdown } from "../../redux/actions/actionCreator";
+import { getDataFromTouchDropdown } from "../../redux/actions/actionCreator";
 import { showButtonIsPressed } from "../../redux/actions/actionCreator";
 
 export const SelectActionComponent = (props) => {
@@ -29,6 +30,9 @@ export const SelectActionComponent = (props) => {
    const menuItemClicked = (option) => {
       if (option.className === "getDataFromCsv") {
          dispatch(getDataFromCsvDropdown(option.value));
+      }
+      if (option.className === "getDataFromTouch") {
+         dispatch(getDataFromTouchDropdown(option.value));
       }
    };
 

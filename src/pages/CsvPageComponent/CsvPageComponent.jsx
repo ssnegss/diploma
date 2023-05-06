@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { useLocation } from "react-router-dom";
-import { CsvSelectivesContainerComponent } from "../../components/UploadDataComponents/CsvSelectivesContainerComponent";
+import { CsvSelectivesContainerComponent } from "../../components/SelectivesComponent/CsvSelectivesContainerComponent";
 import { FullDashboardComponent } from "../../components/FullDashboardComponent/FullDashboardComponent";
 
 import { dataIsUploaded } from "../../redux/actions/actionCreator";

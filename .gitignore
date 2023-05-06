@@ -125,3 +125,6 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/fake_db/orders.json
+src/fake_db/db.json
+src/components/UploadDataComponents/orders.json

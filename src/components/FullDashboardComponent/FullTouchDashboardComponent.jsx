@@ -3,7 +3,7 @@ import { TableComponent } from "../TableComponent/SortableTableComponent";
 import { SessionDashboardComponent } from "../DashboardForSessions/SessionDashboardComponent";
 import { OrdersDashboardComponent } from "../DashboardForOrders/OrdersDashboardComponent";
 
-export const FullDashboardComponent = () => {
+export const FullTouchDashboardComponent = () => {
    //    Получение загруженных данных
 
    const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
@@ -18,10 +18,6 @@ export const FullDashboardComponent = () => {
 
    const dropdownCsvOption = useSelector(
       (store) => store?.dropdownCsvOptionReducer?.dropdownOption
-   );
-
-   const dropdownTouchOption = useSelector(
-      (store) => store?.dropdownTouchOptionReducer?.dropdownOption
    );
 
    //    Формирование заголовка таблицы
@@ -50,12 +46,8 @@ export const FullDashboardComponent = () => {
       <>
          {dataIsUploaded ? (
             <>
-               {dropdownCsvOption === 0 || dropdownTouchOption === 0 ? (
-                  <SessionDashboardComponent />
-               ) : null}
-               {dropdownCsvOption === 1 || dropdownTouchOption === 1 ? (
-                  <OrdersDashboardComponent />
-               ) : null}
+               {dropdownCsvOption === 0 ? <SessionDashboardComponent /> : null}
+               {dropdownCsvOption === 1 ? <OrdersDashboardComponent /> : null}
                <TableComponent rows={tableRows} columns={tableHead} />
             </>
          ) : null}

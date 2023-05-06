@@ -1,11 +1,13 @@
 [
    {
       "id": 0,
+      "className": "getDataFromTouch",
       "value": 0,
       "name": "Данные по сессиям"
    },
    {
       "id": 1,
+      "className": "getDataFromTouch",
       "value": 1,
       "name": "Данные по заказам"
    }

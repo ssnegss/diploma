@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
 
 import { SelectActionComponent } from "../SelectActionComponent/SelectActionComponent";
-import { CsvUploadContainer } from "./CsvUploadContainer";
-
+import { CsvUploadContainer } from "../UploadDataComponents/CsvUploadContainer";
 import CsvUploadSelective from "../SelectActionComponent/CsvUploadSelective.json";
 
 //    Компонент с выпадающими списками для выбора вида получения данных:

@@ -1,8 +1,8 @@
-import { TouchSelectivesContainerComponent } from "../../components/UploadDataComponents/TouchSelectivesContainerComponent";
+import { TouchSelectivesContainerComponent } from "../../components/SelectivesComponent/TouchSelectivesContainerComponent";
 import { FullDashboardComponent } from "../../components/FullDashboardComponent/FullDashboardComponent";
-import axios from "axios";
 import React, { useState } from "react";
 import { login } from "../../services/serverInteraction";
+import { fetchTouchData } from "../../services/apiInteraction";
 
 import { useDispatch } from "react-redux";
 
