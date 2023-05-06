@@ -12,7 +12,7 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
          ? item[dateColumn].split(" ")[0].split(".").reverse().join("-")
          : undefined,
       value: item[valueColumn]
-         ? Number(item[valueColumn].replace(",", "."))
+         ? Number(item[valueColumn].toString().replace(",", "."))
          : undefined,
       name: item[valueColumn] ? valueColumn : undefined,
    }));
