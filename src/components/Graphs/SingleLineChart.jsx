@@ -39,7 +39,7 @@ export const SingleLineChart = ({ data }) => {
    };
 
    return (
-      <div className="graph-container">
+      <div className="SessionDashboardComponent__LineChartContainer">
          <Chart type="line" data={chartData} options={options} />
       </div>
    );

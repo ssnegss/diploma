@@ -24,10 +24,10 @@ export const CsvPageComponent = () => {
    //    Компонент страницы обработки .csv отчетов
    return (
       <>
-         <div className="CsvPageComponent__container">
+         <div className="CsvPageComponent__selective_container">
             <CsvSelectivesContainerComponent />
          </div>
-         <FullDashboardComponent />
+            <FullDashboardComponent />
       </>
    );
 };

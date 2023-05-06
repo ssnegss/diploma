@@ -6,7 +6,7 @@ import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
 
-// import "./SessionDashboartComponent.css";
+import "./OrdersDashboardComponent.css";
 
 export const OrdersDashboardComponent = () => {
    const csvdataWithFilters = useSelector(
@@ -109,46 +109,66 @@ export const OrdersDashboardComponent = () => {
       <>
          {showGraphs ? (
             <>
-               <h1>Оплаты за период</h1>
-               <div className="LineChartContainer">
+               <div className="OrdersDashboardComponent__block">
+                  <h1 className="OrdersDashboardComponent__block_header">
+                     Оплаты за период
+                  </h1>
                   <MultiLineChart data={ChartGraphDatePriceArray} />
                </div>
-               <h1>Потребленная энергия за период</h1>
-               <div className="LineChartContainer">
+
+               <div className="OrdersDashboardComponent__block">
+                  <h1 className="OrdersDashboardComponent__block_header">
+                     Потребленная энергия за период
+                  </h1>
                   <SingleLineChart data={dataConsumedEnergy} />
                </div>
+
                <div>
                   <h1>Общий свод</h1>
-                  <div className="PieChartsContainer">
-                     <div className="PieChart">
-                        <h2>Название локации</h2>
+                  <div className="OrdersDashboardComponent__PieChartsContainer">
+                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="OrdersDashboardComponent__block_header">
+                           Название локации
+                        </h1>
                         <PieChart data={dataLocationFullPieChart} />
                      </div>
-                     <div className="PieChart">
-                        <h2>Название станции</h2>
+                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="OrdersDashboardComponent__block_header">
+                           Название станции
+                        </h1>
                         <PieChart data={dataStationsFullPieChart} />
                      </div>
                   </div>
-                  <div className="PieChartsContainer">
-                     <div className="PieChart">
-                        <h2>Описание статуса платежа (при ошибке)</h2>
+
+                  <div className="OrdersDashboardComponent__PieChartsContainer">
+                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="OrdersDashboardComponent__block_header">
+                           Описание статуса платежа (при ошибке)
+                        </h1>
                         <PieChart data={dataErrorStatusFullPieChart} />
                      </div>
-                     <div className="PieChart">
-                        <h2>Статус платежа</h2>
+                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="OrdersDashboardComponent__block_header">
+                           Статус платежа
+                        </h1>
                         <PieChart data={dataPaymentStatusFullPieChart} />
                      </div>
                   </div>
                </div>
+
                <div>
                   <h1>Сессионный свод</h1>
-                  <div className="PieChartsContainer">
-                     <div className="PieChart">
-                        <h1>Название локации</h1>
+                  <div className="OrdersDashboardComponent__PieChartsContainer">
+                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="OrdersDashboardComponent__block_header">
+                           Название локации
+                        </h1>
                         <PieChart data={dataLocationPieChart} />
                      </div>
-                     <div className="PieChart">
-                        <h2>Название станции</h2>
+                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="OrdersDashboardComponent__block_header">
+                           Название станции
+                        </h1>
                         <PieChart data={dataStationsPieChart} />
                      </div>
                   </div>

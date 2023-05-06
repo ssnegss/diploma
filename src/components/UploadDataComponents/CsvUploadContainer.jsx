@@ -84,12 +84,6 @@ export const CsvUploadContainer = () => {
       <>
          <div style={{ textAlign: "center" }}>
             <form>
-               <label
-                  className="CsvPageComponent__container_label"
-                  htmlFor="csvFileInput"
-               >
-                  Выбрать файл
-               </label>
                <input
                   hidden
                   id={"csvFileInput"}
@@ -97,6 +91,12 @@ export const CsvUploadContainer = () => {
                   type={"file"}
                   onChange={handleOnChange}
                />
+               <label
+                  className="CsvPageComponent__container_label"
+                  htmlFor="csvFileInput"
+               >
+                  Выбрать файл
+               </label>
                <div>
                   <p className="CsvPageComponent__container_fileName">
                      {fileName}

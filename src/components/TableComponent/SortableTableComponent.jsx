@@ -10,6 +10,8 @@ import {
    showButtonIsPressed,
 } from "../../redux/actions/actionCreator";
 
+import './SortableTableComponent.css'
+
 //    Компонент таблицы
 
 export const TableComponent = ({ columns, rows }) => {
@@ -35,13 +37,12 @@ export const TableComponent = ({ columns, rows }) => {
             data={rows}
             localization={MRT_Localization_RU}
             renderTopToolbarCustomActions={() => (
-               <Button
-                  variant="contained"
+               <button
+                  className="TableComponent__button"
                   onClick={() => addFiltrationHandler()}
-                  sx={{ margin: "10px", fontSize: "0.75rem" }}
                >
                   Отобразить графики
-               </Button>
+               </button>
             )}
             tableInstanceRef={tableInstanceRef}
          />

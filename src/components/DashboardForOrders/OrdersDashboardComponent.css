@@ -1,4 +1,4 @@
-.SessionDashboardComponent__block {
+.OrdersDashboardComponent__block {
    background-color: white;
    padding: 2rem;
    padding-top: 0.5rem;
@@ -6,7 +6,7 @@
    border-radius: 30px;
 }
 
-.SessionDashboardComponent__block_header {
+.OrdersDashboardComponent__block_header {
    font-size: 1.5rem;
    font-weight: 500;
    margin: 1rem;
@@ -15,16 +15,16 @@
    align-items: flex-end;
 }
 
-.SessionDashboardComponent__LineChartContainer {
+.OrdersDashboardComponent__LineChartContainer {
    height: 25rem;
 }
 
-.SessionDashboardComponent__PieChartComponent {
+.OrdersDashboardComponent__PieChartComponent {
    max-width: 25rem;
    margin: 0 auto;
 }
 
-.SessionDashboardComponent__PieChartsContainer {
+.OrdersDashboardComponent__PieChartsContainer {
    display: flex;
    flex-direction: row;
    justify-content: center;
@@ -32,7 +32,7 @@
    margin: 0 auto;
 }
 
-.SessionDashboardComponent__PieChartsContainer_PieChart {
+.OrdersDashboardComponent__PieChartsContainer_PieChart {
    background-color: white;
    padding: 2rem;
    padding-top: 0.5rem;

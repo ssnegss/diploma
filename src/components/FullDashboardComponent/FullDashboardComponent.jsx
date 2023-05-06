@@ -3,6 +3,8 @@ import { TableComponent } from "../TableComponent/SortableTableComponent";
 import { SessionDashboardComponent } from "../DashboardForSessions/SessionDashboardComponent";
 import { OrdersDashboardComponent } from "../DashboardForOrders/OrdersDashboardComponent";
 
+import "./DashboardComponent.css";
+
 export const FullDashboardComponent = () => {
    //    Получение загруженных данных
 
@@ -56,7 +58,9 @@ export const FullDashboardComponent = () => {
                {dropdownCsvOption === 1 || dropdownTouchOption === 1 ? (
                   <OrdersDashboardComponent />
                ) : null}
-               <TableComponent rows={tableRows} columns={tableHead} />
+               <div className="DashboardComponent__table">
+                  <TableComponent rows={tableRows} columns={tableHead} />
+               </div>
             </>
          ) : null}
       </>

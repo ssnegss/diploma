@@ -74,21 +74,29 @@ export const SessionDashboardComponent = () => {
       <>
          {showGraphs ? (
             <>
-               <h1>Оплаты за период</h1>
-               <div className="LineChartContainer">
+               <div className="SessionDashboardComponent__block">
+                  <h1 className="SessionDashboardComponent__block_header">
+                     Оплаты за период
+                  </h1>
                   <MultiLineChart data={ChartGraphDatePriceArray} />
                </div>
-               <h1>Потребленная энергия за период</h1>
-               <div className="LineChartContainer">
+               <div className="SessionDashboardComponent__block">
+                  <h1 className="SessionDashboardComponent__block_header">
+                     Потребленная энергия за период
+                  </h1>
                   <SingleLineChart data={dataConsumedEnergy} />
                </div>
-               <div className="PieChartsContainer">
-                  <div className="PieChart">
-                     <h1>Активность комплексов за период</h1>
+               <div className="SessionDashboardComponent__PieChartsContainer">
+                  <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
+                     <h1 className="SessionDashboardComponent__block_header">
+                        Активность комплексов за период
+                     </h1>
                      <PieChart data={dataLocationPieChart} />
                   </div>
-                  <div className="PieChart">
-                     <h1>Активность станций за период</h1>
+                  <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
+                     <h1 className="SessionDashboardComponent__block_header">
+                        Активность станций за период
+                     </h1>
                      <PieChart data={dataStationsPieChart} />
                   </div>
                </div>

@@ -42,16 +42,20 @@ export const PieChart = ({ data }) => {
             titleFont: {
                size: 16,
             },
-            bodyFont: { size: 20 }, // изменяем размер текста
+            bodyFont: { size: 18 }, // изменяем размер текста
          },
          legend: {
             labels: {
-               boxHeight: 20, // change label font size here
+               boxHeight: 15, // change label font size here
                font: { size: 18 },
             },
          },
       },
    };
 
-   return <Pie data={chartData} options={chartOptions} />;
+   return (
+      <div className="SessionDashboardComponent__PieChartComponent">
+         <Pie data={chartData} options={chartOptions} />
+      </div>
+   );
 };

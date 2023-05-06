@@ -4,6 +4,7 @@ import { Chart } from "react-chartjs-2";
 const options = {
    maintainAspectRatio: false, // график адаптивен по ширине страницы
    responsive: true,
+   aspectRatio: 2, 
    plugins: {
       tooltip: {
          titleFont: {
@@ -58,7 +59,7 @@ export const MultiLineChart = ({ data }) => {
    };
 
    return (
-      <div className="graph-container">
+      <div className="SessionDashboardComponent__LineChartContainer">
          <Chart type="line" data={chartData} options={options} />
       </div>
    );

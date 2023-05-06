@@ -1,14 +1,15 @@
 .TableComponent__button {
-   color: #272727;
-   height: 3rem;
-   width: 20rem;
-
-   border: 2px solid #5cb960;
+   color: white;
+   height: 3.5rem;
+   width: 30rem;
+   background-color: rgba(0, 64, 255, 0.6);
+   border: 0px;
    cursor: pointer;
    font-family: "Roboto", sans-serif;
-   font-size: 1rem;
+   font-size: 1.1rem;
    font-weight: 500;
-   border-radius: 10px;
+   margin: 0 0 1.5rem 0;
+   border-radius: 20px;
    -webkit-transition: background-color 0.5s ease-out;
    -moz-transition: background-color 0.5s ease-out;
    -o-transition: background-color 0.5s ease-out;
@@ -16,5 +17,5 @@
 }
 
 .TableComponent__button:hover {
-   background-color: rgba(255, 255, 255, 0.5);
+   background-color: rgba(79, 117, 255, 0.515);
 }

@@ -1,4 +1,4 @@
-.CsvPageComponent__container {
+.CsvPageComponent__selective_container {
    margin: 1rem auto;
    padding-bottom: 1rem;
    width: 25rem;
@@ -9,16 +9,17 @@
 }
 
 .CsvPageComponent__container_button {
-   color: #272727;
-   width: 15rem;
-   background-color: white;
-   border: 3px solid rgba(225, 231, 255, 0.515);
+   color: white;
+   height: 3.5rem;
+   width: 60%;
+   background-color: rgba(0, 64, 255, 0.6);
+   border: 0px;
    cursor: pointer;
    font-family: "Roboto", sans-serif;
    font-size: 1rem;
-   padding: 1rem;
    font-weight: 500;
-   border-radius: 30px;
+   margin: 0 0 1.5rem 0;
+   border-radius: 20px;
    -webkit-transition: background-color 0.5s ease-out;
    -moz-transition: background-color 0.5s ease-out;
    -o-transition: background-color 0.5s ease-out;
@@ -26,19 +27,19 @@
 }
 
 .CsvPageComponent__container_label {
-   margin: 0 auto;
+   margin: auto auto;
    margin-top: 1rem; 
-   color: #272727;
+   color: white;
    display: block;
-   width: 12.5rem;
+   width: 50%;
    padding: 1rem;
-   background-color: white;
-   border: 3px solid rgba(225, 231, 255, 0.515);
+   height: 1.5rem;
+   background-color: rgba(0, 64, 255, 0.6);
    cursor: pointer;
    font-family: "Roboto", sans-serif;
    font-size: 1rem;
    font-weight: 500;
-   border-radius: 25px;
+   border-radius: 20px;
    -webkit-transition: background-color 0.5s ease-out;
    -moz-transition: background-color 0.5s ease-out;
    -o-transition: background-color 0.5s ease-out;
