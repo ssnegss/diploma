@@ -1,0 +1,57 @@
+.MainPageComponent {
+   width: 100%;
+}
+
+.MainPageComponent__container {
+   margin: 0 auto;
+   margin-top: 10rem;
+   width: 30rem;
+   height: 30rem;
+   display: grid;
+   border-radius: 50px;
+   background-color: rgb(255, 255, 255);
+   box-shadow: 0px 0px 50px #dedfff;
+}
+
+.MainPageComponent__container_inner {
+   margin: 0 auto;
+   margin-bottom: 2rem;
+   width: 20rem;
+}
+
+.MainPageComponent__container__link {
+   height: 3.5rem;
+   width: 100%;
+}
+
+.MainPageComponent__container__button {
+   color: white;
+   min-height: 3.5rem;
+   width: 100%;
+   background-color: rgba(0, 64, 255, 0.6);
+   border: 0px;
+   cursor: pointer;
+   font-family: "Roboto", sans-serif;
+   font-size: 1.2rem;
+   font-weight: 500;
+   padding: 1.5rem;
+   margin: 0 0 1.5rem 0;
+   border-radius: 23px;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+}
+
+.MainPageComponent__container__button:hover {
+   background-color: rgba(79, 117, 255, 0.515);
+}
+
+.MainPageComponent__container_logoImg {
+   width: 15rem;
+   height: 15rem;
+   background-image: url("../../img/graph.png");
+   background-repeat: no-repeat;
+   background-size: 15rem;
+   margin: 0 auto;
+}

@@ -1,0 +1,55 @@
+.CsvPageComponent__container {
+   margin: 1rem auto;
+   padding-bottom: 1rem;
+   width: 25rem;
+   display: grid;
+   border-radius: 25px;
+   background-color: white;
+   box-shadow: 0px 0px 50px #dedfff;
+}
+
+.CsvPageComponent__container_button {
+   color: #272727;
+   width: 15rem;
+   background-color: white;
+   border: 3px solid rgba(225, 231, 255, 0.515);
+   cursor: pointer;
+   font-family: "Roboto", sans-serif;
+   font-size: 1rem;
+   padding: 1rem;
+   font-weight: 500;
+   border-radius: 30px;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+}
+
+.CsvPageComponent__container_label {
+   margin: 0 auto;
+   margin-top: 1rem; 
+   color: #272727;
+   display: block;
+   width: 12.5rem;
+   padding: 1rem;
+   background-color: white;
+   border: 3px solid rgba(225, 231, 255, 0.515);
+   cursor: pointer;
+   font-family: "Roboto", sans-serif;
+   font-size: 1rem;
+   font-weight: 500;
+   border-radius: 25px;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+}
+
+.CsvPageComponent__container_button:hover {
+   background-color: rgba(241, 244, 255, 0.5);
+}
+
+.CsvPageComponent__container_fileName {
+   font-size: 1.1rem;
+   font-weight: 600;
+}

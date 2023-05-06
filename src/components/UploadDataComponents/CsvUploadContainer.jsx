@@ -84,31 +84,33 @@ export const CsvUploadContainer = () => {
       <>
          <div style={{ textAlign: "center" }}>
             <form>
-               <Button
-                  variant="contained"
-                  component="label"
-                  sx={{ margin: "10px", fontSize: "0.75rem" }}
+               <label
+                  className="CsvPageComponent__container_label"
+                  htmlFor="csvFileInput"
                >
                   Выбрать файл
-                  <input
-                     hidden
-                     id={"csvFileInput"}
-                     accept={".csv"}
-                     type={"file"}
-                     onChange={handleOnChange}
-                  />
-               </Button>
-               <div>{fileName}</div>
+               </label>
+               <input
+                  hidden
+                  id={"csvFileInput"}
+                  accept={".csv"}
+                  type={"file"}
+                  onChange={handleOnChange}
+               />
+               <div>
+                  <p className="CsvPageComponent__container_fileName">
+                     {fileName}
+                  </p>
+               </div>
                {showButtonVisible ? (
-                  <Button
-                     variant="contained"
+                  <button
+                     className="CsvPageComponent__container_button"
                      onClick={(e) => {
                         handleOnSubmit(e);
                      }}
-                     sx={{ margin: "10px", fontSize: "0.75rem" }}
                   >
                      Отобразить в таблице
-                  </Button>
+                  </button>
                ) : null}
             </form>
          </div>

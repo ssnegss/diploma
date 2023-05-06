@@ -10,6 +10,8 @@ import {
    getDataFromCsvDropdown,
 } from "../../redux/actions/actionCreator";
 
+import "./CsvPageComponent.css";
+
 export const CsvPageComponent = () => {
    const location = useLocation();
    const dispatch = useDispatch();
@@ -22,7 +24,9 @@ export const CsvPageComponent = () => {
    //    Компонент страницы обработки .csv отчетов
    return (
       <>
-         <CsvSelectivesContainerComponent />
+         <div className="CsvPageComponent__container">
+            <CsvSelectivesContainerComponent />
+         </div>
          <FullDashboardComponent />
       </>
    );
