@@ -5,8 +5,10 @@ import Button from "@mui/material/Button";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_RU } from "./_locales/ru.ts";
 
-import { saveCsvDataForFiltering } from "../../redux/actions/actionCreator";
-import { showButtonIsPressed } from "../../redux/actions/actionCreator";
+import {
+   saveCsvDataForFiltering,
+   showButtonIsPressed,
+} from "../../redux/actions/actionCreator";
 
 //    Компонент таблицы
 

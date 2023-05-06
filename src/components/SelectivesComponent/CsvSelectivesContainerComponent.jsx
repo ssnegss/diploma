@@ -4,9 +4,6 @@ import { SelectActionComponent } from "../SelectActionComponent/SelectActionComp
 import { CsvUploadContainer } from "../UploadDataComponents/CsvUploadContainer";
 import CsvUploadSelective from "../SelectActionComponent/CsvUploadSelective.json";
 
-//    Компонент с выпадающими списками для выбора вида получения данных:
-//    вручную либо напрямую из TOUCH
-
 export const CsvSelectivesContainerComponent = () => {
    //    Компонент с выпадающими списками для выбора вида отчетов, загружаемых вручную:
    //    отчеты по сессиям либо отчеты по заказам

@@ -1,13 +1,21 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+
 import { TouchSelectivesContainerComponent } from "../../components/SelectivesComponent/TouchSelectivesContainerComponent";
 import { FullDashboardComponent } from "../../components/FullDashboardComponent/FullDashboardComponent";
-import React, { useState } from "react";
-import { login } from "../../services/serverInteraction";
-import { fetchTouchData } from "../../services/apiInteraction";
 
-import { useDispatch } from "react-redux";
+import { login } from "../../services/serverInteraction";
+import { dataIsUploaded, getDataFromCsvDropdown } from "../../redux/actions/actionCreator";
 
 export const TouchPageComponent = () => {
+   const location = useLocation();
    const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(dataIsUploaded(0));
+      dispatch(getDataFromCsvDropdown(null));
+   }, [location, dispatch]);
 
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
@@ -30,7 +38,7 @@ export const TouchPageComponent = () => {
       }
    };
 
-   //    Компонент главной страницы
+   //    Компонент страницы обработки данных из TOUCH
    return (
       <>
          <form onSubmit={handleSubmit}>

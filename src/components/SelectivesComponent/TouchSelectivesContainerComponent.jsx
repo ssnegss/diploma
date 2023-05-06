@@ -4,9 +4,6 @@ import { SelectActionComponent } from "../SelectActionComponent/SelectActionComp
 import { TouchUploadContainer } from "../UploadDataComponents/TouchUploadContainer";
 import TouchUploadSelective from "../SelectActionComponent/TouchUploadSelective.json";
 
-//    Компонент с выпадающими списками для выбора вида получения данных:
-//    вручную либо напрямую из TOUCH
-
 export const TouchSelectivesContainerComponent = () => {
    //    Компонент с выпадающими списками для выбора типа данных, загружаемых из TOUCH:
    //    отчеты по сессиям либо отчеты по заказам

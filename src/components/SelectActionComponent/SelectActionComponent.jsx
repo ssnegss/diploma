@@ -7,10 +7,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-import { dataIsUploaded } from "../../redux/actions/actionCreator";
-import { getDataFromCsvDropdown } from "../../redux/actions/actionCreator";
-import { getDataFromTouchDropdown } from "../../redux/actions/actionCreator";
-import { showButtonIsPressed } from "../../redux/actions/actionCreator";
+import {
+   dataIsUploaded,
+   getDataFromCsvDropdown,
+   getDataFromTouchDropdown,
+   showButtonIsPressed,
+} from "../../redux/actions/actionCreator";
 
 export const SelectActionComponent = (props) => {
    const [selectValue, setSelectValue] = React.useState("");

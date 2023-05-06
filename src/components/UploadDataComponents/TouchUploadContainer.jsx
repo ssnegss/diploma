@@ -1,18 +1,12 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { saveCsvData } from "../../redux/actions/actionCreator";
-import { dataIsUploaded } from "../../redux/actions/actionCreator";
-import { showButtonIsPressed } from "../../redux/actions/actionCreator";
-import Button from "@mui/material/Button";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { saveCsvData, dataIsUploaded } from "../../redux/actions/actionCreator";
 
 import { fetchTouchData } from "../../services/apiInteraction";
-// import fg from "./orders.json";
 
 export const TouchUploadContainer = () => {
    const dispatch = useDispatch();
-   // dispatch(dataIsUploaded(0));
-   // dispatch(saveCsvData(array));
 
    const dropdownTouchOption = useSelector(
       (store) => store?.dropdownTouchOptionReducer?.dropdownOption
@@ -31,11 +25,12 @@ export const TouchUploadContainer = () => {
    async function handleClick() {
       if (dropdownTouchOption === 0) {
          const data = await fetchData("sessions.json");
-         console.log(data);
+         setData(data);
          dispatch(saveCsvData(data));
       }
       if (dropdownTouchOption === 1) {
          const data = await fetchData("orders.json");
+         setData(data);
          dispatch(saveCsvData(data));
       }
       dispatch(dataIsUploaded(1));
@@ -47,7 +42,7 @@ export const TouchUploadContainer = () => {
             <h5>Выберите промежуток времени</h5>
             <div>
                <button onClick={handleClick}>Загрузить данные</button>
-               {data ? <h1>ура</h1> : <p>Данные еще не загружены</p>}
+               {data ? <p></p> : <p>Данные еще не загружены</p>}
             </div>
          </div>
       </>

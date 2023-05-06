@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { saveCsvData } from "../../redux/actions/actionCreator";
-import { dataIsUploaded } from "../../redux/actions/actionCreator";
-import { showButtonIsPressed } from "../../redux/actions/actionCreator";
+
+import {
+   saveCsvData,
+   dataIsUploaded,
+   showButtonIsPressed,
+} from "../../redux/actions/actionCreator";
+
 import Button from "@mui/material/Button";
 
 export const CsvUploadContainer = () => {
