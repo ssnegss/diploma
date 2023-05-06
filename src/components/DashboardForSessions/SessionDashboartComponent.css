@@ -43,7 +43,7 @@
 }
 
 @media (max-width: 1300px) {
-   .OrdersDashboardComponent__PieChartsContainer_PieChart {
+   .SessionDashboardComponent__PieChartsContainer_PieChart {
       margin: 1rem;
    }
 }
