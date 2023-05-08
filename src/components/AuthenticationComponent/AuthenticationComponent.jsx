@@ -9,6 +9,8 @@ import "./AuthenticationComponent.css";
 export const AuthenticationComponent = () => {
    const dispatch = useDispatch();
 
+   //    Получение флага, отображающего, прошла ли аутентификация
+
    const authenticationIsCompleted = useSelector(
       (store) => store?.authentication_completed_reducer?.isCompleted
    );
@@ -16,6 +18,8 @@ export const AuthenticationComponent = () => {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
    const [error, setError] = useState("");
+
+   //    Аутентификация
 
    const handleSubmit = async (event) => {
       event.preventDefault();
@@ -32,6 +36,8 @@ export const AuthenticationComponent = () => {
    };
 
    //    Компонент аутентификации
+   //    Если аутентификация усешно пройдена - окно аутентификации закрывается
+
    return (
       <>
          {authenticationIsCompleted === 0 ? (

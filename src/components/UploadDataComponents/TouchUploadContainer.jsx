@@ -18,6 +18,8 @@ export const TouchUploadContainer = () => {
       (store) => store?.dropdownTouchOptionReducer?.dropdownOption
    );
 
+   //    Даты "С" и "По" для формирования данных
+
    const touchDatefrom = useSelector(
       (store) => store?.touch_date_from_reducer?.touchDateFrom
    );
@@ -26,9 +28,9 @@ export const TouchUploadContainer = () => {
       (store) => store?.touch_date_to_reducer?.touchDateTo
    );
 
-   const [data, setData] = useState(null);
+   //    Функция фильтрации получаемых данных по промежутку дат
 
-   const filterdataByDate = (data) => {
+   const filterDataByDate = (data) => {
       const dateFrom = new Date(touchDatefrom).getTime();
       const dateTo = new Date(touchDateTo).getTime();
 
@@ -43,6 +45,8 @@ export const TouchUploadContainer = () => {
       return filteredItems;
    };
 
+   //    Функция получения данных
+
    async function fetchData(filename) {
       const response = await fetchTouchData(
          `http://localhost:5000/${filename}`
@@ -51,16 +55,16 @@ export const TouchUploadContainer = () => {
       return data;
    }
 
+   //    Обработчик нажатия на кнопку "Загрузить данные"
+
    async function handleClick() {
       if (dropdownTouchOption === 0) {
          const data = await fetchData("sessions.json");
-         setData(data);
-         dispatch(saveCsvData(filterdataByDate(data)));
+         dispatch(saveCsvData(filterDataByDate(data)));
       }
       if (dropdownTouchOption === 1) {
          const data = await fetchData("orders.json");
-         setData(data);
-         dispatch(saveCsvData(filterdataByDate(data)));
+         dispatch(saveCsvData(filterDataByDate(data)));
       }
       dispatch(showButtonIsPressed(0));
       dispatch(dataIsUploaded(1));

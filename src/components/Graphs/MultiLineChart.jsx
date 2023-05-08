@@ -46,9 +46,8 @@ const options = {
 };
 
 export const MultiLineChart = ({ data }) => {
-   // console.log(data)
    let chartData = {};
-   console.log(data);
+
    if (data.length > 0) {
       chartData = {
          labels: data[0].map(({ date }) => date), // массив значений шкалы date

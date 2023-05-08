@@ -20,7 +20,9 @@ export const TableComponent = ({ columns, rows }) => {
 
    const tableInstanceRef = useRef(null);
 
-   const addFiltrationHandler = () => {
+   //    Отображение графиков по нажатии на кнопку
+
+   const showGraphs = () => {
       dispatch(showButtonIsPressed(1));
       dispatch(
          saveCsvDataForFiltering(
@@ -31,6 +33,8 @@ export const TableComponent = ({ columns, rows }) => {
       );
    };
 
+   //    Компонент таблицы
+
    return (
       <>
          <MaterialReactTable
@@ -40,7 +44,7 @@ export const TableComponent = ({ columns, rows }) => {
             renderTopToolbarCustomActions={() => (
                <ButtonComponent
                   name="Отобразить графики"
-                  onClick={() => addFiltrationHandler()}
+                  onClick={() => showGraphs()}
                />
             )}
             tableInstanceRef={tableInstanceRef}

@@ -12,6 +12,8 @@ import "./CalendarComponent.css";
 export const CalendarComponent = () => {
    const dispatch = useDispatch();
 
+   //    Форматирование даты в стандартный вид (тип - строка)
+
    const formatDateToStr = (date) => {
       const finalDate =
          dayjs(date).get("year").toString() +
@@ -25,10 +27,14 @@ export const CalendarComponent = () => {
    const [valueFrom, setValueFrom] = useState(dayjs());
    const [valueTo, setValueTo] = useState(dayjs());
 
+   //    Сохранение начальной даты
+
    useEffect(() => {
       dispatch(touchDateFrom(formatDateToStr(valueFrom)));
       dispatch(touchDateTo(formatDateToStr(valueTo)));
    }, []);
+
+   //    При изменении даты "С"
 
    const onDateFromChange = (newValueFrom) => {
       const dateFrom = formatDateToStr(newValueFrom);
@@ -37,12 +43,17 @@ export const CalendarComponent = () => {
       dispatch(touchDateFrom(dateFrom));
    };
 
+   //    При изменении даты "По"
+
    const onDateToChange = (newValueTo) => {
       const dateTo = formatDateToStr(newValueTo);
 
       setValueTo(newValueTo);
       dispatch(touchDateTo(dateTo));
    };
+
+   //    Компонент для выбора промежутка дат
+   //    и дальнейшего отображения данных из TOUCH
 
    return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
