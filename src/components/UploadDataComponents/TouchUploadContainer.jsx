@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { saveCsvData, dataIsUploaded } from "../../redux/actions/actionCreator";
+import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
 
+import {
+   saveCsvData,
+   dataIsUploaded,
+   showButtonIsPressed,
+} from "../../redux/actions/actionCreator";
 import { fetchTouchData } from "../../services/apiInteraction";
 
 export const TouchUploadContainer = () => {
@@ -12,7 +17,30 @@ export const TouchUploadContainer = () => {
       (store) => store?.dropdownTouchOptionReducer?.dropdownOption
    );
 
+   const touchDatefrom = useSelector(
+      (store) => store?.touch_date_from_reducer?.touchDateFrom
+   );
+
+   const touchDateTo = useSelector(
+      (store) => store?.touch_date_to_reducer?.touchDateTo
+   );
+
    const [data, setData] = useState(null);
+
+   const filterdataByDate = (data) => {
+      const dateFrom = new Date(touchDatefrom).getTime();
+      const dateTo = new Date(touchDateTo).getTime();
+
+      const filteredItems = data.filter((item) => {
+         const itemDate = new Date(
+            item["Дата старта"].split(" ")[0].split(".").reverse().join("-")
+         ).getTime();
+
+         return itemDate >= dateFrom && itemDate <= dateTo;
+      });
+
+      return filteredItems;
+   };
 
    async function fetchData(filename) {
       const response = await fetchTouchData(
@@ -26,13 +54,14 @@ export const TouchUploadContainer = () => {
       if (dropdownTouchOption === 0) {
          const data = await fetchData("sessions.json");
          setData(data);
-         dispatch(saveCsvData(data));
+         dispatch(saveCsvData(filterdataByDate(data)));
       }
       if (dropdownTouchOption === 1) {
-         const data = await fetchData("orders.json");
          setData(data);
-         dispatch(saveCsvData(data));
+         dispatch(saveCsvData(filterdataByDate(data)));
+         const data = await fetchData("orders.json");
       }
+      dispatch(showButtonIsPressed(0));
       dispatch(dataIsUploaded(1));
    }
 
@@ -40,6 +69,7 @@ export const TouchUploadContainer = () => {
       <>
          <div style={{ textAlign: "center" }}>
             <h5>Выберите промежуток времени</h5>
+            <CalendarComponent />
             <div>
                <button onClick={handleClick}>Загрузить данные</button>
                {data ? <p></p> : <p>Данные еще не загружены</p>}

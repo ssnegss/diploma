@@ -7,6 +7,8 @@ import {
    CHOOSE_DATA_GET_CSV_OPTION_DROPDOWN,
    CHOOSE_GET_FROM_TOUCH_OPTION_DROPDOWN,
    AUTHENTICATION_COMPLETED,
+   TOUCH_DATE_FROM,
+   TOUCH_DATE_TO,
 } from "../constants";
 
 export const saveCsvData = (array) => ({
@@ -46,4 +48,14 @@ export const getDataFromTouchDropdown = (number) => ({
 export const authenticationCompleted = (boolean) => ({
    type: AUTHENTICATION_COMPLETED,
    payload: boolean,
+});
+
+export const touchDateFrom = (string) => ({
+   type: TOUCH_DATE_FROM,
+   payload: string,
+});
+
+export const touchDateTo = (string) => ({
+   type: TOUCH_DATE_TO,
+   payload: string,
 });

@@ -1,7 +1,7 @@
 import { AUTHENTICATION_COMPLETED } from "../constants";
 
 const initialState = {
-   isCompleted: 0,
+   isCompleted: 1,
 };
 
 const authentication_completed_reducer = (state = initialState, action) => {
