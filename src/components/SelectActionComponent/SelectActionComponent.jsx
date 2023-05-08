@@ -32,9 +32,11 @@ export const SelectActionComponent = (props) => {
    const menuItemClicked = (option) => {
       if (option.className === "getDataFromCsv") {
          dispatch(getDataFromCsvDropdown(option.value));
+         dispatch(getDataFromTouchDropdown(undefined));
       }
       if (option.className === "getDataFromTouch") {
          dispatch(getDataFromTouchDropdown(option.value));
+         dispatch(getDataFromCsvDropdown(undefined));
       }
    };
 

@@ -67,17 +67,13 @@ export const MultiLineChart = ({ data }) => {
       };
    }
 
-   console.log(chartData)
-
    return (
-      <>
+      <div className="SessionDashboardComponent__LineChartContainer">
          {chartData.labels.length > 0 ? (
-            <div className="SessionDashboardComponent__LineChartContainer">
-               <Chart type="line" data={chartData} options={options} />
-            </div>
+            <Chart type="line" data={chartData} options={options} />
          ) : (
             <h1 className="Graph__NoDataFoundHeader">No data found</h1>
          )}
-      </>
+      </div>
    );
 };
