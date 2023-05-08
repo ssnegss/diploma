@@ -35,13 +35,15 @@ export const TouchPageComponent = () => {
                   На главную страницу
                </button>
             </Link>
-            <div className="TouchPageComponent__header_selectiveContainer">
+            
                <AuthenticationComponent />
                {authenticationCompleted ? (
-                  <TouchSelectivesContainerComponent />
+                  <div className="TouchPageComponent__header_selectiveContainer">
+                     <TouchSelectivesContainerComponent />
+                  </div>
                ) : null}
             </div>
-         </div>
+
          {authenticationCompleted ? <FullDashboardComponent /> : null}
       </>
    );

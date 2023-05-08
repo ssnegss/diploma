@@ -68,11 +68,17 @@ export const TouchUploadContainer = () => {
    return (
       <>
          <div style={{ textAlign: "center" }}>
-            <h5>Выберите промежуток времени</h5>
+            <p className="TouchUploadContainer__header">
+               Выберите промежуток времени
+            </p>
             <CalendarComponent />
             <div>
-               <button onClick={handleClick}>Загрузить данные</button>
-               {data ? <p></p> : <p>Данные еще не загружены</p>}
+               <button
+                  className="TouchUploadContainer_button"
+                  onClick={handleClick}
+               >
+                  Загрузить данные
+               </button>
             </div>
          </div>
       </>

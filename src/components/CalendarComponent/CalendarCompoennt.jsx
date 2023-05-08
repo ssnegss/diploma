@@ -7,6 +7,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { touchDateFrom, touchDateTo } from "../../redux/actions/actionCreator";
 
+import "./CalendarComponent.css";
+
 export const CalendarComponent = () => {
    const dispatch = useDispatch();
 
@@ -44,16 +46,22 @@ export const CalendarComponent = () => {
 
    return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-         <DatePicker
-            value={valueFrom}
-            format={"DD/MM/YYYY"}
-            onChange={(newValue) => onDateFromChange(newValue)}
-         />
-         <DatePicker
-            value={valueTo}
-            format={"DD/MM/YYYY"}
-            onChange={(newValue) => onDateToChange(newValue)}
-         />
+         <div className="CalendarComponent__container">
+            <div className="CalendarComponent__container_dateField">
+               <DatePicker
+                  value={valueFrom}
+                  format={"DD/MM/YYYY"}
+                  onChange={(newValue) => onDateFromChange(newValue)}
+               />
+            </div>
+            <div className="CalendarComponent__container_dateField">
+               <DatePicker
+                  value={valueTo}
+                  format={"DD/MM/YYYY"}
+                  onChange={(newValue) => onDateToChange(newValue)}
+               />
+            </div>
+         </div>
       </LocalizationProvider>
    );
 };
