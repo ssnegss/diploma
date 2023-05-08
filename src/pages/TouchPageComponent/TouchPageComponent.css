@@ -1,0 +1,38 @@
+.TouchPageComponent__header {
+   display: flex;
+}
+
+.TouchPageComponent__header_toMainPageLink {
+   margin: 1rem;
+   position: absolute;
+}
+
+.TouchPageComponent__header_toMainPagButton {
+   color: white;
+   width: 100%;
+   background-color: rgba(0, 64, 255, 0.6);
+   border: 0px;
+   cursor: pointer;
+   font-family: "Roboto", sans-serif;
+   font-size: 1rem;
+   font-weight: 500;
+   padding: 1rem;
+   margin: 0 2rem 1.5rem 0;
+   border-radius: 17px;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+}
+
+.CsvPageComponent__header_toMainPagButton:hover {
+   background-color: rgba(79, 117, 255, 0.515);
+}
+
+.TouchPageComponent__header_selectiveContainer {
+   margin: 1rem auto;
+   padding-bottom: 1rem;
+   width: 25rem;
+   display: grid;
+   border-radius: 25px;
+}

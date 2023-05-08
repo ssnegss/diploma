@@ -1,4 +1,31 @@
-.CsvPageComponent__selective_container {
+.CsvPageComponent__header {
+   display: flex;
+}
+
+.CsvPageComponent__header_toMainPageLink {
+   margin: 1rem;
+   position: absolute;
+}
+
+.CsvPageComponent__header_toMainPagButton {
+   color: white;
+   width: 100%;
+   background-color: rgba(0, 64, 255, 0.6);
+   border: 0px;
+   cursor: pointer;
+   font-family: "Roboto", sans-serif;
+   font-size: 1rem;
+   font-weight: 500;
+   padding: 1rem;
+   margin: 0 2rem 1.5rem 0;
+   border-radius: 17px;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+}
+
+.CsvPageComponent__header_selectiveContainer {
    margin: 1rem auto;
    padding-bottom: 1rem;
    width: 25rem;
@@ -28,7 +55,7 @@
 
 .CsvPageComponent__container_label {
    margin: auto auto;
-   margin-top: 1rem; 
+   margin-top: 1rem;
    color: white;
    display: block;
    width: 50%;
@@ -40,14 +67,16 @@
    font-size: 1rem;
    font-weight: 500;
    border-radius: 20px;
-   -webkit-transition: background-color 0.5s ease-out;
-   -moz-transition: background-color 0.5s ease-out;
-   -o-transition: background-color 0.5s ease-out;
-   transition: background-color 0.5s ease-out;
+   -webkit-transition: background-color 0.3s ease-out;
+   -moz-transition: background-color 0.3s ease-out;
+   -o-transition: background-color 0.3s ease-out;
+   transition: background-color 0.3s ease-out;
 }
 
-.CsvPageComponent__container_button:hover {
-   background-color: rgba(241, 244, 255, 0.5);
+.CsvPageComponent__container_button:hover,
+.CsvPageComponent__container_label:hover,
+.CsvPageComponent__header_toMainPagButton:hover {
+   background-color: rgba(79, 117, 255, 0.515);
 }
 
 .CsvPageComponent__container_fileName {

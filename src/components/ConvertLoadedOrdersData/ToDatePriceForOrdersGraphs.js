@@ -48,23 +48,27 @@ export const ConvertedLoadedOrdersDataToDatePriceForGraphs = (
          }
       });
 
-      //    Суммируем прибыль за каждый день
+      //    Проверка, что данные для отображения существуют
 
-      const resultData = removedDuplicateIdData.reduce(
-         (accumulator, current) => {
-            const existingObjectByDate = accumulator.find(
-               (item) => item.date === current.date
-            );
-            if (!existingObjectByDate) {
-               accumulator.push(current);
-            } else {
-               existingObjectByDate.value += current.value;
-            }
-            return accumulator;
-         },
-         []
-      );
+      if (removedUndefinedData.length > 0) {
+         //    Суммируем прибыль за каждый день
 
-      return resultData;
+         const resultData = removedDuplicateIdData.reduce(
+            (accumulator, current) => {
+               const existingObjectByDate = accumulator.find(
+                  (item) => item.date === current.date
+               );
+               if (!existingObjectByDate) {
+                  accumulator.push(current);
+               } else {
+                  existingObjectByDate.value += current.value;
+               }
+               return accumulator;
+            },
+            []
+         );
+
+         return resultData;
+      } else return 0;
    } else return 0;
 };

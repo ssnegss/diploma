@@ -7,8 +7,6 @@ import {
    showButtonIsPressed,
 } from "../../redux/actions/actionCreator";
 
-import Button from "@mui/material/Button";
-
 export const CsvUploadContainer = () => {
    const [file, setFile] = useState();
    const [showButtonVisible, setShowButtonVisible] = useState(0);

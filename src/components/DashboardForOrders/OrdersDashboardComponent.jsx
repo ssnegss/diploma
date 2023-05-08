@@ -100,10 +100,9 @@ export const OrdersDashboardComponent = () => {
       dataFullPrice,
       dataConsumedEneryPrice,
       dataPayedPrice,
-   ];
+   ].filter((item) => item !== 0);
 
-   //    Рендер комппонента если dropdownCsvOption === 0 (В выпадающем списке выбрана загрузка отчета по сессиям)
-   //    И если нажата кнока "Отобразить графики"
+   //    Рендер комппонента если нажата кнока "Отобразить графики"
 
    return (
       <>
@@ -113,14 +112,22 @@ export const OrdersDashboardComponent = () => {
                   <h1 className="OrdersDashboardComponent__block_header">
                      Оплаты за период
                   </h1>
-                  <MultiLineChart data={ChartGraphDatePriceArray} />
+                  {ChartGraphDatePriceArray !== 0 ? (
+                     <MultiLineChart data={ChartGraphDatePriceArray} />
+                  ) : (
+                     <h1>No data found</h1>
+                  )}
                </div>
 
                <div className="OrdersDashboardComponent__block">
                   <h1 className="OrdersDashboardComponent__block_header">
                      Потребленная энергия за период
                   </h1>
-                  <SingleLineChart data={dataConsumedEnergy} />
+                  {dataConsumedEnergy !== 0 ? (
+                     <SingleLineChart data={dataConsumedEnergy} />
+                  ) : (
+                     <h1>No data found</h1>
+                  )}
                </div>
 
                <div>
@@ -130,13 +137,21 @@ export const OrdersDashboardComponent = () => {
                         <h1 className="OrdersDashboardComponent__block_header">
                            Название локации
                         </h1>
-                        <PieChart data={dataLocationFullPieChart} />
+                        {dataLocationFullPieChart !== 0 ? (
+                           <PieChart data={dataLocationFullPieChart} />
+                        ) : (
+                           <h1>No data found</h1>
+                        )}
                      </div>
                      <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
                         <h1 className="OrdersDashboardComponent__block_header">
                            Название станции
                         </h1>
-                        <PieChart data={dataStationsFullPieChart} />
+                        {dataStationsFullPieChart !== 0 ? (
+                           <PieChart data={dataStationsFullPieChart} />
+                        ) : (
+                           <h1>No data found</h1>
+                        )}
                      </div>
                   </div>
 
@@ -145,13 +160,21 @@ export const OrdersDashboardComponent = () => {
                         <h1 className="OrdersDashboardComponent__block_header">
                            Описание статуса платежа (при ошибке)
                         </h1>
-                        <PieChart data={dataErrorStatusFullPieChart} />
+                        {dataErrorStatusFullPieChart !== 0 ? (
+                           <PieChart data={dataErrorStatusFullPieChart} />
+                        ) : (
+                           <h1>No data found</h1>
+                        )}
                      </div>
                      <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
                         <h1 className="OrdersDashboardComponent__block_header">
                            Статус платежа
                         </h1>
-                        <PieChart data={dataPaymentStatusFullPieChart} />
+                        {dataPaymentStatusFullPieChart !== 0 ? (
+                           <PieChart data={dataPaymentStatusFullPieChart} />
+                        ) : (
+                           <h1>No data found</h1>
+                        )}
                      </div>
                   </div>
                </div>
@@ -163,13 +186,21 @@ export const OrdersDashboardComponent = () => {
                         <h1 className="OrdersDashboardComponent__block_header">
                            Название локации
                         </h1>
-                        <PieChart data={dataLocationPieChart} />
+                        {dataLocationPieChart !== 0 ? (
+                           <PieChart data={dataLocationPieChart} />
+                        ) : (
+                           <h1>No data found</h1>
+                        )}
                      </div>
                      <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
                         <h1 className="OrdersDashboardComponent__block_header">
                            Название станции
                         </h1>
-                        <PieChart data={dataStationsPieChart} />
+                        {dataStationsPieChart !== 0 ? (
+                           <PieChart data={dataStationsPieChart} />
+                        ) : (
+                           <h1>No data found</h1>
+                        )}
                      </div>
                   </div>
                </div>

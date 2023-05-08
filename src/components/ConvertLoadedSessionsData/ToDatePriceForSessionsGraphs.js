@@ -32,7 +32,7 @@ export const ConvertedLoadedDataToDatePriceForSessionsGraphs = (
          );
       });
 
-      //    Проверка, что данные существуют
+      //    Проверка, что данные для отображения существуют
 
       if (removedUndefinedData.length > 0) {
          //    Суммируем прибыль за каждый день

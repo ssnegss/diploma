@@ -37,6 +37,10 @@ export const ConvertedLoadedOrdersDataForPieGraph = (csvData, id, column) => {
 
       const resultData = removedDuplicateIdData.map((item) => item.name);
 
-      return resultData;
+      //    Проверка, что данные для отображения существуют
+
+      if (resultData.length > 0) {
+         return resultData;
+      } else return 0;
    } else return 0;
 };

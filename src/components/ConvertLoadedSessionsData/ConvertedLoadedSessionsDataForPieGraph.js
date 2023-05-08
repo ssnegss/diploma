@@ -8,13 +8,13 @@ export const ConvertedLoadedSessionsDataForPieGraph = (
       const resultData = csvData.map((item) => item[locationColumn]);
 
       const filteredResultData = resultData.filter(
-         (item) => item !== undefined
+         (item) => item !== "" && item !== undefined
       );
 
       //    Проверка, что данные для отображения существуют
 
       if (filteredResultData.length > 0) {
-         return resultData;
+         return filteredResultData;
       } else return 0;
    } else return 0;
 };

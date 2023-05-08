@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import { CsvSelectivesContainerComponent } from "../../components/SelectivesComponent/CsvSelectivesContainerComponent";
 import { FullDashboardComponent } from "../../components/FullDashboardComponent/FullDashboardComponent";
@@ -24,10 +24,17 @@ export const CsvPageComponent = () => {
    //    Компонент страницы обработки .csv отчетов
    return (
       <>
-         <div className="CsvPageComponent__selective_container">
-            <CsvSelectivesContainerComponent />
+         <div className="CsvPageComponent__header">
+            <Link to="/" className="CsvPageComponent__header_toMainPageLink">
+               <button className="CsvPageComponent__header_toMainPagButton">
+                  На главную страницу
+               </button>
+            </Link>
+            <div className="CsvPageComponent__header_selectiveContainer">
+               <CsvSelectivesContainerComponent />
+            </div>
          </div>
-            <FullDashboardComponent />
+         <FullDashboardComponent />
       </>
    );
 };

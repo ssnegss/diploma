@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import  graphSvg  from '../../img/graph.png'
 
 import {
    dataIsUploaded,

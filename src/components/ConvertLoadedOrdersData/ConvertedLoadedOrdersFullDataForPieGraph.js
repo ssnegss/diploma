@@ -8,6 +8,8 @@ export const ConvertedLoadedOrdersFullDataForPieGraph = (csvData, column) => {
          (item) => item !== "" && item !== undefined
       );
 
-      return filteredResultData;
+      if (filteredResultData.length > 0) {
+         return filteredResultData;
+      } else return 0;
    } else return 0;
 };

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import { TouchSelectivesContainerComponent } from "../../components/SelectivesComponent/TouchSelectivesContainerComponent";
 import { FullDashboardComponent } from "../../components/FullDashboardComponent/FullDashboardComponent";
 
 import { login } from "../../services/serverInteraction";
-import { dataIsUploaded, getDataFromCsvDropdown } from "../../redux/actions/actionCreator";
+import {
+   dataIsUploaded,
+   getDataFromCsvDropdown,
+} from "../../redux/actions/actionCreator";
+
+import "./TouchPageComponent.css";
 
 export const TouchPageComponent = () => {
    const location = useLocation();
@@ -40,30 +45,37 @@ export const TouchPageComponent = () => {
 
    //    Компонент страницы обработки данных из TOUCH
    return (
-      <>
-         <form onSubmit={handleSubmit}>
-            <h2>Вход в систему</h2>
-            <input
-               type="text"
-               placeholder="Логин"
-               value={username}
-               onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-               type="password"
-               placeholder="Пароль"
-               value={password}
-               onChange={(e) => setPassword(e.target.value)}
-            />
-            {error && <p>{error}</p>}
-            <button type="submit">Войти</button>
-         </form>
-         {dropdownVisible ? (
-            <>
-               <TouchSelectivesContainerComponent />
-               <FullDashboardComponent />
-            </>
-         ) : null}
-      </>
+      <div className="TouchPageComponent__header">
+         <Link to="/" className="TouchPageComponent__header_toMainPageLink">
+            <button className="TouchPageComponent__header_toMainPagButton">
+               На главную страницу
+            </button>
+         </Link>
+         <div className="TouchPageComponent__header_selectiveContainer">
+            <form onSubmit={handleSubmit}>
+               <h2>Вход в систему</h2>
+               <input
+                  type="text"
+                  placeholder="Логин"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+               />
+               <input
+                  type="password"
+                  placeholder="Пароль"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+               />
+               {error && <p>{error}</p>}
+               <button type="submit">Войти</button>
+            </form>
+            {dropdownVisible ? (
+               <>
+                  <TouchSelectivesContainerComponent />
+                  <FullDashboardComponent />
+               </>
+            ) : null}
+         </div>
+      </div>
    );
 };
