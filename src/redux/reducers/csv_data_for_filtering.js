@@ -1,5 +1,4 @@
 import { SAVE_CSV_DATA_FOR_FILTERING } from "../constants";
-import { useSelector } from "react-redux";
 
 const initialState = {
    csvData: [],

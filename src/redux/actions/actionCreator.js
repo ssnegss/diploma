@@ -1,10 +1,13 @@
-import { SAVE_CSV_DATA } from "../constants";
-import { SAVE_CSV_DATA_FOR_FILTERING } from "../constants";
-import { CHOOSE_DATA_GET_OPTION_DROPDOWN } from "../constants";
-import { DATA_IS_UPLOADED } from "../constants";
-import { SHOW_RAPHS_BUTTON_IS_PRESSED } from "../constants";
-import { CHOOSE_DATA_GET_CSV_OPTION_DROPDOWN } from "../constants";
-import { CHOOSE_GET_FROM_TOUCH_OPTION_DROPDOWN } from "../constants";
+import {
+   SAVE_CSV_DATA,
+   SAVE_CSV_DATA_FOR_FILTERING,
+   CHOOSE_DATA_GET_OPTION_DROPDOWN,
+   DATA_IS_UPLOADED,
+   SHOW_GRAPHS_BUTTON_IS_PRESSED,
+   CHOOSE_DATA_GET_CSV_OPTION_DROPDOWN,
+   CHOOSE_GET_FROM_TOUCH_OPTION_DROPDOWN,
+   AUTHENTICATION_COMPLETED,
+} from "../constants";
 
 export const saveCsvData = (array) => ({
    type: SAVE_CSV_DATA,
@@ -27,7 +30,7 @@ export const dataIsUploaded = (boolean) => ({
 });
 
 export const showButtonIsPressed = (boolean) => ({
-   type: SHOW_RAPHS_BUTTON_IS_PRESSED,
+   type: SHOW_GRAPHS_BUTTON_IS_PRESSED,
    payload: boolean,
 });
 
@@ -38,4 +41,9 @@ export const getDataFromCsvDropdown = (number) => ({
 export const getDataFromTouchDropdown = (number) => ({
    type: CHOOSE_GET_FROM_TOUCH_OPTION_DROPDOWN,
    payload: number,
+});
+
+export const authenticationCompleted = (boolean) => ({
+   type: AUTHENTICATION_COMPLETED,
+   payload: boolean,
 });

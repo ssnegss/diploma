@@ -6,6 +6,7 @@ import data_is_uploaded_reducer from "./dataIsUploaded";
 import show_graphs_button_is_pressed_reducer from "./show_graphs_button_is_pressed";
 import dropdownCsvOptionReducer from './dropdownCsvOptionReducer'
 import dropdownTouchOptionReducer from './dropdownTouchOptionReducer'
+import authentication_completed_reducer from './authentication_completed'
 
 const reducer = combineReducers({
    csv_data_reducer,
@@ -14,8 +15,8 @@ const reducer = combineReducers({
    csv_data_for_filtering_reducer,
    show_graphs_button_is_pressed_reducer,
    dropdownCsvOptionReducer,
-   dropdownTouchOptionReducer
-   
+   dropdownTouchOptionReducer,
+   authentication_completed_reducer
 });
 
 export default reducer;

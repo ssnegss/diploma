@@ -25,13 +25,19 @@ export const MainPageComponent = () => {
             <div className="MainPageComponent__container">
                <div className="MainPageComponent__container_logoImg"></div>
                <div className="MainPageComponent__container_inner">
-                  <Link to="/getFromTouch" className="MainPageComponent__container__link">
+                  <Link
+                     to="/getFromTouch"
+                     className="MainPageComponent__container__link"
+                  >
                      <button className="MainPageComponent__container__button">
                         Загрузить данные из TOUCH
                      </button>
                   </Link>
 
-                  <Link to="/getFromCsv" className="MainPageComponent__container__link">
+                  <Link
+                     to="/getFromCsv"
+                     className="MainPageComponent__container__link"
+                  >
                      <button className="MainPageComponent__container__button">
                         Загрузить файл .csv
                      </button>
