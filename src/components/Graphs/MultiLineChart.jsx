@@ -47,25 +47,37 @@ const options = {
 
 export const MultiLineChart = ({ data }) => {
    // console.log(data)
-   const chartData = {
-      labels: data[0].map(({ date }) => date), // массив значений шкалы date
-      datasets: data.map((item) => ({
-         label: item[0].name,
-         data: item.map(({ value }) => value), // массив значений value
-         fill: false, // заполнение области под графиком не нужно
-         borderWidth: 2, // толщина графика
-         lineTension: 0,
-         pointHoverRadius: 7, // радиус точки при наведении
-      })),
-   };
+   let chartData = {};
+   console.log(data);
+   if (data.length > 0) {
+      chartData = {
+         labels: data[0].map(({ date }) => date), // массив значений шкалы date
+         datasets: data.map((item) => ({
+            label: item[0].name,
+            data: item.map(({ value }) => value), // массив значений value
+            fill: false, // заполнение области под графиком не нужно
+            borderWidth: 2, // толщина графика
+            lineTension: 0,
+            pointHoverRadius: 7, // радиус точки при наведении
+         })),
+      };
+   } else {
+      chartData = {
+         labels: [], // массив значений шкалы date
+      };
+   }
+
+   console.log(chartData)
 
    return (
-      <div className="SessionDashboardComponent__LineChartContainer">
+      <>
          {chartData.labels.length > 0 ? (
-            <Chart type="line" data={chartData} options={options} />
+            <div className="SessionDashboardComponent__LineChartContainer">
+               <Chart type="line" data={chartData} options={options} />
+            </div>
          ) : (
             <h1 className="Graph__NoDataFoundHeader">No data found</h1>
          )}
-      </div>
+      </>
    );
 };

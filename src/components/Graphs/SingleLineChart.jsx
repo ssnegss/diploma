@@ -39,12 +39,14 @@ export const SingleLineChart = ({ data }) => {
    };
 
    return (
-      <div className="SessionDashboardComponent__LineChartContainer">
+      <>
          {chartData.labels.length > 0 ? (
-            <Chart type="line" data={chartData} options={options} />
+            <div className="SessionDashboardComponent__LineChartContainer">
+               <Chart type="line" data={chartData} options={options} />{" "}
+            </div>
          ) : (
             <h1 className="Graph__NoDataFoundHeader">No data found</h1>
          )}
-      </div>
+      </>
    );
 };

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
+
 import {
    saveCsvData,
    dataIsUploaded,
@@ -103,14 +105,12 @@ export const CsvUploadContainer = () => {
                   </p>
                </div>
                {showButtonVisible ? (
-                  <button
-                     className="CsvPageComponent__container_button"
+                  <ButtonComponent
+                     name="Отобразить в таблице"
                      onClick={(e) => {
                         handleOnSubmit(e);
                      }}
-                  >
-                     Отобразить в таблице
-                  </button>
+                  ></ButtonComponent>
                ) : null}
             </form>
          </div>

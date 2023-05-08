@@ -77,10 +77,10 @@ export const SessionDashboardComponent = () => {
                   <h1 className="SessionDashboardComponent__block_header">
                      Оплаты за период
                   </h1>
-                  {ChartGraphDatePriceArray !== 0 ? (
+                  {ChartGraphDatePriceArray.length > 0 ? (
                      <MultiLineChart data={ChartGraphDatePriceArray} />
                   ) : (
-                     <h1>No data found</h1>
+                     <h1 className="graph__alert_noDataFound">No data found</h1>
                   )}
                </div>
                <div className="SessionDashboardComponent__block">
@@ -90,7 +90,7 @@ export const SessionDashboardComponent = () => {
                   {dataConsumedEnergy !== 0 ? (
                      <SingleLineChart data={dataConsumedEnergy} />
                   ) : (
-                     <h1>No data found</h1>
+                     <h1 className="graph__alert_noDataFound">No data found</h1>
                   )}
                </div>
                <div className="SessionDashboardComponent__PieChartsContainer">
@@ -101,7 +101,7 @@ export const SessionDashboardComponent = () => {
                      {dataLocationPieChart !== 0 ? (
                         <PieChart data={dataLocationPieChart} />
                      ) : (
-                        <h1>No data found</h1>
+                        <h1 className="graph__alert_noDataFound">No data found</h1>
                      )}
                   </div>
                   <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
@@ -111,7 +111,7 @@ export const SessionDashboardComponent = () => {
                      {dataStationsPieChart !== 0 ? (
                         <PieChart data={dataStationsPieChart} />
                      ) : (
-                        <h1>No data found</h1>
+                        <h1 className="graph__alert_noDataFound">No data found</h1>
                      )}
                   </div>
                </div>

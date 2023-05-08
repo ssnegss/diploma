@@ -7,7 +7,7 @@
 }
 
 .SessionDashboardComponent__block_header {
-   font-size: 1.5rem;
+   font-size: 1.1rem;
    font-weight: 500;
    margin: 1rem;
    display: flex;
@@ -40,6 +40,11 @@
    width: 100%;
    max-width: 50rem;
    margin: 1rem 5rem 1rem 5rem;
+}
+
+.graph__alert_noDataFound {
+   font-size: 1rem;
+   color: rgb(237, 91, 0);
 }
 
 @media (max-width: 1300px) {

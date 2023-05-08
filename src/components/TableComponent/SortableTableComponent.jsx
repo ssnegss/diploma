@@ -1,16 +1,17 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import Button from "@mui/material/Button";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_RU } from "./_locales/ru.ts";
+
+import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 
 import {
    saveCsvDataForFiltering,
    showButtonIsPressed,
 } from "../../redux/actions/actionCreator";
 
-import './SortableTableComponent.css'
+import "./SortableTableComponent.css";
 
 //    Компонент таблицы
 
@@ -37,12 +38,10 @@ export const TableComponent = ({ columns, rows }) => {
             data={rows}
             localization={MRT_Localization_RU}
             renderTopToolbarCustomActions={() => (
-               <button
-                  className="TableComponent__button"
+               <ButtonComponent
+                  name="Отобразить графики"
                   onClick={() => addFiltrationHandler()}
-               >
-                  Отобразить графики
-               </button>
+               />
             )}
             tableInstanceRef={tableInstanceRef}
          />

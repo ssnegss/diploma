@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
+import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 
 import {
    saveCsvData,
@@ -57,9 +58,9 @@ export const TouchUploadContainer = () => {
          dispatch(saveCsvData(filterdataByDate(data)));
       }
       if (dropdownTouchOption === 1) {
+         const data = await fetchData("orders.json");
          setData(data);
          dispatch(saveCsvData(filterdataByDate(data)));
-         const data = await fetchData("orders.json");
       }
       dispatch(showButtonIsPressed(0));
       dispatch(dataIsUploaded(1));
@@ -73,12 +74,7 @@ export const TouchUploadContainer = () => {
             </p>
             <CalendarComponent />
             <div>
-               <button
-                  className="TouchUploadContainer_button"
-                  onClick={handleClick}
-               >
-                  Загрузить данные
-               </button>
+               <ButtonComponent name="Загрузить данные" onClick={handleClick} />
             </div>
          </div>
       </>

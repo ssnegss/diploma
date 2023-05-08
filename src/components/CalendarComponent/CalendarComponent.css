@@ -1,6 +1,7 @@
 .CalendarComponent__container {
    display: flex;
    flex-direction: row;
+   margin-bottom: 1.5rem;
 }
 
 .CalendarComponent__container_dateField {

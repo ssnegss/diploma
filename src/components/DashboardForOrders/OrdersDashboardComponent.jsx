@@ -112,10 +112,10 @@ export const OrdersDashboardComponent = () => {
                   <h1 className="OrdersDashboardComponent__block_header">
                      Оплаты за период
                   </h1>
-                  {ChartGraphDatePriceArray !== 0 ? (
+                  {ChartGraphDatePriceArray.length > 0 ? (
                      <MultiLineChart data={ChartGraphDatePriceArray} />
                   ) : (
-                     <h1>No data found</h1>
+                     <h1 className="graph__alert_noDataFound">No data found</h1>
                   )}
                </div>
 
@@ -126,7 +126,7 @@ export const OrdersDashboardComponent = () => {
                   {dataConsumedEnergy !== 0 ? (
                      <SingleLineChart data={dataConsumedEnergy} />
                   ) : (
-                     <h1>No data found</h1>
+                     <h1 className="graph__alert_noDataFound">No data found</h1>
                   )}
                </div>
 
@@ -140,7 +140,9 @@ export const OrdersDashboardComponent = () => {
                         {dataLocationFullPieChart !== 0 ? (
                            <PieChart data={dataLocationFullPieChart} />
                         ) : (
-                           <h1>No data found</h1>
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
                         )}
                      </div>
                      <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
@@ -150,7 +152,9 @@ export const OrdersDashboardComponent = () => {
                         {dataStationsFullPieChart !== 0 ? (
                            <PieChart data={dataStationsFullPieChart} />
                         ) : (
-                           <h1>No data found</h1>
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
                         )}
                      </div>
                   </div>
@@ -163,7 +167,9 @@ export const OrdersDashboardComponent = () => {
                         {dataErrorStatusFullPieChart !== 0 ? (
                            <PieChart data={dataErrorStatusFullPieChart} />
                         ) : (
-                           <h1>No data found</h1>
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
                         )}
                      </div>
                      <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
@@ -173,7 +179,9 @@ export const OrdersDashboardComponent = () => {
                         {dataPaymentStatusFullPieChart !== 0 ? (
                            <PieChart data={dataPaymentStatusFullPieChart} />
                         ) : (
-                           <h1>No data found</h1>
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
                         )}
                      </div>
                   </div>
@@ -189,7 +197,9 @@ export const OrdersDashboardComponent = () => {
                         {dataLocationPieChart !== 0 ? (
                            <PieChart data={dataLocationPieChart} />
                         ) : (
-                           <h1>No data found</h1>
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
                         )}
                      </div>
                      <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
@@ -199,7 +209,9 @@ export const OrdersDashboardComponent = () => {
                         {dataStationsPieChart !== 0 ? (
                            <PieChart data={dataStationsPieChart} />
                         ) : (
-                           <h1>No data found</h1>
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
                         )}
                      </div>
                   </div>
