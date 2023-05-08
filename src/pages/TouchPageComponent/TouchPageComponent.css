@@ -32,7 +32,7 @@
 .TouchPageComponent__header_selectiveContainer {
    margin: 1rem auto;
    padding-bottom: 1rem;
-   width: 25rem;
+   /* width: 25rem; */
    display: grid;
    border-radius: 25px;
 }

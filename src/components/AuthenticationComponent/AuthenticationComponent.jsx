@@ -45,14 +45,14 @@ export const AuthenticationComponent = () => {
                      <input
                         className="AuthenticationComponent__container_inputField"
                         type="text"
-                        placeholder="Логин"
+                        placeholder="Login"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                      />
                      <input
                         className="AuthenticationComponent__container_inputField"
                         type="password"
-                        placeholder="Пароль"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                      />

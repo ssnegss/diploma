@@ -28,21 +28,21 @@ export const TouchPageComponent = () => {
 
    //    Компонент страницы обработки данных из TOUCH
    return (
-      <div className="TouchPageComponent__header">
-         <Link to="/" className="TouchPageComponent__header_toMainPageLink">
-            <button className="TouchPageComponent__header_toMainPagButton">
-               На главную страницу
-            </button>
-         </Link>
-         <div className="TouchPageComponent__header_selectiveContainer">
-            <AuthenticationComponent />
-            {authenticationCompleted ? (
-               <>
+      <>
+         <div className="TouchPageComponent__header">
+            <Link to="/" className="TouchPageComponent__header_toMainPageLink">
+               <button className="TouchPageComponent__header_toMainPagButton">
+                  На главную страницу
+               </button>
+            </Link>
+            <div className="TouchPageComponent__header_selectiveContainer">
+               <AuthenticationComponent />
+               {authenticationCompleted ? (
                   <TouchSelectivesContainerComponent />
-                  <FullDashboardComponent />
-               </>
-            ) : null}
+               ) : null}
+            </div>
          </div>
-      </div>
+         {authenticationCompleted ? <FullDashboardComponent /> : null}
+      </>
    );
 };
