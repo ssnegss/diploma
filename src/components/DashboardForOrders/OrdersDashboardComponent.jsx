@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { ConvertedLoadedOrdersDataToDatePriceForGraphs } from "../ConvertLoadedOrdersData/ToDatePriceForOrdersGraphs";
-import { ConvertedLoadedOrdersFullDataForPieGraph } from "../ConvertLoadedOrdersData/ConvertedLoadedOrdersFullDataForPieGraph";
-import { ConvertedLoadedOrdersDataForPieGraph } from "../ConvertLoadedOrdersData/ConvertedLoadedOrdersDataByIdForPieGraph";
+import { ConvertedLoadedOrdersDataToDatePriceForGraphs } from "../ConvertLoadedDataFunctions/ConvertLoadedOrdersData/ToDatePriceForOrdersGraphs";
+import { ConvertedLoadedDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertedLoadedDataForPieGraph";
+import { ConvertedLoadedOrdersDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertLoadedOrdersData/ConvertedLoadedOrdersDataByIdForPieGraph";
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
@@ -60,32 +60,31 @@ export const OrdersDashboardComponent = () => {
 
    //    Формирование входных данных для PieChart
 
-   const dataLocationFullPieChart = ConvertedLoadedOrdersFullDataForPieGraph(
+   const dataLocationFullPieChart = ConvertedLoadedDataForPieGraph(
       csvdataWithFilters,
       "Название локации"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataStationsFullPieChart = ConvertedLoadedOrdersFullDataForPieGraph(
+   const dataStationsFullPieChart = ConvertedLoadedDataForPieGraph(
       csvdataWithFilters,
       "Название станции"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataErrorStatusFullPieChart = ConvertedLoadedOrdersFullDataForPieGraph(
+   const dataErrorStatusFullPieChart = ConvertedLoadedDataForPieGraph(
       csvdataWithFilters,
       "Описание статуса платежа (при ошибке)"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataPaymentStatusFullPieChart =
-      ConvertedLoadedOrdersFullDataForPieGraph(
-         csvdataWithFilters,
-         "Статус платежа"
-      );
+   const dataPaymentStatusFullPieChart = ConvertedLoadedDataForPieGraph(
+      csvdataWithFilters,
+      "Статус платежа"
+   );
 
    //    Формирование входных данных для PieChart
 
