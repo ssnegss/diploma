@@ -5,6 +5,7 @@ import { ConvertedLoadedOrdersDataForPieGraph } from "../ConvertLoadedOrdersData
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
+import { DialogComponent } from "../DialogComponent/DialogComponent";
 
 import "./OrdersDashboardComponent.css";
 
@@ -15,6 +16,14 @@ export const OrdersDashboardComponent = () => {
 
    const showGraphs = useSelector(
       (store) => store?.show_graphs_button_is_pressed_reducer?.isPushed
+   );
+
+   const dialogOpened = useSelector(
+      (store) => store?.dialog_window_is_opened_reducer?.isOpened
+   );
+
+   const dataForDialog = useSelector(
+      (store) => store?.table_data_for_dialog_reducer?.dialogData
    );
 
    //    Формирование входных данных для MultiLineChart
@@ -108,6 +117,9 @@ export const OrdersDashboardComponent = () => {
       <>
          {showGraphs ? (
             <>
+               {dataForDialog.length > 0 && dialogOpened === true ? (
+                  <DialogComponent chartData={dataForDialog} />
+               ) : null}
                <div className="OrdersDashboardComponent__block">
                   <h1 className="OrdersDashboardComponent__block_header">
                      Оплаты за период

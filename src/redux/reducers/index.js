@@ -10,6 +10,7 @@ import authentication_completed_reducer from "./authentication_completed";
 import touch_date_from_reducer from "./touch_date_from";
 import touch_date_to_reducer from "./touch_date_to";
 import dialog_window_is_opened_reducer from "./dialog_window_opened";
+import table_data_for_dialog_reducer from './table_data_for_dialog'
 
 const reducer = combineReducers({
    csv_data_reducer,
@@ -23,6 +24,7 @@ const reducer = combineReducers({
    touch_date_from_reducer,
    touch_date_to_reducer,
    dialog_window_is_opened_reducer,
+   table_data_for_dialog_reducer
 });
 
 export default reducer;

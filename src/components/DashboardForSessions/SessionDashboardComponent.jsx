@@ -4,6 +4,7 @@ import { ConvertedLoadedSessionsDataForPieGraph } from "../ConvertLoadedSessions
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
+import { DialogComponent } from "../DialogComponent/DialogComponent";
 
 import "./SessionDashboartComponent.css";
 
@@ -14,6 +15,14 @@ export const SessionDashboardComponent = () => {
 
    const showGraphs = useSelector(
       (store) => store?.show_graphs_button_is_pressed_reducer?.isPushed
+   );
+
+   const dialogOpened = useSelector(
+      (store) => store?.dialog_window_is_opened_reducer?.isOpened
+   );
+
+   const dataForDialog = useSelector(
+      (store) => store?.table_data_for_dialog_reducer?.dialogData
    );
 
    //    Формирование входных данных для MultiLineChart
@@ -73,6 +82,9 @@ export const SessionDashboardComponent = () => {
       <>
          {showGraphs ? (
             <>
+               {dataForDialog.length > 0 && dialogOpened === true ? (
+                  <DialogComponent chartData={dataForDialog} />
+               ) : null}
                <div className="SessionDashboardComponent__block">
                   <h1 className="SessionDashboardComponent__block_header">
                      Оплаты за период
@@ -101,7 +113,9 @@ export const SessionDashboardComponent = () => {
                      {dataLocationPieChart !== 0 ? (
                         <PieChart data={dataLocationPieChart} />
                      ) : (
-                        <h1 className="graph__alert_noDataFound">No data found</h1>
+                        <h1 className="graph__alert_noDataFound">
+                           No data found
+                        </h1>
                      )}
                   </div>
                   <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
@@ -111,7 +125,9 @@ export const SessionDashboardComponent = () => {
                      {dataStationsPieChart !== 0 ? (
                         <PieChart data={dataStationsPieChart} />
                      ) : (
-                        <h1 className="graph__alert_noDataFound">No data found</h1>
+                        <h1 className="graph__alert_noDataFound">
+                           No data found
+                        </h1>
                      )}
                   </div>
                </div>

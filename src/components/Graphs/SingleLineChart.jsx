@@ -1,10 +1,10 @@
 import "chart.js/auto";
-import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Chart } from "react-chartjs-2";
-import { DialogComponent } from "../DialogComponent/DialogComponent";
-
-import { dialogWindowOpened } from "../../redux/actions/actionCreator";
+import {
+   dialogWindowOpened,
+   tableDataForDialog,
+} from "../../redux/actions/actionCreator";
 
 //    Компонент графика
 
@@ -15,11 +15,6 @@ export const SingleLineChart = ({ data }) => {
       (store) => store?.csv_data_for_filtering_reducer?.csvData
    );
 
-   const dialogOpened = useSelector(
-      (store) => store?.dialog_window_is_opened_reducer?.isOpened
-   );
-
-   const [dataForDialog, setDataForDialog] = useState();
    //    Данные для отображения на графике
 
    const chartData = {
@@ -67,13 +62,11 @@ export const SingleLineChart = ({ data }) => {
                }) === false
             );
          });
-         setDataForDialog(removedUndefinedData);
+
+         dispatch(tableDataForDialog(removedUndefinedData));
+         dispatch(dialogWindowOpened(true));
       }
    };
-
-   useEffect(() => {
-      dispatch(dialogWindowOpened(true));
-   }, [dataForDialog]); // запускаем useEffect при изменении dataForDialog
 
    //    Настройки для отображения графика
 
@@ -104,9 +97,6 @@ export const SingleLineChart = ({ data }) => {
          {chartData.labels.length > 0 ? (
             <div className="SessionDashboardComponent__LineChartContainer">
                <Chart type="line" data={chartData} options={options} />
-               {dataForDialog && dialogOpened === true ? (
-                  <DialogComponent chartData={dataForDialog} />
-               ) : null}
             </div>
          ) : (
             <h1 className="Graph__NoDataFoundHeader">No data found</h1>

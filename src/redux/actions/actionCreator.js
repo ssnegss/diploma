@@ -10,6 +10,7 @@ import {
    TOUCH_DATE_FROM,
    TOUCH_DATE_TO,
    DIALOG_WINDOW_IS_OPENED,
+   TABLE_DATA_FOR_DIALOG
 } from "../constants";
 
 export const saveCsvData = (array) => ({
@@ -64,4 +65,9 @@ export const touchDateTo = (string) => ({
 export const dialogWindowOpened = (boolean) => ({
    type: DIALOG_WINDOW_IS_OPENED,
    payload: boolean,
+});
+
+export const tableDataForDialog = (array) => ({
+   type: TABLE_DATA_FOR_DIALOG,
+   payload: array,
 });
