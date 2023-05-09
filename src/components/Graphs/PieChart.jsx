@@ -10,7 +10,7 @@ export const PieChart = ({ data }) => {
    const dispatch = useDispatch();
    //    Получение данных из таблицы для отображения в диалоговом окне
    const csvdataWithFilters = useSelector(
-      (store) => store?.csv_data_for_filtering_reducer?.csvData
+      (store) => store?.dataReducer?.filteredCsvData
    );
 
    const labels = Array.from(new Set(data.data)); // получаем уникальные значения из массива

@@ -55,11 +55,11 @@ BootstrapDialogTitle.propTypes = {
 export const DialogComponent = ({ chartData }) => {
    //    Получение данных из таблицы для отображения в диалоговом окне
    const csvdataWithFilters = useSelector(
-      (store) => store?.csv_data_for_filtering_reducer?.csvData
+      (store) => store?.dataReducer?.filteredCsvData
    );
 
    const dialogOpened = useSelector(
-      (store) => store?.dialog_window_is_opened_reducer?.isOpened
+      (store) => store?.booleanReducer?.dialogIsOpened
    );
    const dispatch = useDispatch();
 

@@ -10,19 +10,19 @@ import "./SessionDashboartComponent.css";
 
 export const SessionDashboardComponent = () => {
    const csvdataWithFilters = useSelector(
-      (store) => store?.csv_data_for_filtering_reducer?.csvData
+      (store) => store?.dataReducer?.filteredCsvData
    );
 
    const showGraphs = useSelector(
-      (store) => store?.show_graphs_button_is_pressed_reducer?.isPushed
+      (store) => store?.booleanReducer?.showGraphs
    );
 
    const dialogOpened = useSelector(
-      (store) => store?.dialog_window_is_opened_reducer?.isOpened
+      (store) => store?.booleanReducer?.dialogIsOpened
    );
 
    const dataForDialog = useSelector(
-      (store) => store?.table_data_for_dialog_reducer?.dialogData
+      (store) => store?.dataReducer?.dialogData
    );
 
    //    Формирование входных данных для MultiLineChart

@@ -1,13 +1,17 @@
-import { CHOOSE_DATA_GET_OPTION_DROPDOWN } from "../constants";
+import { CSV_OPTION_DROPDOWN } from "../constants";
+import { TOUCH_OPTION_DROPDOWN } from "../constants";
 
 const initialState = {
-   dropdownOption: undefined,
+   csvOption: undefined,
+   touchOption: undefined,
 };
 
 const dropdownOptionReducer = (state = initialState, action) => {
    switch (action.type) {
-      case CHOOSE_DATA_GET_OPTION_DROPDOWN:
-         return { ...state, dropdownOption: action.payload };
+      case CSV_OPTION_DROPDOWN:
+         return { ...state, csvOption: action.payload };
+      case TOUCH_OPTION_DROPDOWN:
+         return { ...state, touchOption: action.payload };
       default:
          return state;
    }

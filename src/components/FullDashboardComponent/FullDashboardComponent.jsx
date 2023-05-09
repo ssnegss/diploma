@@ -8,22 +8,22 @@ import "./DashboardComponent.css";
 export const FullDashboardComponent = () => {
    //    Получение загруженных данных
 
-   const csvData = useSelector((store) => store?.csv_data_reducer?.csvData);
+   const csvData = useSelector((store) => store?.dataReducer?.csvData);
 
    //    Получение флага, отображающего, загружены ли данные
 
    const dataIsUploaded = useSelector(
-      (store) => store?.data_is_uploaded_reducer?.isUploaded
+      (store) => store?.booleanReducer?.dataIsUploaded
    );
 
    //    Получение флага, отображающего, какой отчет нужно обрабатывать (по сессиям или заказам)
 
    const dropdownCsvOption = useSelector(
-      (store) => store?.dropdownCsvOptionReducer?.dropdownOption
+      (store) => store?.dropdownOptionReducer?.csvOption
    );
 
    const dropdownTouchOption = useSelector(
-      (store) => store?.dropdownTouchOptionReducer?.dropdownOption
+      (store) => store?.dropdownOptionReducer?.touchOption
    );
 
    //    Формирование заголовка таблицы

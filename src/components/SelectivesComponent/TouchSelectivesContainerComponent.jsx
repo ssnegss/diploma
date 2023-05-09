@@ -9,7 +9,7 @@ export const TouchSelectivesContainerComponent = () => {
    //    отчеты по сессиям либо отчеты по заказам
 
    const dropdownTouchOption = useSelector(
-      (store) => store?.dropdownTouchOptionReducer?.dropdownOption
+      (store) => store?.dropdownOptionReducer?.touchOption
    );
 
    //    Разметка

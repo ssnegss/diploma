@@ -18,7 +18,7 @@ export const TouchPageComponent = () => {
    const dispatch = useDispatch();
 
    const authenticationCompleted = useSelector(
-      (store) => store?.authentication_completed_reducer?.isCompleted
+      (store) => store?.booleanReducer?.authIsCompleted
    );
 
    useEffect(() => {

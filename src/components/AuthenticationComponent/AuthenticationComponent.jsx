@@ -12,7 +12,7 @@ export const AuthenticationComponent = () => {
    //    Получение флага, отображающего, прошла ли аутентификация
 
    const authenticationIsCompleted = useSelector(
-      (store) => store?.authentication_completed_reducer?.isCompleted
+      (store) => store?.booleanReducer?.authIsCompleted
    );
 
    const [username, setUsername] = useState("");

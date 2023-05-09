@@ -9,7 +9,7 @@ export const CsvSelectivesContainerComponent = () => {
    //    отчеты по сессиям либо отчеты по заказам
 
    const dropdownCsvOption = useSelector(
-      (store) => store?.dropdownCsvOptionReducer?.dropdownOption
+      (store) => store?.dropdownOptionReducer?.csvOption
    );
 
    //    Разметка

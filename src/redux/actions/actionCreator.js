@@ -1,11 +1,10 @@
 import {
    SAVE_CSV_DATA,
    SAVE_CSV_DATA_FOR_FILTERING,
-   CHOOSE_DATA_GET_OPTION_DROPDOWN,
    DATA_IS_UPLOADED,
    SHOW_GRAPHS_BUTTON_IS_PRESSED,
-   CHOOSE_DATA_GET_CSV_OPTION_DROPDOWN,
-   CHOOSE_GET_FROM_TOUCH_OPTION_DROPDOWN,
+   CSV_OPTION_DROPDOWN,
+   TOUCH_OPTION_DROPDOWN,
    AUTHENTICATION_COMPLETED,
    TOUCH_DATE_FROM,
    TOUCH_DATE_TO,
@@ -23,11 +22,6 @@ export const saveCsvDataForFiltering = (array) => ({
    payload: array,
 });
 
-export const getDataFromDropdown = (number) => ({
-   type: CHOOSE_DATA_GET_OPTION_DROPDOWN,
-   payload: number,
-});
-
 export const dataIsUploaded = (boolean) => ({
    type: DATA_IS_UPLOADED,
    payload: boolean,
@@ -39,11 +33,11 @@ export const showButtonIsPressed = (boolean) => ({
 });
 
 export const getDataFromCsvDropdown = (number) => ({
-   type: CHOOSE_DATA_GET_CSV_OPTION_DROPDOWN,
+   type: CSV_OPTION_DROPDOWN,
    payload: number,
 });
 export const getDataFromTouchDropdown = (number) => ({
-   type: CHOOSE_GET_FROM_TOUCH_OPTION_DROPDOWN,
+   type: TOUCH_OPTION_DROPDOWN,
    payload: number,
 });
 

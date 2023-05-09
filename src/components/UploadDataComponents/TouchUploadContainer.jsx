@@ -15,17 +15,17 @@ export const TouchUploadContainer = () => {
    const dispatch = useDispatch();
 
    const dropdownTouchOption = useSelector(
-      (store) => store?.dropdownTouchOptionReducer?.dropdownOption
+      (store) => store?.dropdownOptionReducer?.touchOption
    );
 
    //    Даты "С" и "По" для формирования данных
 
    const touchDatefrom = useSelector(
-      (store) => store?.touch_date_from_reducer?.touchDateFrom
+      (store) => store?.touchDateReducer?.touchDateFrom
    );
 
    const touchDateTo = useSelector(
-      (store) => store?.touch_date_to_reducer?.touchDateTo
+      (store) => store?.touchDateReducer?.touchDateTo
    );
 
    //    Функция фильтрации получаемых данных по промежутку дат
