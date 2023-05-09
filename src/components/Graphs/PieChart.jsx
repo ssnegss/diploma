@@ -1,10 +1,21 @@
 import "chart.js/auto";
+import { useSelector, useDispatch } from "react-redux";
 import { Pie } from "react-chartjs-2";
+import {
+   dialogWindowOpened,
+   tableDataForDialog,
+} from "../../redux/actions/actionCreator";
 
 export const PieChart = ({ data }) => {
-   const labels = Array.from(new Set(data)); // получаем уникальные значения из массива
+   const dispatch = useDispatch();
+   //    Получение данных из таблицы для отображения в диалоговом окне
+   const csvdataWithFilters = useSelector(
+      (store) => store?.csv_data_for_filtering_reducer?.csvData
+   );
+
+   const labels = Array.from(new Set(data.data)); // получаем уникальные значения из массива
    const counts = labels.map(
-      (label) => data.filter((item) => item === label).length
+      (label) => data.data.filter((item) => item === label).length
    ); // считаем количество каждого значения
 
    const chartData = {
@@ -36,7 +47,29 @@ export const PieChart = ({ data }) => {
       ],
    };
 
+   const handleGraphClick = (e, elements) => {
+      if (elements && elements.length > 0) {
+         const index = elements[0].index;
+         const graphSection = chartData.labels[index]; //  Получение секции кругового графика
+
+         const itemColumn = data.column;
+         console.log(itemColumn);
+
+         // Проверка на соответствие нажатой секции
+
+         const filteredData = csvdataWithFilters.filter((item) =>
+            item[itemColumn] ? item[itemColumn] === graphSection : undefined
+         );
+
+         console.log(filteredData);
+
+         dispatch(tableDataForDialog(filteredData));
+         dispatch(dialogWindowOpened(true));
+      }
+   };
+
    const chartOptions = {
+      onClick: handleGraphClick,
       plugins: {
          tooltip: {
             titleFont: {

@@ -13,7 +13,7 @@ export const ConvertedLoadedOrdersFullDataForPieGraph = (csvData, column) => {
       //    Проверка, что отфильтрованные данные существуют
 
       if (filteredResultData.length > 0) {
-         return filteredResultData;
+         return { data: filteredResultData, column: column };
       } else return 0;
    } else return 0;
 };

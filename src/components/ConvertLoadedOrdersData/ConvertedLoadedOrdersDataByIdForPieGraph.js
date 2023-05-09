@@ -40,7 +40,7 @@ export const ConvertedLoadedOrdersDataForPieGraph = (csvData, id, column) => {
       //    Проверка, что данные для отображения существуют
 
       if (resultData.length > 0) {
-         return resultData;
+         return { data: resultData, column: column };
       } else return 0;
    } else return 0;
 };

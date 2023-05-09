@@ -16,7 +16,7 @@ export const ConvertedLoadedSessionsDataForPieGraph = (
       //    Проверка, что отфильтрованные данные существуют
 
       if (filteredResultData.length > 0) {
-         return filteredResultData;
+         return { data: filteredResultData, column: locationColumn };
       } else return 0;
    } else return 0;
 };
