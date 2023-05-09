@@ -9,6 +9,7 @@ import dropdownTouchOptionReducer from "./dropdownTouchOptionReducer";
 import authentication_completed_reducer from "./authentication_completed";
 import touch_date_from_reducer from "./touch_date_from";
 import touch_date_to_reducer from "./touch_date_to";
+import dialog_window_is_opened_reducer from "./dialog_window_opened";
 
 const reducer = combineReducers({
    csv_data_reducer,
@@ -21,6 +22,7 @@ const reducer = combineReducers({
    authentication_completed_reducer,
    touch_date_from_reducer,
    touch_date_to_reducer,
+   dialog_window_is_opened_reducer,
 });
 
 export default reducer;

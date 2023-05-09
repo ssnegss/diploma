@@ -9,6 +9,7 @@ import {
    AUTHENTICATION_COMPLETED,
    TOUCH_DATE_FROM,
    TOUCH_DATE_TO,
+   DIALOG_WINDOW_IS_OPENED,
 } from "../constants";
 
 export const saveCsvData = (array) => ({
@@ -58,4 +59,9 @@ export const touchDateFrom = (string) => ({
 export const touchDateTo = (string) => ({
    type: TOUCH_DATE_TO,
    payload: string,
+});
+
+export const dialogWindowOpened = (boolean) => ({
+   type: DIALOG_WINDOW_IS_OPENED,
+   payload: boolean,
 });

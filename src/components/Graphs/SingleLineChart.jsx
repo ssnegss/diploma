@@ -1,19 +1,25 @@
 import "chart.js/auto";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Chart } from "react-chartjs-2";
 import { DialogComponent } from "../DialogComponent/DialogComponent";
+
+import { dialogWindowOpened } from "../../redux/actions/actionCreator";
 
 //    Компонент графика
 
 export const SingleLineChart = ({ data }) => {
+   const dispatch = useDispatch();
    //    Получение данных из таблицы для отображения в диалоговом окне
    const csvdataWithFilters = useSelector(
       (store) => store?.csv_data_for_filtering_reducer?.csvData
    );
 
+   const dialogOpened = useSelector(
+      (store) => store?.dialog_window_is_opened_reducer?.isOpened
+   );
+
    const [dataForDialog, setDataForDialog] = useState();
-   const [dialogIsOpened, setDialogIsOpened] = useState(false);
    //    Данные для отображения на графике
 
    const chartData = {
@@ -39,21 +45,35 @@ export const SingleLineChart = ({ data }) => {
       if (elements && elements.length > 0) {
          const index = elements[0].index;
          const graphDate = chartData.labels[index]; //  Получение даты по оси Х
-         setDataForDialog(graphDate);
 
-         const filteredData = csvdataWithFilters.filter(
-            (item) =>
-               item["Дата старта"]
-                  .split(" ")[0]
-                  .split(".")
-                  .reverse()
-                  .join("-") === graphDate
+         // Проверка на соответствие нажатой дате
+
+         const filteredData = csvdataWithFilters.filter((item) =>
+            item["Дата старта"]
+               ? item["Дата старта"]
+                    .split(" ")[0]
+                    .split(".")
+                    .reverse()
+                    .join("-") === graphDate
+               : undefined
          );
-         console.log(filteredData);
-         setDataForDialog(filteredData);
-         setDialogIsOpened(true);
+
+         //    Удаляем объекты с полями undefined
+
+         const removedUndefinedData = filteredData.filter((obj) => {
+            return (
+               Object.keys(obj).some((key) => {
+                  return obj[key] === undefined;
+               }) === false
+            );
+         });
+         setDataForDialog(removedUndefinedData);
       }
    };
+
+   useEffect(() => {
+      dispatch(dialogWindowOpened(true));
+   }, [dataForDialog]); // запускаем useEffect при изменении dataForDialog
 
    //    Настройки для отображения графика
 
@@ -77,20 +97,6 @@ export const SingleLineChart = ({ data }) => {
       },
    };
 
-   //    Формирование заголовка таблицы для диалогового окна
-
-   const tableHeadArray = Object.keys(csvdataWithFilters[0] || {}).map(
-      (item) => {
-         return item;
-      }
-   );
-   const tableHead = tableHeadArray.map((name) => {
-      return {
-         header: name,
-         accessorKey: name,
-      };
-   });
-
    //    Разметка графика и диалогового окна по нажатии на график
 
    return (
@@ -98,11 +104,9 @@ export const SingleLineChart = ({ data }) => {
          {chartData.labels.length > 0 ? (
             <div className="SessionDashboardComponent__LineChartContainer">
                <Chart type="line" data={chartData} options={options} />
-               <DialogComponent
-                  dialogIsOpened={dialogIsOpened}
-                  columns={tableHead}
-                  rows={dataForDialog}
-               />
+               {dataForDialog && dialogOpened === true ? (
+                  <DialogComponent chartData={dataForDialog} />
+               ) : null}
             </div>
          ) : (
             <h1 className="Graph__NoDataFoundHeader">No data found</h1>

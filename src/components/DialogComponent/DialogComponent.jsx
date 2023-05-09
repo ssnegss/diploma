@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -9,6 +10,8 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
+
+import { dialogWindowOpened } from "../../redux/actions/actionCreator";
 
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_RU } from "../TableComponent/_locales/ru.ts";
@@ -51,15 +54,38 @@ BootstrapDialogTitle.propTypes = {
    onClose: PropTypes.func.isRequired,
 };
 
-export const DialogComponent = ({ columns, rows }) => {
-   const [open, setOpen] = useState(false);
+export const DialogComponent = ({ chartData }) => {
+   //    Получение данных из таблицы для отображения в диалоговом окне
+   const csvdataWithFilters = useSelector(
+      (store) => store?.csv_data_for_filtering_reducer?.csvData
+   );
+
+   const dialogOpened = useSelector(
+      (store) => store?.dialog_window_is_opened_reducer?.isOpened
+   );
+   const dispatch = useDispatch();
 
    const handleClickOpen = () => {
-      setOpen(true);
+      dispatch(dialogWindowOpened(true));
    };
+
    const handleClose = () => {
-      setOpen(false);
+      dispatch(dialogWindowOpened(false));
    };
+
+   //    Формирование заголовка таблицы для диалогового окна
+
+   const tableHeadArray = Object.keys(csvdataWithFilters[0] || {}).map(
+      (item) => {
+         return item;
+      }
+   );
+   const tableHead = tableHeadArray.map((name) => {
+      return {
+         header: name,
+         accessorKey: name,
+      };
+   });
 
    return (
       <div>
@@ -69,7 +95,7 @@ export const DialogComponent = ({ columns, rows }) => {
          <BootstrapDialog
             onClose={handleClose}
             aria-labelledby="customized-dialog-title"
-            open={open}
+            open={dialogOpened}
          >
             <BootstrapDialogTitle
                id="customized-dialog-title"
@@ -79,8 +105,8 @@ export const DialogComponent = ({ columns, rows }) => {
             </BootstrapDialogTitle>
             <DialogContent dividers>
                <MaterialReactTable
-                  columns={columns}
-                  data={rows}
+                  columns={tableHead}
+                  data={chartData}
                   localization={MRT_Localization_RU}
                />
             </DialogContent>
