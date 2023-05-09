@@ -4,10 +4,10 @@ import { DIALOG_WINDOW_IS_OPENED } from "../constants";
 import { SHOW_GRAPHS_BUTTON_IS_PRESSED } from "../constants";
 
 const initialState = {
-   authIsCompleted: 1,
-   dataIsUploaded: 0,
+   authIsCompleted: true,
+   dataIsUploaded: false,
    dialogIsOpened: false,
-   showGraphs: 0,
+   showGraphs: false,
 };
 
 const booleanReducer = (state = initialState, action) => {

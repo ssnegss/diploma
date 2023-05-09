@@ -30,13 +30,13 @@ export const CsvUploadContainer = () => {
          ) || e.target.files[0].name) === "csv"
       ) {
          setShowButtonVisible(1);
-         dispatch(dataIsUploaded(0));
-         dispatch(showButtonIsPressed(0));
+         dispatch(dataIsUploaded(false));
+         dispatch(showButtonIsPressed(false));
          setFileName(e.target.files[0].name);
       } else {
          setShowButtonVisible(0);
          setFileName("");
-         dispatch(dataIsUploaded(0));
+         dispatch(dataIsUploaded(false));
          setTimeout(() => alert("Файл не загружен"), 100);
       }
    };
@@ -71,7 +71,7 @@ export const CsvUploadContainer = () => {
          fileReader.onload = function (event) {
             const text = event.target.result;
             csvFileToArray(text);
-            dispatch(dataIsUploaded(1));
+            dispatch(dataIsUploaded(true));
          };
 
          fileReader.readAsText(file);

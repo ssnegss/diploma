@@ -28,9 +28,9 @@ export const AuthenticationComponent = () => {
          const data = await login(username, password);
          if (data.accessToken) {
          }
-         dispatch(authenticationCompleted(1));
+         dispatch(authenticationCompleted(true));
       } catch (err) {
-         dispatch(authenticationCompleted(0));
+         dispatch(authenticationCompleted(false));
          setError(err.error);
       }
    };

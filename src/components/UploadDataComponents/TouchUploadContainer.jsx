@@ -66,8 +66,8 @@ export const TouchUploadContainer = () => {
          const data = await fetchData("orders.json");
          dispatch(saveCsvData(filterDataByDate(data)));
       }
-      dispatch(showButtonIsPressed(0));
-      dispatch(dataIsUploaded(1));
+      dispatch(showButtonIsPressed(false));
+      dispatch(dataIsUploaded(true));
    }
 
    return (

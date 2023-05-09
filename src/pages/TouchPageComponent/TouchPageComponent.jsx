@@ -22,7 +22,7 @@ export const TouchPageComponent = () => {
    );
 
    useEffect(() => {
-      dispatch(dataIsUploaded(0));
+      dispatch(dataIsUploaded(false));
       dispatch(getDataFromCsvDropdown(null));
    }, [location, dispatch]);
 

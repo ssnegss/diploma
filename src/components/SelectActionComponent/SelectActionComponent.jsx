@@ -22,8 +22,8 @@ export const SelectActionComponent = (props) => {
 
    const handleChange = (event) => {
       setSelectValue(event.target.value);
-      dispatch(showButtonIsPressed(0));
-      dispatch(dataIsUploaded(0));
+      dispatch(showButtonIsPressed(false));
+      dispatch(dataIsUploaded(false));
    };
 
    //    Получение значения из выпадающего списка.

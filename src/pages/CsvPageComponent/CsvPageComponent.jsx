@@ -17,7 +17,7 @@ export const CsvPageComponent = () => {
    const dispatch = useDispatch();
 
    useEffect(() => {
-      dispatch(dataIsUploaded(0));
+      dispatch(dataIsUploaded(false));
       dispatch(getDataFromCsvDropdown(null));
    }, [location, dispatch]);
 

@@ -23,7 +23,7 @@ export const TableComponent = ({ columns, rows }) => {
    //    Отображение графиков по нажатии на кнопку
 
    const showGraphs = () => {
-      dispatch(showButtonIsPressed(1));
+      dispatch(showButtonIsPressed(true));
       dispatch(
          saveCsvDataForFiltering(
             tableInstanceRef.current
