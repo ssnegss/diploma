@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { ConvertedLoadedOrdersDataToDatePriceForGraphs } from "../ConvertLoadedDataFunctions/ConvertLoadedOrdersData/ToDatePriceForOrdersGraphs";
-import { ConvertedLoadedDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertedLoadedDataForPieGraph";
-import { ConvertedLoadedOrdersDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertLoadedOrdersData/ConvertedLoadedOrdersDataByIdForPieGraph";
+import { ConvertOrdersDataToDatePriceForLineGraph } from "../ConvertLoadedDataFunctions/ConvertLoadedOrdersData/ToDatePriceForOrdersGraphs";
+import { ConvertDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertDataForPieGraph";
+import { ConvertLoadedOrdersDataByIdForPieGraph } from "../ConvertLoadedDataFunctions/ConvertLoadedOrdersData/ConvertedLoadedOrdersDataByIdForPieGraph";
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
@@ -28,21 +28,21 @@ export const OrdersDashboardComponent = () => {
 
    //    Формирование входных данных для MultiLineChart
 
-   const dataFullPrice = ConvertedLoadedOrdersDataToDatePriceForGraphs(
+   const dataFullPrice = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Идентификатор резерва или зарядной сессии",
       "Дата старта",
       "Общая стоимость, Р"
    );
 
-   const dataConsumedEneryPrice = ConvertedLoadedOrdersDataToDatePriceForGraphs(
+   const dataConsumedEneryPrice = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Идентификатор резерва или зарядной сессии",
       "Дата старта",
       "Стоимость за потреблённую энергию, Р"
    );
 
-   const dataPayedPrice = ConvertedLoadedOrdersDataToDatePriceForGraphs(
+   const dataPayedPrice = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Идентификатор резерва или зарядной сессии",
       "Дата старта",
@@ -51,7 +51,7 @@ export const OrdersDashboardComponent = () => {
 
    //    Формирование входных данных для SingleLineChart
 
-   const dataConsumedEnergy = ConvertedLoadedOrdersDataToDatePriceForGraphs(
+   const dataConsumedEnergy = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Идентификатор резерва или зарядной сессии",
       "Дата старта",
@@ -60,35 +60,35 @@ export const OrdersDashboardComponent = () => {
 
    //    Формирование входных данных для PieChart
 
-   const dataLocationFullPieChart = ConvertedLoadedDataForPieGraph(
+   const dataLocationFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
       "Название локации"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataStationsFullPieChart = ConvertedLoadedDataForPieGraph(
+   const dataStationsFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
       "Название станции"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataErrorStatusFullPieChart = ConvertedLoadedDataForPieGraph(
+   const dataErrorStatusFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
       "Описание статуса платежа (при ошибке)"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataPaymentStatusFullPieChart = ConvertedLoadedDataForPieGraph(
+   const dataPaymentStatusFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
       "Статус платежа"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataLocationPieChart = ConvertedLoadedOrdersDataForPieGraph(
+   const dataLocationPieChart = ConvertLoadedOrdersDataByIdForPieGraph(
       csvdataWithFilters,
       "Идентификатор резерва или зарядной сессии",
       "Название локации"
@@ -96,7 +96,7 @@ export const OrdersDashboardComponent = () => {
 
    //    Формирование входных данных для PieChart
 
-   const dataStationsPieChart = ConvertedLoadedOrdersDataForPieGraph(
+   const dataStationsPieChart = ConvertLoadedOrdersDataByIdForPieGraph(
       csvdataWithFilters,
       "Идентификатор резерва или зарядной сессии",
       "Название станции"

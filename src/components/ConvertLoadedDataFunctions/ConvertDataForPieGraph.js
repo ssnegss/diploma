@@ -1,4 +1,4 @@
-export const ConvertedLoadedDataForPieGraph = (csvData, column) => {
+export const ConvertDataForPieGraph = (csvData, column) => {
    //    Проверка, что данные существуют
 
    if (csvData.length > 0) {

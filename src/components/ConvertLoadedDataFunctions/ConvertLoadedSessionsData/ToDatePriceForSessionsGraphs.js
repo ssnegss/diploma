@@ -1,4 +1,4 @@
-export const ConvertedLoadedDataToDatePriceForSessionsGraphs = (
+export const ConvertSessionDataToDatePriceForLineGraph = (
    csvData,
    dateColumn,
    valueColumn

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { ConvertedLoadedDataToDatePriceForSessionsGraphs } from "../ConvertLoadedDataFunctions/ConvertLoadedSessionsData/ToDatePriceForSessionsGraphs";
-import { ConvertedLoadedDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertedLoadedDataForPieGraph";
+import { ConvertSessionDataToDatePriceForLineGraph } from "../ConvertLoadedDataFunctions/ConvertLoadedSessionsData/ToDatePriceForSessionsGraphs";
+import { ConvertDataForPieGraph } from "../ConvertLoadedDataFunctions/ConvertDataForPieGraph";
 import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
@@ -27,20 +27,20 @@ export const SessionDashboardComponent = () => {
 
    //    Формирование входных данных для MultiLineChart
 
-   const dataFullPrice = ConvertedLoadedDataToDatePriceForSessionsGraphs(
+   const dataFullPrice = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Дата старта",
       "Общая стоимость, Р"
    );
 
    const dataConsumedEneryPrice =
-      ConvertedLoadedDataToDatePriceForSessionsGraphs(
+   ConvertSessionDataToDatePriceForLineGraph(
          csvdataWithFilters,
          "Дата старта",
          "Стоимость за потреблённую энергию, Р"
       );
 
-   const dataPayedPrice = ConvertedLoadedDataToDatePriceForSessionsGraphs(
+   const dataPayedPrice = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Дата старта",
       "Оплачено, Р"
@@ -48,7 +48,7 @@ export const SessionDashboardComponent = () => {
 
    //    Формирование входных данных для SingleLineChart
 
-   const dataConsumedEnergy = ConvertedLoadedDataToDatePriceForSessionsGraphs(
+   const dataConsumedEnergy = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
       "Дата старта",
       "Потреблённая энергия, Вт*ч"
@@ -56,14 +56,14 @@ export const SessionDashboardComponent = () => {
 
    //    Формирование входных данных для PieChart
 
-   const dataLocationPieChart = ConvertedLoadedDataForPieGraph(
+   const dataLocationPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
       "Название локации"
    );
 
    //    Формирование входных данных для PieChart
 
-   const dataStationsPieChart = ConvertedLoadedDataForPieGraph(
+   const dataStationsPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
       "Название станции"
    );
