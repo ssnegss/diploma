@@ -53,15 +53,12 @@ export const PieChart = ({ data }) => {
          const graphSection = chartData.labels[index]; //  Получение секции кругового графика
 
          const itemColumn = data.column;
-         console.log(itemColumn);
 
          // Проверка на соответствие нажатой секции
 
          const filteredData = csvdataWithFilters.filter((item) =>
             item[itemColumn] ? item[itemColumn] === graphSection : undefined
          );
-
-         console.log(filteredData);
 
          dispatch(tableDataForDialog(filteredData));
          dispatch(dialogWindowOpened(true));
