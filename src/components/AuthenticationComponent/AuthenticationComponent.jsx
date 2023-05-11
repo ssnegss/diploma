@@ -40,7 +40,7 @@ export const AuthenticationComponent = () => {
 
    return (
       <>
-         {authenticationIsCompleted === 0 ? (
+         {authenticationIsCompleted === false ? (
             <div className="AuthenticationComponent">
                <div className="AuthenticationComponent__container">
                   <form
