@@ -7,11 +7,21 @@ import {
    saveCsvData,
    dataIsUploaded,
    showButtonIsPressed,
+   touchDateFrom,
+   touchDateTo,
 } from "../../redux/actions/actionCreator";
 import { fetchTouchData } from "../../services/apiInteraction";
 
 export const TouchUploadContainer = () => {
    const dispatch = useDispatch();
+
+   const handleTouchDateFrom = (setTouchDateFrom) => {
+      dispatch(touchDateFrom(setTouchDateFrom));
+   };
+
+   const handleTouchDateTo = (setTouchDateTo) => {
+      dispatch(touchDateTo(setTouchDateTo));
+   };
 
    const dropdownTouchOption = useSelector(
       (store) => store?.dropdownOptionReducer?.touchOption
@@ -19,19 +29,19 @@ export const TouchUploadContainer = () => {
 
    //    Даты "С" и "По" для формирования данных
 
-   const touchDatefrom = useSelector(
+   const getTouchDatefrom = useSelector(
       (store) => store?.touchDateReducer?.touchDateFrom
    );
 
-   const touchDateTo = useSelector(
+   const getTouchDateTo = useSelector(
       (store) => store?.touchDateReducer?.touchDateTo
    );
 
    //    Функция фильтрации получаемых данных по промежутку дат
 
    const filterDataByDate = (data) => {
-      const dateFrom = new Date(touchDatefrom).getTime();
-      const dateTo = new Date(touchDateTo).getTime();
+      const dateFrom = new Date(getTouchDatefrom).getTime();
+      const dateTo = new Date(getTouchDateTo).getTime();
 
       const filteredItems = data.filter((item) => {
          const itemDate = new Date(
@@ -75,7 +85,10 @@ export const TouchUploadContainer = () => {
             <p className="TouchUploadContainer__header">
                Выберите промежуток времени
             </p>
-            <CalendarComponent />
+            <CalendarComponent
+               dateFrom={handleTouchDateFrom}
+               dateTo={handleTouchDateTo}
+            />
             <div>
                <ButtonComponent name="Загрузить данные" onClick={handleClick} />
             </div>

@@ -5,11 +5,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-import { touchDateFrom, touchDateTo } from "../../redux/actions/actionCreator";
+// import { touchDateFrom, touchDateTo } from "../../redux/actions/actionCreator";
 
 import "./CalendarComponent.css";
 
-export const CalendarComponent = () => {
+export const CalendarComponent = ({ dateFrom, dateTo }) => {
    const dispatch = useDispatch();
 
    //    Форматирование даты в стандартный вид (тип - строка)
@@ -30,26 +30,26 @@ export const CalendarComponent = () => {
    //    Сохранение начальной даты
 
    useEffect(() => {
-      dispatch(touchDateFrom(formatDateToStr(valueFrom)));
-      dispatch(touchDateTo(formatDateToStr(valueTo)));
+      dateFrom(formatDateToStr(valueFrom));
+      dateTo(formatDateToStr(valueTo));
    }, []);
 
    //    При изменении даты "С"
 
    const onDateFromChange = (newValueFrom) => {
-      const dateFrom = formatDateToStr(newValueFrom);
+      const getDateFrom = formatDateToStr(newValueFrom);
 
       setValueFrom(newValueFrom);
-      dispatch(touchDateFrom(dateFrom));
+      dateFrom(getDateFrom);
    };
 
    //    При изменении даты "По"
 
    const onDateToChange = (newValueTo) => {
-      const dateTo = formatDateToStr(newValueTo);
+      const getDateTo = formatDateToStr(newValueTo);
 
       setValueTo(newValueTo);
-      dispatch(touchDateTo(dateTo));
+      dateTo(getDateTo);
    };
 
    //    Компонент для выбора промежутка дат
