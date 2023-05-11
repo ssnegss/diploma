@@ -85,7 +85,6 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
       setValueFrom(startDate);
       setValueTo(endDate);
       dispatch(tableDateTo(tableEndDate));
-      console.log(tableEndDate);
       dispatch(tableDateFrom(tableStartDate));
    };
 

@@ -69,9 +69,14 @@ export const FullDashboardComponent = () => {
       const dateTo = new Date(getTableDateTo).getTime();
 
       const filteredItems = data.filter((item) => {
-         const itemDate = new Date(convertDate(item["Дата старта"])).getTime();
+         const itemDate = item["Дата старта"]
+            ? new Date(convertDate(item["Дата старта"])).getTime()
+            : undefined;
 
-         return itemDate >= dateFrom && itemDate <= dateTo;
+         return (
+            (itemDate >= dateFrom && itemDate <= dateTo) ||
+            itemDate === undefined
+         );
       });
 
       return filteredItems;
