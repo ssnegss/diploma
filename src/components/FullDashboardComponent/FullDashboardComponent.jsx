@@ -35,8 +35,6 @@ export const FullDashboardComponent = () => {
 
    const csvData = useSelector((store) => store?.dataReducer?.csvData);
 
-   // const [tableRows, setTableRows] = useState(csvData);
-
    //    Получение флага, отображающего, загружены ли данные
 
    const dataIsUploaded = useSelector(
@@ -72,8 +70,6 @@ export const FullDashboardComponent = () => {
       const dateFrom = new Date(getTableDatefrom).getTime();
       const dateTo = new Date(getTableDateTo).getTime();
 
-      // console.log(getTableDatefrom, getTableDateTo)
-
       const filteredItems = data.filter((item) => {
          const itemDate = new Date(
             item["Дата старта"].split(" ")[0].split(".").reverse().join("-")
@@ -81,8 +77,6 @@ export const FullDashboardComponent = () => {
 
          return itemDate >= dateFrom && itemDate <= dateTo;
       });
-
-      // console.log(filteredItems);
 
       return filteredItems;
    };
@@ -109,7 +103,6 @@ export const FullDashboardComponent = () => {
                      dateFrom={handleTableDateFrom}
                      dateTo={handleTableDateTo}
                      isTable={true}
-                     // onChange={()=> onResetButtonClick()}
                   />
                   <TableComponent rows={tableRows} columns={tableHead} />
                </div>
