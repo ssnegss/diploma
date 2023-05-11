@@ -2,13 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { TableComponent } from "../TableComponent/SortableTableComponent";
 import { SessionDashboardComponent } from "../DashboardForSessions/SessionDashboardComponent";
 import { OrdersDashboardComponent } from "../DashboardForOrders/OrdersDashboardComponent";
-
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
 
-import {
-   tableDateFrom,
-   tableDateTo,
-} from "../../redux/actions/actionCreator";
+import { convertDate } from "../../services/convertDate";
+
+import { tableDateFrom, tableDateTo } from "../../redux/actions/actionCreator";
 
 import "./DashboardComponent.css";
 
@@ -71,9 +69,7 @@ export const FullDashboardComponent = () => {
       const dateTo = new Date(getTableDateTo).getTime();
 
       const filteredItems = data.filter((item) => {
-         const itemDate = new Date(
-            item["Дата старта"].split(" ")[0].split(".").reverse().join("-")
-         ).getTime();
+         const itemDate = new Date(convertDate(item["Дата старта"])).getTime();
 
          return itemDate >= dateFrom && itemDate <= dateTo;
       });

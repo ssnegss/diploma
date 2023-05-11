@@ -1,3 +1,5 @@
+import { convertDate } from "../../../services/convertDate";
+
 export const ConvertOrdersDataToDatePriceForLineGraph = (
    csvData,
    id,
@@ -11,9 +13,7 @@ export const ConvertOrdersDataToDatePriceForLineGraph = (
 
       const objectData = csvData.map((item) => ({
          id: item[id] ? item[id] : undefined,
-         date: item[dateColumn]
-            ? item[dateColumn].split(" ")[0].split(".").reverse().join("-")
-            : undefined,
+         date: item[dateColumn] ? convertDate(item[dateColumn]) : undefined,
          value: item[valueColumn]
             ? Number(item[valueColumn].toString().replace(",", "."))
             : undefined,

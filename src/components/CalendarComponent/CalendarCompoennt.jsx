@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { convertDate } from "../../services/convertDate";
 
 import { tableDateTo, tableDateFrom } from "../../redux/actions/actionCreator";
 
@@ -14,7 +15,7 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
    const csvData = useSelector((store) => store?.dataReducer?.csvData);
 
    const convertLoadedDate = (date) => {
-      return date.split(" ")[0].split(".").reverse().join("-");
+      return convertDate(date);
    }; // Конвертация даты из отчета в другой формат для дальнейшей работы
 
    const tableStartDate =

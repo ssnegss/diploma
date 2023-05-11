@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { convertDate } from "../../services/convertDate";
 
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
@@ -46,9 +47,7 @@ export const TouchUploadContainer = () => {
       const dateTo = new Date(getTouchDateTo).getTime();
 
       const filteredItems = data.filter((item) => {
-         const itemDate = new Date(
-            item["Дата старта"].split(" ")[0].split(".").reverse().join("-")
-         ).getTime();
+         const itemDate = new Date(convertDate(item["Дата старта"])).getTime();
 
          return itemDate >= dateFrom && itemDate <= dateTo;
       });
