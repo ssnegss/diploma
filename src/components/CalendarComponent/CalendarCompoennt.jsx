@@ -28,12 +28,18 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
    //    Форматирование даты dayjs в стандартный вид (тип - строка)
 
    const formatDateToStr = (date) => {
+      const finalDateDay =
+         dayjs(date).get("date") < 10
+            ? "0" + dayjs(date).get("date").toString()
+            : dayjs(date).get("date");
+
       const finalDate =
          dayjs(date).get("year").toString() +
          "-" +
          (dayjs(date).get("month") + 1).toString() +
          "-" +
-         dayjs(date).get("date").toString();
+         finalDateDay;
+      // console.log(finalDateDay);
       return finalDate;
    };
 
@@ -52,6 +58,7 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
          dateTo(tableEndDate); // Передаем в dispatch(tableDateTo())
       } else {
          dateFrom(formatDateToStr(valueFrom)); // Передаем в dispatch(touchDateFrom());
+         // console.log(valueFrom)
          dateTo(formatDateToStr(valueTo)); // Передаем в dispatch(touchDateTo());
       }
    }, [csvData]);
@@ -78,6 +85,7 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
       setValueFrom(startDate);
       setValueTo(endDate);
       dispatch(tableDateTo(tableEndDate));
+      console.log(tableEndDate);
       dispatch(tableDateFrom(tableStartDate));
    };
 
