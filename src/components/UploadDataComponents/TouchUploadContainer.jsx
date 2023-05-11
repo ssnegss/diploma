@@ -9,6 +9,8 @@ import {
    showButtonIsPressed,
    touchDateFrom,
    touchDateTo,
+   tableDateTo,
+   tableDateFrom,
 } from "../../redux/actions/actionCreator";
 import { fetchTouchData } from "../../services/apiInteraction";
 
@@ -30,11 +32,11 @@ export const TouchUploadContainer = () => {
    //    Даты "С" и "По" для формирования данных
 
    const getTouchDatefrom = useSelector(
-      (store) => store?.touchDateReducer?.touchDateFrom
+      (store) => store?.calendarDateReducer?.touchDateFrom
    );
 
    const getTouchDateTo = useSelector(
-      (store) => store?.touchDateReducer?.touchDateTo
+      (store) => store?.calendarDateReducer?.touchDateTo
    );
 
    //    Функция фильтрации получаемых данных по промежутку дат
@@ -77,6 +79,8 @@ export const TouchUploadContainer = () => {
       }
       dispatch(showButtonIsPressed(false));
       dispatch(dataIsUploaded(true));
+      dispatch(tableDateFrom(getTouchDatefrom));
+      dispatch(tableDateTo(getTouchDateTo));
    }
 
    return (

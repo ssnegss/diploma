@@ -9,7 +9,9 @@ import {
    TOUCH_DATE_FROM,
    TOUCH_DATE_TO,
    DIALOG_WINDOW_IS_OPENED,
-   TABLE_DATA_FOR_DIALOG
+   TABLE_DATA_FOR_DIALOG,
+   TABLE_DATE_FROM,
+   TABLE_DATE_TO
 } from "../constants";
 
 export const saveCsvData = (array) => ({
@@ -48,6 +50,16 @@ export const authenticationCompleted = (boolean) => ({
 
 export const touchDateFrom = (string) => ({
    type: TOUCH_DATE_FROM,
+   payload: string,
+});
+
+export const tableDateFrom = (string) => ({
+   type: TABLE_DATE_FROM,
+   payload: string,
+});
+
+export const tableDateTo = (string) => ({
+   type: TABLE_DATE_TO,
    payload: string,
 });
 
