@@ -6,6 +6,29 @@
    border-radius: 30px;
 }
 
+.DashboardComponent__priceBlock {
+   display: flex;
+   justify-content: center;
+   margin: 2rem 5rem 2rem 5rem;
+}
+
+.DashboardComponent__priceBlock_priceSubBlock {
+   background-color: white;
+   padding: 0.5rem 3rem 0.5rem 3rem;
+   margin: 0 1rem 0 1rem;
+   border-radius: 30px;
+   width: 10rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+}
+
+.DashboardComponent__priceBlock_header {
+   font-size: 1rem;
+   font-weight: 500;
+   color:rgb(89, 89, 89)
+}
+
 .SessionDashboardComponent__block_header {
    font-size: 1.1rem;
    font-weight: 500;
