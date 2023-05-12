@@ -96,78 +96,86 @@ export const SessionDashboardComponent = () => {
                {dataForDialog.length > 0 && dialogOpened === true ? (
                   <DialogComponent chartData={dataForDialog} />
                ) : null}
-               <div className="DashboardComponent__priceBlock">
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataFullPrice[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataFullPrice.toLocaleString("ru")}</h1>
+               <div className="DashboardComponent">
+                  <div className="DashboardComponent__priceBlock">
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataFullPrice[0].name}:{" "}
+                        </p>
+                        <h1>{lineDataFullPrice.toLocaleString("ru")}</h1>
+                     </div>
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataConsumedEneryPrice[0].name}:{" "}
+                        </p>
+                        <h1>
+                           {lineDataConsumedEneryPrice.toLocaleString("ru")}
+                        </h1>
+                     </div>
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataPayedPrice[0].name}:{" "}
+                        </p>
+                        <h1>{lineDataPayedPrice.toLocaleString("ru")}</h1>
+                     </div>
                   </div>
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataConsumedEneryPrice[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataConsumedEneryPrice.toLocaleString("ru")}</h1>
-                  </div>
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataPayedPrice[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataPayedPrice.toLocaleString("ru")}</h1>
-                  </div>
-               </div>
-               <div className="SessionDashboardComponent__block">
-                  <h1 className="SessionDashboardComponent__block_header">
-                     Оплаты за период
-                  </h1>
-                  {ChartGraphDatePriceArray.length > 0 ? (
-                     <MultiLineChart data={ChartGraphDatePriceArray} />
-                  ) : (
-                     <h1 className="graph__alert_noDataFound">No data found</h1>
-                  )}
-               </div>
-               <div className="DashboardComponent__priceBlock">
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataConsumedEnergy[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataConsumedEnergy.toLocaleString("ru")}</h1>
-                  </div>
-               </div>
-               <div className="SessionDashboardComponent__block">
-                  <h1 className="SessionDashboardComponent__block_header">
-                     Потребленная энергия за период
-                  </h1>
-                  {dataConsumedEnergy !== 0 ? (
-                     <SingleLineChart data={dataConsumedEnergy} />
-                  ) : (
-                     <h1 className="graph__alert_noDataFound">No data found</h1>
-                  )}
-               </div>
-               <div className="SessionDashboardComponent__PieChartsContainer">
-                  <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
+                  <div className="SessionDashboardComponent__block">
                      <h1 className="SessionDashboardComponent__block_header">
-                        Активность комплексов за период
+                        Оплаты за период
                      </h1>
-                     {dataLocationPieChart !== 0 ? (
-                        <PieChart data={dataLocationPieChart} />
+                     {ChartGraphDatePriceArray.length > 0 ? (
+                        <MultiLineChart data={ChartGraphDatePriceArray} />
                      ) : (
                         <h1 className="graph__alert_noDataFound">
                            No data found
                         </h1>
                      )}
                   </div>
-                  <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
+                  <div className="DashboardComponent__priceBlock">
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataConsumedEnergy[0].name}:{" "}
+                        </p>
+                        <h1>{lineDataConsumedEnergy.toLocaleString("ru")}</h1>
+                     </div>
+                  </div>
+                  <div className="SessionDashboardComponent__block">
                      <h1 className="SessionDashboardComponent__block_header">
-                        Активность станций за период
+                        Потребленная энергия за период
                      </h1>
-                     {dataStationsPieChart !== 0 ? (
-                        <PieChart data={dataStationsPieChart} />
+                     {dataConsumedEnergy !== 0 ? (
+                        <SingleLineChart data={dataConsumedEnergy} />
                      ) : (
                         <h1 className="graph__alert_noDataFound">
                            No data found
                         </h1>
                      )}
+                  </div>
+                  <div className="SessionDashboardComponent__PieChartsContainer">
+                     <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="SessionDashboardComponent__block_header">
+                           Активность комплексов за период
+                        </h1>
+                        {dataLocationPieChart !== 0 ? (
+                           <PieChart data={dataLocationPieChart} />
+                        ) : (
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
+                        )}
+                     </div>
+                     <div className="SessionDashboardComponent__PieChartsContainer_PieChart">
+                        <h1 className="SessionDashboardComponent__block_header">
+                           Активность станций за период
+                        </h1>
+                        {dataStationsPieChart !== 0 ? (
+                           <PieChart data={dataStationsPieChart} />
+                        ) : (
+                           <h1 className="graph__alert_noDataFound">
+                              No data found
+                           </h1>
+                        )}
+                     </div>
                   </div>
                </div>
             </>

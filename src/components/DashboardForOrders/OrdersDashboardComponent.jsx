@@ -131,138 +131,146 @@ export const OrdersDashboardComponent = () => {
                {dataForDialog.length > 0 && dialogOpened === true ? (
                   <DialogComponent chartData={dataForDialog} />
                ) : null}
-               <div className="DashboardComponent__priceBlock">
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataFullPrice[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataFullPrice.toLocaleString("ru")}</h1>
-                  </div>
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataConsumedEneryPrice[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataConsumedEneryPrice.toLocaleString("ru")}</h1>
-                  </div>
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataPayedPrice[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataPayedPrice.toLocaleString("ru")}</h1>
-                  </div>
-               </div>
-               <div className="OrdersDashboardComponent__block">
-                  <h1 className="OrdersDashboardComponent__block_header">
-                     Оплаты за период
-                  </h1>
-                  {ChartGraphDatePriceArray.length > 0 ? (
-                     <MultiLineChart data={ChartGraphDatePriceArray} />
-                  ) : (
-                     <h1 className="graph__alert_noDataFound">No data found</h1>
-                  )}
-               </div>
-               <div className="DashboardComponent__priceBlock">
-                  <div className="DashboardComponent__priceBlock_priceSubBlock">
-                     <p className="DashboardComponent__priceBlock_header">
-                        {dataConsumedEnergy[0].name}:{" "}
-                     </p>
-                     <h1>{lineDataConsumedEnergy.toLocaleString("ru")}</h1>
-                  </div>
-               </div>
-               <div className="OrdersDashboardComponent__block">
-                  <h1 className="OrdersDashboardComponent__block_header">
-                     Потребленная энергия за период
-                  </h1>
-                  {dataConsumedEnergy !== 0 ? (
-                     <SingleLineChart data={dataConsumedEnergy} />
-                  ) : (
-                     <h1 className="graph__alert_noDataFound">No data found</h1>
-                  )}
-               </div>
-
-               <div>
-                  <h1>Общий свод</h1>
-                  <div className="OrdersDashboardComponent__PieChartsContainer">
-                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                        <h1 className="OrdersDashboardComponent__block_header">
-                           Название локации
-                        </h1>
-                        {dataLocationFullPieChart !== 0 ? (
-                           <PieChart data={dataLocationFullPieChart} />
-                        ) : (
-                           <h1 className="graph__alert_noDataFound">
-                              No data found
-                           </h1>
-                        )}
+               <div className="DashboardComponent">
+                  <div className="DashboardComponent__priceBlock">
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataFullPrice[0].name}:{" "}
+                        </p>
+                        <h1>{lineDataFullPrice.toLocaleString("ru")}</h1>
                      </div>
-                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                        <h1 className="OrdersDashboardComponent__block_header">
-                           Название станции
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataConsumedEneryPrice[0].name}:{" "}
+                        </p>
+                        <h1>
+                           {lineDataConsumedEneryPrice.toLocaleString("ru")}
                         </h1>
-                        {dataStationsFullPieChart !== 0 ? (
-                           <PieChart data={dataStationsFullPieChart} />
-                        ) : (
-                           <h1 className="graph__alert_noDataFound">
-                              No data found
-                           </h1>
-                        )}
                      </div>
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataPayedPrice[0].name}:{" "}
+                        </p>
+                        <h1>{lineDataPayedPrice.toLocaleString("ru")}</h1>
+                     </div>
+                  </div>
+                  <div className="OrdersDashboardComponent__block">
+                     <h1 className="OrdersDashboardComponent__block_header">
+                        Оплаты за период
+                     </h1>
+                     {ChartGraphDatePriceArray.length > 0 ? (
+                        <MultiLineChart data={ChartGraphDatePriceArray} />
+                     ) : (
+                        <h1 className="graph__alert_noDataFound">
+                           No data found
+                        </h1>
+                     )}
+                  </div>
+                  <div className="DashboardComponent__priceBlock">
+                     <div className="DashboardComponent__priceBlock_priceSubBlock">
+                        <p className="DashboardComponent__priceBlock_header">
+                           {dataConsumedEnergy[0].name}:{" "}
+                        </p>
+                        <h1>{lineDataConsumedEnergy.toLocaleString("ru")}</h1>
+                     </div>
+                  </div>
+                  <div className="OrdersDashboardComponent__block">
+                     <h1 className="OrdersDashboardComponent__block_header">
+                        Потребленная энергия за период
+                     </h1>
+                     {dataConsumedEnergy !== 0 ? (
+                        <SingleLineChart data={dataConsumedEnergy} />
+                     ) : (
+                        <h1 className="graph__alert_noDataFound">
+                           No data found
+                        </h1>
+                     )}
                   </div>
 
-                  <div className="OrdersDashboardComponent__PieChartsContainer">
-                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                        <h1 className="OrdersDashboardComponent__block_header">
-                           Описание статуса платежа (при ошибке)
-                        </h1>
-                        {dataErrorStatusFullPieChart !== 0 ? (
-                           <PieChart data={dataErrorStatusFullPieChart} />
-                        ) : (
-                           <h1 className="graph__alert_noDataFound">
-                              No data found
+                  <div>
+                     <h1>Общий свод</h1>
+                     <div className="OrdersDashboardComponent__PieChartsContainer">
+                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                           <h1 className="OrdersDashboardComponent__block_header">
+                              Название локации
                            </h1>
-                        )}
+                           {dataLocationFullPieChart !== 0 ? (
+                              <PieChart data={dataLocationFullPieChart} />
+                           ) : (
+                              <h1 className="graph__alert_noDataFound">
+                                 No data found
+                              </h1>
+                           )}
+                        </div>
+                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                           <h1 className="OrdersDashboardComponent__block_header">
+                              Название станции
+                           </h1>
+                           {dataStationsFullPieChart !== 0 ? (
+                              <PieChart data={dataStationsFullPieChart} />
+                           ) : (
+                              <h1 className="graph__alert_noDataFound">
+                                 No data found
+                              </h1>
+                           )}
+                        </div>
                      </div>
-                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                        <h1 className="OrdersDashboardComponent__block_header">
-                           Статус платежа
-                        </h1>
-                        {dataPaymentStatusFullPieChart !== 0 ? (
-                           <PieChart data={dataPaymentStatusFullPieChart} />
-                        ) : (
-                           <h1 className="graph__alert_noDataFound">
-                              No data found
+
+                     <div className="OrdersDashboardComponent__PieChartsContainer">
+                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                           <h1 className="OrdersDashboardComponent__block_header">
+                              Описание статуса платежа (при ошибке)
                            </h1>
-                        )}
+                           {dataErrorStatusFullPieChart !== 0 ? (
+                              <PieChart data={dataErrorStatusFullPieChart} />
+                           ) : (
+                              <h1 className="graph__alert_noDataFound">
+                                 No data found
+                              </h1>
+                           )}
+                        </div>
+                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                           <h1 className="OrdersDashboardComponent__block_header">
+                              Статус платежа
+                           </h1>
+                           {dataPaymentStatusFullPieChart !== 0 ? (
+                              <PieChart data={dataPaymentStatusFullPieChart} />
+                           ) : (
+                              <h1 className="graph__alert_noDataFound">
+                                 No data found
+                              </h1>
+                           )}
+                        </div>
                      </div>
                   </div>
-               </div>
 
-               <div>
-                  <h1>Сессионный свод</h1>
-                  <div className="OrdersDashboardComponent__PieChartsContainer">
-                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                        <h1 className="OrdersDashboardComponent__block_header">
-                           Название локации
-                        </h1>
-                        {dataLocationPieChart !== 0 ? (
-                           <PieChart data={dataLocationPieChart} />
-                        ) : (
-                           <h1 className="graph__alert_noDataFound">
-                              No data found
+                  <div>
+                     <h1>Сессионный свод</h1>
+                     <div className="OrdersDashboardComponent__PieChartsContainer">
+                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                           <h1 className="OrdersDashboardComponent__block_header">
+                              Название локации
                            </h1>
-                        )}
-                     </div>
-                     <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                        <h1 className="OrdersDashboardComponent__block_header">
-                           Название станции
-                        </h1>
-                        {dataStationsPieChart !== 0 ? (
-                           <PieChart data={dataStationsPieChart} />
-                        ) : (
-                           <h1 className="graph__alert_noDataFound">
-                              No data found
+                           {dataLocationPieChart !== 0 ? (
+                              <PieChart data={dataLocationPieChart} />
+                           ) : (
+                              <h1 className="graph__alert_noDataFound">
+                                 No data found
+                              </h1>
+                           )}
+                        </div>
+                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
+                           <h1 className="OrdersDashboardComponent__block_header">
+                              Название станции
                            </h1>
-                        )}
+                           {dataStationsPieChart !== 0 ? (
+                              <PieChart data={dataStationsPieChart} />
+                           ) : (
+                              <h1 className="graph__alert_noDataFound">
+                                 No data found
+                              </h1>
+                           )}
+                        </div>
                      </div>
                   </div>
                </div>

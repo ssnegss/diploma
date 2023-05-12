@@ -1,3 +1,8 @@
+.DashboardComponent {
+   max-width: 120rem;
+   margin: 0 auto;
+}
+
 .OrdersDashboardComponent__block {
    background-color: white;
    padding: 2rem;
