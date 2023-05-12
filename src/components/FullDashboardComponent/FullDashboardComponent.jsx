@@ -100,11 +100,15 @@ export const FullDashboardComponent = () => {
                   <OrdersDashboardComponent />
                ) : null}
                <div className="DashboardComponent__table">
-                  <CalendarComponent
-                     dateFrom={handleTableDateFrom}
-                     dateTo={handleTableDateTo}
-                     isTable={true}
-                  />
+                  <div className="DashboardComponent__table_dateFiltrationContainer">
+                     <div className="DashboardComponent__table_dateFiltration">
+                        <CalendarComponent
+                           dateFrom={handleTableDateFrom}
+                           dateTo={handleTableDateTo}
+                           isTable={true}
+                        />
+                     </div>
+                  </div>
                   <TableComponent rows={tableRows} columns={tableHead} />
                </div>
             </>

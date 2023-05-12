@@ -1,4 +1,16 @@
 .DashboardComponent__table {
-   margin: 2rem 1rem 2rem 1rem;
-   /* min-width: 800px; */
+   margin: 0rem 1rem 2rem 1rem;
+}
+
+.DashboardComponent__table_dateFiltrationContainer {
+   display: flex;
+   justify-content: right;
+}
+
+.DashboardComponent__table_dateFiltration {
+   background-color: white;
+   padding: 2rem 2rem 2rem 2rem;
+   margin: 2rem 0rem 2rem 5rem;
+   border-radius: 20px;
+   width: 49rem;
 }

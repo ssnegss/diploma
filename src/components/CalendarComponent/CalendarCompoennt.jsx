@@ -5,6 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { convertDate } from "../../services/convertDate";
+import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 
 import { tableDateTo, tableDateFrom } from "../../redux/actions/actionCreator";
 
@@ -109,9 +110,10 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
                />
             </div>
             {isTable && (
-               <button onClick={() => onResetButtonClick()}>
-                  Сбросить фильтр по дате
-               </button>
+               <ButtonComponent
+                  name={"Сбросить фильтр по дате"}
+                  onClick={() => onResetButtonClick()}
+               />
             )}
          </div>
       </LocalizationProvider>

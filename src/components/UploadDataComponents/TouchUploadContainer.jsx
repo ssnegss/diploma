@@ -92,7 +92,7 @@ export const TouchUploadContainer = () => {
                dateFrom={handleTouchDateFrom}
                dateTo={handleTouchDateTo}
             />
-            <div>
+            <div className="TouchUploadContainer__button">
                <ButtonComponent name="Загрузить данные" onClick={handleClick} />
             </div>
          </div>
