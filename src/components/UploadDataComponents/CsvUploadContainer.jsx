@@ -54,7 +54,6 @@ export const CsvUploadContainer = () => {
 
             const obj = filteredCvsHeader.reduce((object, header, index) => {
                object[header] = values[index];
-
                return object;
             }, {});
             if (Object.values(obj).every((value) => value === undefined)) {

@@ -40,7 +40,16 @@ export const TouchUploadContainer = () => {
       (store) => store?.calendarDateReducer?.touchDateTo
    );
 
-   //    Функция фильтрации получаемых данных по промежутку дат
+   const removeUndefined = (data) => {
+      const result = data.map((item) => {
+         if (Object.values(item).every((value) => value === undefined)) {
+            return null;
+         } else {
+            return item; // Проверка, чтобы убрать пустые объекты
+         }
+      });
+      return result;
+   };
 
    const filterDataByDate = (data) => {
       const dateFrom = new Date(getTouchDatefrom).getTime();
@@ -70,11 +79,13 @@ export const TouchUploadContainer = () => {
    async function handleClick() {
       if (dropdownTouchOption === 0) {
          const data = await fetchData("sessions.json");
-         dispatch(saveCsvData(filterDataByDate(data)));
+         const resultData = removeUndefined(data);
+         dispatch(saveCsvData(filterDataByDate(resultData)));
       }
       if (dropdownTouchOption === 1) {
          const data = await fetchData("orders.json");
-         dispatch(saveCsvData(filterDataByDate(data)));
+         const resultData = removeUndefined(data);
+         dispatch(saveCsvData(filterDataByDate(resultData)));
       }
       dispatch(showButtonIsPressed(false));
       dispatch(dataIsUploaded(true));
