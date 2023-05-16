@@ -6,6 +6,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { convertDate } from "../../services/convertDate";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
+import { findStartDate } from "./findStartDate";
+import { findEndDate } from "./findEndDate";
 
 import { tableDateTo, tableDateFrom } from "../../redux/actions/actionCreator";
 
@@ -19,12 +21,8 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
       return convertDate(date);
    }; // Конвертация даты из отчета в другой формат для дальнейшей работы
 
-   const tableStartDate =
-      csvData.length > 0
-         ? convertLoadedDate(csvData.slice(-1)[0]["Дата старта"])
-         : null; // Получение стартовой даты из полученного отчета (самое раннее число)
-   const tableEndDate =
-      csvData.length > 0 ? convertLoadedDate(csvData[0]["Дата старта"]) : null; // Получение конечной даты из полученного отчета (самое позднее число)
+   const tableStartDate = findStartDate(csvData);
+   const tableEndDate = findEndDate(csvData);
 
    //    Форматирование даты dayjs в стандартный вид (тип - строка)
 

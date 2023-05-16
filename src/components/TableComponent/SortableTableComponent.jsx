@@ -37,10 +37,6 @@ export const TableComponent = ({ columns, rows }) => {
 
    return (
       <>
-         {/* <CalendarComponent
-            dateFrom={handleTableDateFrom}
-            dateTo={handleTableDateTo}
-         /> */}
          <MaterialReactTable
             columns={columns}
             data={rows}

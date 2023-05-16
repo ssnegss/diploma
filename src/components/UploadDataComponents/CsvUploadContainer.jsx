@@ -48,16 +48,23 @@ export const CsvUploadContainer = () => {
       const filteredCvsHeader = csvHeader.filter((item) => item !== "");
       const csvRows = string.slice(string.indexOf("\n") + 1).split("\n");
 
-      const array = csvRows.map((i) => {
-         const values = i.split(";");
+      const array = csvRows
+         .map((i) => {
+            const values = i.split(";");
 
-         const obj = filteredCvsHeader.reduce((object, header, index) => {
-            object[header] = values[index];
-            return object;
-         }, {});
-         return obj;
-      });
+            const obj = filteredCvsHeader.reduce((object, header, index) => {
+               object[header] = values[index];
 
+               return object;
+            }, {});
+            if (Object.values(obj).every((value) => value !== undefined)) {
+               console.log(obj)
+               return obj;
+            } else {
+               return null; // Проверка, чтобы убрать пустые объекты
+            }
+         })
+         .filter((obj) => obj !== null);
       dispatch(saveCsvData(array));
    };
 
