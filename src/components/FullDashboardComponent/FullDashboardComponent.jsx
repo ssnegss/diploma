@@ -3,6 +3,7 @@ import { TableComponent } from "../TableComponent/SortableTableComponent";
 import { SessionDashboardComponent } from "../DashboardForSessions/SessionDashboardComponent";
 import { OrdersDashboardComponent } from "../DashboardForOrders/OrdersDashboardComponent";
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
+import { DATE_COLUMN } from '../../constants/index'
 
 import { convertDate } from "../../services/convertDate";
 
@@ -69,8 +70,8 @@ export const FullDashboardComponent = () => {
       const dateTo = new Date(getTableDateTo).getTime();
 
       const filteredItems = data.filter((item) => {
-         const itemDate = item["Дата старта"]
-            ? new Date(convertDate(item["Дата старта"])).getTime()
+         const itemDate = item[DATE_COLUMN]
+            ? new Date(convertDate(item[DATE_COLUMN])).getTime()
             : undefined;
 
          return (

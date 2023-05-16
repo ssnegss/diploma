@@ -3,6 +3,7 @@ import { convertDate } from "../../services/convertDate";
 
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
+import { DATE_COLUMN } from '../../constants/index'
 
 import {
    saveCsvData,
@@ -56,7 +57,7 @@ export const TouchUploadContainer = () => {
       const dateTo = new Date(getTouchDateTo).getTime();
 
       const filteredItems = data.filter((item) => {
-         const itemDate = new Date(convertDate(item["Дата старта"])).getTime();
+         const itemDate = new Date(convertDate(item[DATE_COLUMN])).getTime();
 
          return itemDate >= dateFrom && itemDate <= dateTo;
       });

@@ -1,6 +1,7 @@
 import "chart.js/auto";
 import { useSelector, useDispatch } from "react-redux";
 import { Chart } from "react-chartjs-2";
+import { DATE_COLUMN } from '../../constants/index' 
 import {
    dialogWindowOpened,
    tableDataForDialog,
@@ -35,8 +36,8 @@ export const MultiLineChart = ({ data }) => {
          // Проверка на соответствие нажатой дате
 
          const filteredData = csvdataWithFilters.filter((item) =>
-            item["Дата старта"]
-               ? item["Дата старта"]
+            item[DATE_COLUMN]
+               ? item[DATE_COLUMN]
                     .split(" ")[0]
                     .split(".")
                     .reverse()

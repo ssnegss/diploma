@@ -5,6 +5,15 @@ import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
 import { DialogComponent } from "../DialogComponent/DialogComponent";
+import {
+   DATE_COLUMN,
+   FULL_PRICE,
+   CONSUMED_ENERGY_PRICE,
+   PAYED_PRICE,
+   CONSUMED_ENERGY_VALUE,
+   LOCATION_NAME,
+   STATION_NAME,
+} from "../../constants/index";
 
 import "./SessionDashboartComponent.css";
 
@@ -25,42 +34,42 @@ export const SessionDashboardComponent = () => {
 
    const dataFullPrice = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Дата старта",
-      "Общая стоимость, Р"
+      DATE_COLUMN,
+      FULL_PRICE
    );
 
    const dataConsumedEneryPrice = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Дата старта",
-      "Стоимость за потреблённую энергию, Р"
+      DATE_COLUMN,
+      CONSUMED_ENERGY_PRICE
    );
 
    const dataPayedPrice = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Дата старта",
-      "Оплачено, Р"
+      DATE_COLUMN,
+      PAYED_PRICE
    );
 
    //    Формирование входных данных для SingleLineChart
 
    const dataConsumedEnergy = ConvertSessionDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Дата старта",
-      "Потреблённая энергия, Вт*ч"
+      DATE_COLUMN,
+      CONSUMED_ENERGY_VALUE
    );
 
    //    Формирование входных данных для PieChart
 
    const dataLocationPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
-      "Название локации"
+      LOCATION_NAME
    );
 
    //    Формирование входных данных для PieChart
 
    const dataStationsPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
-      "Название станции"
+      STATION_NAME
    );
 
    //    Формирование массива с данными для построения MultiLineChart

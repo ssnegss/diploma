@@ -6,6 +6,18 @@ import { SingleLineChart } from "../Graphs/SingleLineChart";
 import { MultiLineChart } from "../Graphs/MultiLineChart";
 import { PieChart } from "../Graphs/PieChart";
 import { DialogComponent } from "../DialogComponent/DialogComponent";
+import {
+   DATE_COLUMN,
+   FULL_PRICE,
+   CONSUMED_ENERGY_PRICE,
+   PAYED_PRICE,
+   CONSUMED_ENERGY_VALUE,
+   LOCATION_NAME,
+   STATION_NAME,
+   PAYMENT_STATUS,
+   PAYMENT_STATUS_DESCRIPTION,
+   SESSION_ID,
+} from "../../constants/index";
 
 import "./OrdersDashboardComponent.css";
 
@@ -26,76 +38,76 @@ export const OrdersDashboardComponent = () => {
 
    const dataFullPrice = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Идентификатор резерва или зарядной сессии",
-      "Дата старта",
-      "Общая стоимость, Р"
+      SESSION_ID,
+      DATE_COLUMN,
+      FULL_PRICE
    );
 
    const dataConsumedEneryPrice = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Идентификатор резерва или зарядной сессии",
-      "Дата старта",
-      "Стоимость за потреблённую энергию, Р"
+      SESSION_ID,
+      DATE_COLUMN,
+      CONSUMED_ENERGY_PRICE
    );
 
    const dataPayedPrice = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Идентификатор резерва или зарядной сессии",
-      "Дата старта",
-      "Оплачено, Р"
+      SESSION_ID,
+      DATE_COLUMN,
+      PAYED_PRICE
    );
 
    //    Формирование входных данных для SingleLineChart
 
    const dataConsumedEnergy = ConvertOrdersDataToDatePriceForLineGraph(
       csvdataWithFilters,
-      "Идентификатор резерва или зарядной сессии",
-      "Дата старта",
-      "Потреблённая энергия, Вт*ч"
+      SESSION_ID,
+      DATE_COLUMN,
+      CONSUMED_ENERGY_VALUE
    );
 
    //    Формирование входных данных для PieChart
 
    const dataLocationFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
-      "Название локации"
+      LOCATION_NAME
    );
 
    //    Формирование входных данных для PieChart
 
    const dataStationsFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
-      "Название станции"
+      STATION_NAME
    );
 
    //    Формирование входных данных для PieChart
 
    const dataErrorStatusFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
-      "Описание статуса платежа (при ошибке)"
+      PAYMENT_STATUS_DESCRIPTION
    );
 
    //    Формирование входных данных для PieChart
 
    const dataPaymentStatusFullPieChart = ConvertDataForPieGraph(
       csvdataWithFilters,
-      "Статус платежа"
+      PAYMENT_STATUS
    );
 
    //    Формирование входных данных для PieChart
 
    const dataLocationPieChart = ConvertLoadedOrdersDataByIdForPieGraph(
       csvdataWithFilters,
-      "Идентификатор резерва или зарядной сессии",
-      "Название локации"
+      SESSION_ID,
+      LOCATION_NAME
    );
 
    //    Формирование входных данных для PieChart
 
    const dataStationsPieChart = ConvertLoadedOrdersDataByIdForPieGraph(
       csvdataWithFilters,
-      "Идентификатор резерва или зарядной сессии",
-      "Название станции"
+      SESSION_ID,
+      STATION_NAME
    );
 
    //    Формирование массива с данными для построения MultiLineChart
