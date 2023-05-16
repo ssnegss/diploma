@@ -58,7 +58,6 @@ export const CsvUploadContainer = () => {
                return object;
             }, {});
             if (Object.values(obj).every((value) => value !== undefined)) {
-               console.log(obj)
                return obj;
             } else {
                return null; // Проверка, чтобы убрать пустые объекты

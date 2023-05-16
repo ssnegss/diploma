@@ -71,6 +71,8 @@ export const SessionDashboardComponent = () => {
       dataPayedPrice,
    ].filter((item) => item !== 0);
 
+   console.log(dataFullPrice);
+
    //    Подсчет суммы для отображения
 
    const countFullValue = (array) => {
@@ -100,13 +102,17 @@ export const SessionDashboardComponent = () => {
                   <div className="DashboardComponent__priceBlock">
                      <div className="DashboardComponent__priceBlock_priceSubBlock">
                         <p className="DashboardComponent__priceBlock_header">
-                           {dataFullPrice[0].name}:{" "}
+                           {dataFullPrice.length > 0
+                              ? dataFullPrice[0].name
+                              : "Не удалось получить данные"}
                         </p>
                         <h1>{lineDataFullPrice.toLocaleString("ru")}</h1>
                      </div>
                      <div className="DashboardComponent__priceBlock_priceSubBlock">
                         <p className="DashboardComponent__priceBlock_header">
-                           {dataConsumedEneryPrice[0].name}:{" "}
+                           {dataConsumedEneryPrice.length > 0
+                              ? dataConsumedEneryPrice[0].name
+                              : "Не удалось получить данные"}
                         </p>
                         <h1>
                            {lineDataConsumedEneryPrice.toLocaleString("ru")}
@@ -114,7 +120,9 @@ export const SessionDashboardComponent = () => {
                      </div>
                      <div className="DashboardComponent__priceBlock_priceSubBlock">
                         <p className="DashboardComponent__priceBlock_header">
-                           {dataPayedPrice[0].name}:{" "}
+                           {dataPayedPrice.length > 0
+                              ? dataPayedPrice[0].name
+                              : "Не удалось получить данные"}
                         </p>
                         <h1>{lineDataPayedPrice.toLocaleString("ru")}</h1>
                      </div>
@@ -134,7 +142,9 @@ export const SessionDashboardComponent = () => {
                   <div className="DashboardComponent__priceBlock">
                      <div className="DashboardComponent__priceBlock_priceSubBlock">
                         <p className="DashboardComponent__priceBlock_header">
-                           {dataConsumedEnergy[0].name}:{" "}
+                           {dataConsumedEnergy.length > 0
+                              ? dataConsumedEnergy[0].name
+                              : "Не удалось получить данные"}
                         </p>
                         <h1>{lineDataConsumedEnergy.toLocaleString("ru")}</h1>
                      </div>
