@@ -57,10 +57,10 @@ export const CsvUploadContainer = () => {
 
                return object;
             }, {});
-            if (Object.values(obj).every((value) => value !== undefined)) {
-               return obj;
+            if (Object.values(obj).every((value) => value === undefined)) {
+               return null;
             } else {
-               return null; // Проверка, чтобы убрать пустые объекты
+               return obj; // Проверка, чтобы убрать пустые объекты
             }
          })
          .filter((obj) => obj !== null);

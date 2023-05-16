@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { convertDate } from "../../services/convertDate";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 import { findStartDate } from "./findStartDate";
 import { findEndDate } from "./findEndDate";
@@ -16,10 +15,6 @@ import "./CalendarComponent.css";
 export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
    const dispatch = useDispatch();
    const csvData = useSelector((store) => store?.dataReducer?.csvData);
-
-   const convertLoadedDate = (date) => {
-      return convertDate(date);
-   }; // Конвертация даты из отчета в другой формат для дальнейшей работы
 
    const tableStartDate = findStartDate(csvData);
    const tableEndDate = findEndDate(csvData);

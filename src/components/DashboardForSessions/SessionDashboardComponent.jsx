@@ -71,8 +71,6 @@ export const SessionDashboardComponent = () => {
       dataPayedPrice,
    ].filter((item) => item !== 0);
 
-   console.log(dataFullPrice);
-
    //    Подсчет суммы для отображения
 
    const countFullValue = (array) => {
