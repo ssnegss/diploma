@@ -1,6 +1,6 @@
 import "chart.js/auto";
 import { useSelector, useDispatch } from "react-redux";
-import { DATE_COLUMN } from '../../constants/index'
+import { DATE_COLUMN } from "../../constants/index";
 import { Chart } from "react-chartjs-2";
 import {
    dialogWindowOpened,
@@ -46,8 +46,7 @@ export const SingleLineChart = ({ data }) => {
 
          const filteredData = csvdataWithFilters.filter((item) =>
             item[DATE_COLUMN]
-               ? item[DATE_COLUMN]
-                    .split(" ")[0]
+               ? item[DATE_COLUMN].split(" ")[0]
                     .split(".")
                     .reverse()
                     .join("-") === graphDate
@@ -91,17 +90,7 @@ export const SingleLineChart = ({ data }) => {
       },
    };
 
-   //    Разметка графика и диалогового окна по нажатии на график
+   //    Разметка графика
 
-   return (
-      <>
-         {chartData.labels.length > 0 ? (
-            <div className="SessionDashboardComponent__LineChartContainer">
-               <Chart type="line" data={chartData} options={options} />
-            </div>
-         ) : (
-            <h1 className="Graph__NoDataFoundHeader">No data found</h1>
-         )}
-      </>
-   );
+   return <Chart type="line" data={chartData} options={options} />;
 };

@@ -6,6 +6,10 @@
    border-radius: 30px;
 }
 
+.lineChart__container {
+   height: 25rem;
+}
+
 .pieChart {
    background-color: white;
    padding: 2rem;
@@ -14,6 +18,11 @@
    width: 100%;
    max-width: 50rem;
    margin: 1rem 5rem 1rem 5rem;
+}
+
+.pieChart__container {
+   max-width: 25rem;
+   margin: 0 auto;
 }
 
 .chartHeader {

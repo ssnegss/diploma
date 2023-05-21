@@ -85,11 +85,7 @@ export const PieChart = ({ data }) => {
 
    return (
       <div className="SessionDashboardComponent__PieChartComponent">
-         {chartData.labels.length > 0 ? (
-            <Pie data={chartData} options={chartOptions} />
-         ) : (
-            <h1 className="Graph__NoDataFoundHeader">No data found</h1>
-         )}
+         <Pie data={chartData} options={chartOptions} />
       </div>
    );
 };

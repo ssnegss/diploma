@@ -25,7 +25,7 @@ export const SaveToPdfComponent = () => {
 
             // Если это последний график, сохраняем PDF файл
             if (index === charts.length - 1) {
-               doc.save("charts.pdf");
+               doc.save("Charts.pdf");
             }
          });
       });

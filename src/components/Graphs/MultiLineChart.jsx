@@ -1,7 +1,7 @@
 import "chart.js/auto";
 import { useSelector, useDispatch } from "react-redux";
 import { Chart } from "react-chartjs-2";
-import { DATE_COLUMN } from '../../constants/index' 
+import { DATE_COLUMN } from "../../constants/index";
 import {
    dialogWindowOpened,
    tableDataForDialog,
@@ -37,8 +37,7 @@ export const MultiLineChart = ({ data }) => {
 
          const filteredData = csvdataWithFilters.filter((item) =>
             item[DATE_COLUMN]
-               ? item[DATE_COLUMN]
-                    .split(" ")[0]
+               ? item[DATE_COLUMN].split(" ")[0]
                     .split(".")
                     .reverse()
                     .join("-") === graphDate
@@ -106,15 +105,7 @@ export const MultiLineChart = ({ data }) => {
       },
    };
 
-   return (
-      <div className="SessionDashboardComponent__LineChartContainer">
-         {chartData.labels.length > 0 ? (
-            <>
-               <Chart type="line" data={chartData} options={options} />
-            </>
-         ) : (
-            <h1 className="Graph__NoDataFoundHeader">No data found</h1>
-         )}
-      </div>
-   );
+   //    Разметка графика
+
+   return <Chart type="line" data={chartData} options={options} />;
 };

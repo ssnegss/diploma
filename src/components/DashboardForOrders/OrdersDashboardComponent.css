@@ -3,15 +3,6 @@
    margin: 0 auto;
 }
 
-.OrdersDashboardComponent__LineChartContainer {
-   height: 25rem;
-}
-
-.OrdersDashboardComponent__PieChartComponent {
-   max-width: 25rem;
-   margin: 0 auto;
-}
-
 .OrdersDashboardComponent__PieChartsContainer {
    display: flex;
    flex-direction: row;

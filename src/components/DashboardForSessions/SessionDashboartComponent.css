@@ -4,21 +4,6 @@
    margin: 2rem 5rem 2rem 5rem;
 }
 
-.DashboardComponent__priceBlock_header {
-   font-size: 1rem;
-   font-weight: 500;
-   color: rgb(89, 89, 89);
-}
-
-.SessionDashboardComponent__LineChartContainer {
-   height: 25rem;
-}
-
-.SessionDashboardComponent__PieChartComponent {
-   max-width: 25rem;
-   margin: 0 auto;
-}
-
 .SessionDashboardComponent__PieChartsContainer {
    display: flex;
    flex-direction: row;

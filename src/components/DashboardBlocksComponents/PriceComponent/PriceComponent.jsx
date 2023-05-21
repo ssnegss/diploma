@@ -6,7 +6,7 @@ export const PriceComponent = ({ data, price }) => {
          <p className={styles.PriceComponent__header}>
             {data.length > 0 ? data[0].name : "Не удалось получить данные"}
          </p>
-         <h1>{price.toLocaleString("ru")}</h1>
+         <h1 className={styles.PriceValue}>{price.toLocaleString("ru")}</h1>
       </div>
    );
 };
