@@ -3,7 +3,7 @@ import { convertDate } from "../../services/convertDate";
 
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
-import { DATE_COLUMN } from '../../constants/index'
+import { DATE_COLUMN } from "../../constants/index";
 
 import {
    saveCsvData,

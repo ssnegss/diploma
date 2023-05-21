@@ -90,7 +90,7 @@ export const SingleLineChart = ({ data }) => {
       },
    };
 
-   //    Разметка графика
+   //    График
 
    return <Chart type="line" data={chartData} options={options} />;
 };

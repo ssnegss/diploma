@@ -36,7 +36,7 @@ export const AuthenticationComponent = () => {
    };
 
    //    Компонент аутентификации
-   //    Если аутентификация усешно пройдена - окно аутентификации закрывается
+   //    Если аутентификация успешно пройдена - окно аутентификации закрывается
 
    return (
       <>
@@ -47,7 +47,9 @@ export const AuthenticationComponent = () => {
                      className="AuthenticationComponent__container_inner"
                      onSubmit={handleSubmit}
                   >
-                     <h2 className="AuthenticationComponent__container_header">Вход в систему</h2>
+                     <h2 className="AuthenticationComponent__container_header">
+                        Вход в систему
+                     </h2>
                      <input
                         className="AuthenticationComponent__container_inputField"
                         type="text"

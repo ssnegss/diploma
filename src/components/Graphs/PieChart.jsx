@@ -83,9 +83,7 @@ export const PieChart = ({ data }) => {
       },
    };
 
-   return (
-      <div className="SessionDashboardComponent__PieChartComponent">
-         <Pie data={chartData} options={chartOptions} />
-      </div>
-   );
+   //    График
+
+   return <Pie data={chartData} options={chartOptions} />;
 };

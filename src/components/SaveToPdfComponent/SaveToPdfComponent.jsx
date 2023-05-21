@@ -6,7 +6,7 @@ export const SaveToPdfComponent = () => {
       // Создаем новый экземпляр jsPDF
       const doc = new jsPDF("landscape");
 
-      // Получаем все графики на странице (предположим, что у них есть класс 'chart')
+      // Получаем все графики на странице (у них есть класс 'chart')
       const charts = document.querySelectorAll(".PdfOnePage");
 
       // Проходимся по каждому графику и создаем скриншот с помощью html2canvas

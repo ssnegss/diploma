@@ -11,9 +11,7 @@ export const ConvertSessionDataToDatePriceForLineGraph = (
       //   Получаем массив объектов с полями date value, name
 
       const objectData = csvData.map((item) => ({
-         date: item[dateColumn]
-            ? convertDate(item[dateColumn])
-            : undefined,
+         date: item[dateColumn] ? convertDate(item[dateColumn]) : undefined,
          value: item[valueColumn]
             ? Number(item[valueColumn].toString().replace(",", "."))
             : undefined,

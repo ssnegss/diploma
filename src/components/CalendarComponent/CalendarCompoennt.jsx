@@ -33,7 +33,6 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
          (dayjs(date).get("month") + 1).toString() +
          "-" +
          finalDateDay;
-      // console.log(finalDateDay);
       return finalDate;
    };
 
@@ -52,7 +51,6 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
          dateTo(tableEndDate); // Передаем в dispatch(tableDateTo())
       } else {
          dateFrom(formatDateToStr(valueFrom)); // Передаем в dispatch(touchDateFrom());
-         // console.log(valueFrom)
          dateTo(formatDateToStr(valueTo)); // Передаем в dispatch(touchDateTo());
       }
    }, [csvData]);

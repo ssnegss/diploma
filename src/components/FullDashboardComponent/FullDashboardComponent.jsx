@@ -3,7 +3,7 @@ import { TableComponent } from "../TableComponent/SortableTableComponent";
 import { SessionDashboardComponent } from "../DashboardForSessions/SessionDashboardComponent";
 import { OrdersDashboardComponent } from "../DashboardForOrders/OrdersDashboardComponent";
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
-import { DATE_COLUMN } from '../../constants/index'
+import { DATE_COLUMN } from "../../constants/index";
 
 import { convertDate } from "../../services/convertDate";
 
