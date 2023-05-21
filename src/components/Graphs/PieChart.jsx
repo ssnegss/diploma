@@ -24,25 +24,26 @@ export const PieChart = ({ data }) => {
          {
             data: counts,
             backgroundColor: [
-               "#FF6384",
-               "#36A2EB",
-               "#FFCE56",
-               "#1BCDD1",
-               "#8E54E9",
-               "#FF9F55",
-               "#47BAC1",
-               "#AA4488",
+               "#CD5C5C",
+               "#191970",
+               "#5F9EA0",
+               "#7B68EE",
+               "#DB7093",
+               "#483D8B",
+               "#696969",
+               "#4B0082",
             ],
             hoverBackgroundColor: [
-               "#FF6384",
-               "#36A2EB",
-               "#FFCE56",
-               "#1BCDD1",
-               "#8E54E9",
-               "#FF9F55",
-               "#47BAC1",
-               "#AA4488",
+               "#F08080",
+               "#4169E1",
+               "#66CDAA",
+               "#B0C4DE",
+               "#FFB6C1",
+               "#6A5ACD",
+               "#A9A9A9",
+               "#9370DB",
             ],
+            borderColor: "#fff",
          },
       ],
    };
@@ -67,6 +68,8 @@ export const PieChart = ({ data }) => {
 
    const chartOptions = {
       onClick: handleGraphClick,
+      maintainAspectRatio: true,
+      aspectRatio: 2,
       plugins: {
          tooltip: {
             titleFont: {
@@ -74,7 +77,15 @@ export const PieChart = ({ data }) => {
             },
             bodyFont: { size: 18 }, // изменяем размер текста
          },
+         datalabels: {
+            color: "#fff", // Color of the datalabels
+            font: {
+               size: 16, // Size of the datalabels font
+            },
+         },
          legend: {
+            // position: "right",
+            align: "center",
             labels: {
                boxHeight: 15, // change label font size here
                font: { size: 18 },
@@ -83,7 +94,60 @@ export const PieChart = ({ data }) => {
       },
    };
 
+   const percentages = chartData.labels.map((label, i) => {
+      const dataset = chartData.datasets[0];
+      const value = dataset.data[i];
+      const total = dataset.data.reduce((a, b) => a + b, 0);
+      const percentage = ((value / total) * 100).toFixed(2);
+      const color = dataset.backgroundColor[i];
+      return { label, percentage, color };
+   });
+
+   const totalRecords = csvdataWithFilters.length;
+
    //    График
 
-   return <Pie data={chartData} options={chartOptions} />;
+   return (
+      <div className="PieGraph__container">
+         <div className="PieGraph__graph">
+            <Pie data={chartData} options={chartOptions} />
+         </div>
+         <div className="PieGraph__info">
+            <table className="PieGraph__info_table">
+               <thead>
+                  <tr>
+                     <th>Параметр</th>
+                     <th>Кол-во</th>
+                     <th>Проценты</th>
+                     <th>Общее число записей</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {percentages.map(({ label, percentage, color }, index) => (
+                     <tr key={index} >
+                        <td>
+                           <div
+                              style={{ display: "flex", alignItems: "center" }}
+                           >
+                              <div
+                                 style={{
+                                    width: "10px",
+                                    height: "10px",
+                                    backgroundColor: color,
+                                    marginRight: "5px",
+                                 }}
+                              ></div>
+                              <span>{label}</span>
+                           </div>
+                        </td>
+                        <td>{`${counts[index]}`}</td>
+                        <td>{`${percentage}%`}</td>
+                        <td>{totalRecords}</td> {/* Добавленная ячейка */}
+                     </tr>
+                  ))}
+               </tbody>
+            </table>
+         </div>
+      </div>
+   );
 };

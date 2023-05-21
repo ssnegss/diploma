@@ -15,14 +15,9 @@
    padding: 2rem;
    padding-top: 0.5rem;
    border-radius: 30px;
-   width: 100%;
-   max-width: 50rem;
-   margin: 1rem 5rem 1rem 5rem;
-}
-
-.pieChart__container {
-   max-width: 25rem;
-   margin: 0 auto;
+   margin: 2rem 5rem 2rem 5rem;
+   /* width: 65rem; */
+   /* margin: 2rem auto; */
 }
 
 .chartHeader {

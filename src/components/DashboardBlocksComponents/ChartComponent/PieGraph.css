@@ -1,0 +1,35 @@
+.PieGraph__container {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+.PieGraph__graph {
+   width: 40rem;
+}
+
+.PieGraph__info_itemName,
+.PieGraph__info_itemValue {
+   margin: 2px;
+}
+
+.PieGraph__info_itemValue {
+   font-weight: 600;
+   font-size: 1.12rem;
+}
+
+.PieGraph__info_table {
+   border-collapse: collapse;
+   width: 100%;
+}
+
+.PieGraph__info_table th,
+.PieGraph__info_table td {
+   border: 1px solid #e8e8e8;
+   padding: 8px;
+}
+
+.PieGraph__info_table tr:hover {
+   background-color: #e6e6e6;
+}

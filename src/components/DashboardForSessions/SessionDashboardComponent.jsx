@@ -146,7 +146,7 @@ export const SessionDashboardComponent = () => {
                      </LineChartComponent>
                   </div>
                   <div className="PdfOnePage">
-                     <div className="SessionDashboardComponent__PieChartsContainer">
+                     {/* <div className="SessionDashboardComponent__PieChartsContainer"> */}
                         <PieChartComponent
                            name={"Активность комплексов за период"}
                            data={dataLocationPieChart}
@@ -160,7 +160,7 @@ export const SessionDashboardComponent = () => {
                         >
                            <PieChart data={dataStationsPieChart} />
                         </PieChartComponent>
-                     </div>
+                     {/* </div> */}
                   </div>
                </div>
                <SaveToPdfComponent />
