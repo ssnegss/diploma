@@ -1,0 +1,37 @@
+.lineChart {
+   background-color: white;
+   padding: 2rem;
+   padding-top: 0.5rem;
+   margin: 2rem 5rem 2rem 5rem;
+   border-radius: 30px;
+}
+
+.pieChart {
+   background-color: white;
+   padding: 2rem;
+   padding-top: 0.5rem;
+   border-radius: 30px;
+   width: 100%;
+   max-width: 50rem;
+   margin: 1rem 5rem 1rem 5rem;
+}
+
+.chartHeader {
+   font-size: 1.1rem;
+   font-weight: 500;
+   margin: 1rem;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+}
+
+.chart__noDataFound {
+   font-size: 1rem;
+   color: rgb(237, 91, 0);
+}
+
+@media (max-width: 1300px) {
+   .pieChart {
+      margin: 1rem;
+   }
+}
