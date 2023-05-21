@@ -91,6 +91,7 @@ export const DialogComponent = ({ chartData }) => {
          </Button>
          <BootstrapDialog
             onClose={handleClose}
+            maxWidth="xl"
             aria-labelledby="customized-dialog-title"
             open={dialogOpened}
          >
@@ -104,6 +105,7 @@ export const DialogComponent = ({ chartData }) => {
                <MaterialReactTable
                   columns={tableHead}
                   data={chartData}
+                  initialState={{ density: 'compact' }}
                   localization={MRT_Localization_RU}
                />
             </DialogContent>

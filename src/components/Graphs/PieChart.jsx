@@ -48,6 +48,8 @@ export const PieChart = ({ data }) => {
       ],
    };
 
+   console.log(data)
+
    const handleGraphClick = (e, elements) => {
       if (elements && elements.length > 0) {
          const index = elements[0].index;
@@ -103,7 +105,7 @@ export const PieChart = ({ data }) => {
       return { label, percentage, color };
    });
 
-   const totalRecords = csvdataWithFilters.length;
+   const totalRecords = data.data.length;
 
    //    График
 

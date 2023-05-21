@@ -1,5 +1,6 @@
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 
 export const SaveToPdfComponent = () => {
    const handleSaveToPDF = () => {
@@ -31,5 +32,7 @@ export const SaveToPdfComponent = () => {
       });
    };
 
-   return <button onClick={handleSaveToPDF}>Сохранить в PDF</button>;
+   return (
+      <ButtonComponent name={"Сохранить в PDF"} onClick={handleSaveToPDF} />
+   );
 };
