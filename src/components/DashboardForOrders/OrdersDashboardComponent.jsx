@@ -19,6 +19,7 @@ import {
    SESSION_ID,
 } from "../../constants/index";
 
+import { SaveToPdfComponent } from "../SaveToPdfComponent/SaveToPdfComponent";
 import { PriceComponent } from "../DashboardBlocksComponents/PriceComponent/PriceComponent";
 import { LineChartComponent } from "../DashboardBlocksComponents/ChartComponent/LineChartComponent";
 import { PieChartComponent } from "../DashboardBlocksComponents/ChartComponent/PieChartComponent";
@@ -148,91 +149,99 @@ export const OrdersDashboardComponent = () => {
                   <DialogComponent chartData={dataForDialog} />
                ) : null}
                <div className="DashboardComponent">
-                  <div className="DashboardComponent__priceBlock">
-                     <PriceComponent
-                        data={dataFullPrice}
-                        price={lineDataFullPrice}
-                     />
-                     <PriceComponent
-                        data={dataConsumedEneryPrice}
-                        price={lineDataConsumedEneryPrice}
-                     />
-                     <PriceComponent
-                        data={dataPayedPrice}
-                        price={lineDataPayedPrice}
-                     />
+                  <div className="PdfOnePage">
+                     <div className="DashboardComponent__priceBlock">
+                        <PriceComponent
+                           data={dataFullPrice}
+                           price={lineDataFullPrice}
+                        />
+                        <PriceComponent
+                           data={dataConsumedEneryPrice}
+                           price={lineDataConsumedEneryPrice}
+                        />
+                        <PriceComponent
+                           data={dataPayedPrice}
+                           price={lineDataPayedPrice}
+                        />
+                     </div>
+                     <LineChartComponent
+                        name={"Оплата за период"}
+                        data={ChartGraphDatePriceArray}
+                     >
+                        <MultiLineChart data={ChartGraphDatePriceArray} />
+                     </LineChartComponent>
                   </div>
-                  <LineChartComponent
-                     name={"Оплата за период"}
-                     data={ChartGraphDatePriceArray}
-                  >
-                     <MultiLineChart data={ChartGraphDatePriceArray} />
-                  </LineChartComponent>
-                  <div className="DashboardComponent__priceBlock">
-                     <PriceComponent
+                  <div className="PdfOnePage">
+                     <div className="DashboardComponent__priceBlock">
+                        <PriceComponent
+                           data={dataConsumedEnergy}
+                           price={lineDataConsumedEnergy}
+                        />
+                     </div>
+                     <LineChartComponent
+                        name={"Потребленная энергия за период"}
                         data={dataConsumedEnergy}
-                        price={lineDataConsumedEnergy}
-                     />
+                     >
+                        <SingleLineChart data={dataConsumedEnergy} />
+                     </LineChartComponent>
                   </div>
-                  <LineChartComponent
-                     name={"Потребленная энергия за период"}
-                     data={dataConsumedEnergy}
-                  >
-                     <SingleLineChart data={dataConsumedEnergy} />
-                  </LineChartComponent>
-
                   <div>
                      <h1>Общий свод</h1>
-                     <div className="OrdersDashboardComponent__PieChartsContainer">
-                        <PieChartComponent
-                           name={"Название локации"}
-                           data={dataLocationFullPieChart}
-                        >
-                           <PieChart data={dataLocationFullPieChart} />
-                        </PieChartComponent>
-                        <PieChartComponent
-                           name={"Название станции"}
-                           data={dataStationsFullPieChart}
-                        >
-                           <PieChart data={dataStationsFullPieChart} />
-                        </PieChartComponent>
+                     <div className="PdfOnePage">
+                        <div className="OrdersDashboardComponent__PieChartsContainer">
+                           <PieChartComponent
+                              name={"Название локации"}
+                              data={dataLocationFullPieChart}
+                           >
+                              <PieChart data={dataLocationFullPieChart} />
+                           </PieChartComponent>
+                           <PieChartComponent
+                              name={"Название станции"}
+                              data={dataStationsFullPieChart}
+                           >
+                              <PieChart data={dataStationsFullPieChart} />
+                           </PieChartComponent>
+                        </div>
                      </div>
+                     <div className="PdfOnePage">
+                        <div className="OrdersDashboardComponent__PieChartsContainer">
+                           <PieChartComponent
+                              name={"Описание статуса платежа (при ошибке)"}
+                              data={dataErrorStatusFullPieChart}
+                           >
+                              <PieChart data={dataErrorStatusFullPieChart} />
+                           </PieChartComponent>
 
-                     <div className="OrdersDashboardComponent__PieChartsContainer">
-                        <PieChartComponent
-                           name={"Описание статуса платежа (при ошибке)"}
-                           data={dataErrorStatusFullPieChart}
-                        >
-                           <PieChart data={dataErrorStatusFullPieChart} />
-                        </PieChartComponent>
-
-                        <PieChartComponent
-                           name={"Статус платежа"}
-                           data={dataPaymentStatusFullPieChart}
-                        >
-                           <PieChart data={dataPaymentStatusFullPieChart} />
-                        </PieChartComponent>
+                           <PieChartComponent
+                              name={"Статус платежа"}
+                              data={dataPaymentStatusFullPieChart}
+                           >
+                              <PieChart data={dataPaymentStatusFullPieChart} />
+                           </PieChartComponent>
+                        </div>
                      </div>
                   </div>
-
                   <div>
-                     <h1>Сессионный свод</h1>
-                     <div className="OrdersDashboardComponent__PieChartsContainer">
-                        <PieChartComponent
-                           name={"Название локации"}
-                           data={dataLocationPieChart}
-                        >
-                           <PieChart data={dataLocationPieChart} />
-                        </PieChartComponent>
-                        <PieChartComponent
-                           name={"Название станции"}
-                           data={dataStationsPieChart}
-                        >
-                           <PieChart data={dataStationsPieChart} />
-                        </PieChartComponent>
+                     <div className="PdfOnePage">
+                        <h1>Сессионный свод</h1>
+                        <div className="OrdersDashboardComponent__PieChartsContainer">
+                           <PieChartComponent
+                              name={"Название локации"}
+                              data={dataLocationPieChart}
+                           >
+                              <PieChart data={dataLocationPieChart} />
+                           </PieChartComponent>
+                           <PieChartComponent
+                              name={"Название станции"}
+                              data={dataStationsPieChart}
+                           >
+                              <PieChart data={dataStationsPieChart} />
+                           </PieChartComponent>
+                        </div>
                      </div>
                   </div>
                </div>
+               <SaveToPdfComponent />
             </>
          ) : null}
       </>

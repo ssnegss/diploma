@@ -109,53 +109,58 @@ export const SessionDashboardComponent = () => {
                   <DialogComponent chartData={dataForDialog} />
                ) : null}
                <div className="DashboardComponent">
-                  <div className="DashboardComponent__priceBlock">
-                     <PriceComponent
-                        data={dataFullPrice}
-                        price={lineDataFullPrice}
-                     />
-                     <PriceComponent
-                        data={dataConsumedEneryPrice}
-                        price={lineDataConsumedEneryPrice}
-                     />
-                     <PriceComponent
-                        data={dataPayedPrice}
-                        price={lineDataPayedPrice}
-                     />
+                  <div className="PdfOnePage">
+                     <div className="DashboardComponent__priceBlock">
+                        <PriceComponent
+                           data={dataFullPrice}
+                           price={lineDataFullPrice}
+                        />
+                        <PriceComponent
+                           data={dataConsumedEneryPrice}
+                           price={lineDataConsumedEneryPrice}
+                        />
+                        <PriceComponent
+                           data={dataPayedPrice}
+                           price={lineDataPayedPrice}
+                        />
+                     </div>
+                     <LineChartComponent
+                        name={"Оплата за период"}
+                        data={ChartGraphDatePriceArray}
+                     >
+                        <MultiLineChart data={ChartGraphDatePriceArray} />
+                     </LineChartComponent>
                   </div>
-                  <LineChartComponent
-                     name={"Оплата за период"}
-                     data={ChartGraphDatePriceArray}
-                  >
-                     <MultiLineChart data={ChartGraphDatePriceArray} />
-                  </LineChartComponent>
-                  <div className="DashboardComponent__priceBlock">
-                     <PriceComponent
+                  <div className="PdfOnePage">
+                     <div className="DashboardComponent__priceBlock">
+                        <PriceComponent
+                           data={dataConsumedEnergy}
+                           price={lineDataConsumedEnergy}
+                        />
+                     </div>
+                     <LineChartComponent
+                        name={"Потребленная энергия за период"}
                         data={dataConsumedEnergy}
-                        price={lineDataConsumedEnergy}
-                     />
+                     >
+                        <SingleLineChart data={dataConsumedEnergy} />
+                     </LineChartComponent>
                   </div>
-                  <LineChartComponent
-                     name={"Потребленная энергия за период"}
-                     data={dataConsumedEnergy}
-                  >
-                     <SingleLineChart data={dataConsumedEnergy} />
-                  </LineChartComponent>
+                  <div className="PdfOnePage">
+                     <div className="SessionDashboardComponent__PieChartsContainer">
+                        <PieChartComponent
+                           name={"Активность комплексов за период"}
+                           data={dataLocationPieChart}
+                        >
+                           <PieChart data={dataLocationPieChart} />
+                        </PieChartComponent>
 
-                  <div className="SessionDashboardComponent__PieChartsContainer">
-                     <PieChartComponent
-                        name={"Активность комплексов за период"}
-                        data={dataLocationPieChart}
-                     >
-                        <PieChart data={dataLocationPieChart} />
-                     </PieChartComponent>
-
-                     <PieChartComponent
-                        name={"Активность станций за период"}
-                        data={dataStationsPieChart}
-                     >
-                        <PieChart data={dataStationsPieChart} />
-                     </PieChartComponent>
+                        <PieChartComponent
+                           name={"Активность станций за период"}
+                           data={dataStationsPieChart}
+                        >
+                           <PieChart data={dataStationsPieChart} />
+                        </PieChartComponent>
+                     </div>
                   </div>
                </div>
                <SaveToPdfComponent />
