@@ -14,6 +14,7 @@ import {
    LOCATION_NAME,
    STATION_NAME,
 } from "../../constants/index";
+import { SaveToPdfComponent } from "../SaveToPdfComponent/SaveToPdfComponent";
 
 import "./SessionDashboartComponent.css";
 
@@ -195,6 +196,7 @@ export const SessionDashboardComponent = () => {
                      </div>
                   </div>
                </div>
+               <SaveToPdfComponent />
             </>
          ) : null}
       </>
