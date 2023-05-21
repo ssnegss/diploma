@@ -19,6 +19,10 @@ import {
    SESSION_ID,
 } from "../../constants/index";
 
+import { PriceComponent } from "../DashboardBlocksComponents/PriceComponent/PriceComponent";
+import { LineChartComponent } from "../DashboardBlocksComponents/ChartComponent/LineChartComponent";
+import { PieChartComponent } from "../DashboardBlocksComponents/ChartComponent/PieChartComponent";
+
 import "./OrdersDashboardComponent.css";
 
 export const OrdersDashboardComponent = () => {
@@ -145,152 +149,87 @@ export const OrdersDashboardComponent = () => {
                ) : null}
                <div className="DashboardComponent">
                   <div className="DashboardComponent__priceBlock">
-                     <div className="DashboardComponent__priceBlock_priceSubBlock">
-                        <p className="DashboardComponent__priceBlock_header">
-                           {dataFullPrice.length > 0
-                              ? dataFullPrice[0].name
-                              : "Не удалось получить данные"}
-                        </p>
-                        <h1>{lineDataFullPrice.toLocaleString("ru")}</h1>
-                     </div>
-                     <div className="DashboardComponent__priceBlock_priceSubBlock">
-                        <p className="DashboardComponent__priceBlock_header">
-                           {dataConsumedEneryPrice.length > 0
-                              ? dataConsumedEneryPrice[0].name
-                              : "Не удалось получить данные"}
-                        </p>
-                        <h1>
-                           {lineDataConsumedEneryPrice.toLocaleString("ru")}
-                        </h1>
-                     </div>
-                     <div className="DashboardComponent__priceBlock_priceSubBlock">
-                        <p className="DashboardComponent__priceBlock_header">
-                           {dataPayedPrice.length > 0
-                              ? dataPayedPrice[0].name
-                              : "Не удалось получить данные"}
-                        </p>
-                        <h1>{lineDataPayedPrice.toLocaleString("ru")}</h1>
-                     </div>
+                     <PriceComponent
+                        data={dataFullPrice}
+                        price={lineDataFullPrice}
+                     />
+                     <PriceComponent
+                        data={dataConsumedEneryPrice}
+                        price={lineDataConsumedEneryPrice}
+                     />
+                     <PriceComponent
+                        data={dataPayedPrice}
+                        price={lineDataPayedPrice}
+                     />
                   </div>
-                  <div className="OrdersDashboardComponent__block">
-                     <h1 className="OrdersDashboardComponent__block_header">
-                        Оплаты за период
-                     </h1>
-                     {ChartGraphDatePriceArray.length > 0 ? (
-                        <MultiLineChart data={ChartGraphDatePriceArray} />
-                     ) : (
-                        <h1 className="graph__alert_noDataFound">
-                           No data found
-                        </h1>
-                     )}
-                  </div>
+                  <LineChartComponent
+                     name={"Оплата за период"}
+                     data={ChartGraphDatePriceArray}
+                  >
+                     <MultiLineChart data={ChartGraphDatePriceArray} />
+                  </LineChartComponent>
                   <div className="DashboardComponent__priceBlock">
-                     <div className="DashboardComponent__priceBlock_priceSubBlock">
-                        <p className="DashboardComponent__priceBlock_header">
-                           {dataConsumedEnergy.length > 0
-                              ? dataConsumedEnergy[0].name
-                              : "Не удалось получить данные"}
-                        </p>
-                        <h1>{lineDataConsumedEnergy.toLocaleString("ru")}</h1>
-                     </div>
+                     <PriceComponent
+                        data={dataConsumedEnergy}
+                        price={lineDataConsumedEnergy}
+                     />
                   </div>
-                  <div className="OrdersDashboardComponent__block">
-                     <h1 className="OrdersDashboardComponent__block_header">
-                        Потребленная энергия за период
-                     </h1>
-                     {dataConsumedEnergy !== 0 ? (
-                        <SingleLineChart data={dataConsumedEnergy} />
-                     ) : (
-                        <h1 className="graph__alert_noDataFound">
-                           No data found
-                        </h1>
-                     )}
-                  </div>
+                  <LineChartComponent
+                     name={"Потребленная энергия за период"}
+                     data={dataConsumedEnergy}
+                  >
+                     <SingleLineChart data={dataConsumedEnergy} />
+                  </LineChartComponent>
 
                   <div>
                      <h1>Общий свод</h1>
                      <div className="OrdersDashboardComponent__PieChartsContainer">
-                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                           <h1 className="OrdersDashboardComponent__block_header">
-                              Название локации
-                           </h1>
-                           {dataLocationFullPieChart !== 0 ? (
-                              <PieChart data={dataLocationFullPieChart} />
-                           ) : (
-                              <h1 className="graph__alert_noDataFound">
-                                 No data found
-                              </h1>
-                           )}
-                        </div>
-                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                           <h1 className="OrdersDashboardComponent__block_header">
-                              Название станции
-                           </h1>
-                           {dataStationsFullPieChart !== 0 ? (
-                              <PieChart data={dataStationsFullPieChart} />
-                           ) : (
-                              <h1 className="graph__alert_noDataFound">
-                                 No data found
-                              </h1>
-                           )}
-                        </div>
+                        <PieChartComponent
+                           name={"Название локации"}
+                           data={dataLocationFullPieChart}
+                        >
+                           <PieChart data={dataLocationFullPieChart} />
+                        </PieChartComponent>
+                        <PieChartComponent
+                           name={"Название станции"}
+                           data={dataStationsFullPieChart}
+                        >
+                           <PieChart data={dataStationsFullPieChart} />
+                        </PieChartComponent>
                      </div>
 
                      <div className="OrdersDashboardComponent__PieChartsContainer">
-                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                           <h1 className="OrdersDashboardComponent__block_header">
-                              Описание статуса платежа (при ошибке)
-                           </h1>
-                           {dataErrorStatusFullPieChart !== 0 ? (
-                              <PieChart data={dataErrorStatusFullPieChart} />
-                           ) : (
-                              <h1 className="graph__alert_noDataFound">
-                                 No data found
-                              </h1>
-                           )}
-                        </div>
-                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                           <h1 className="OrdersDashboardComponent__block_header">
-                              Статус платежа
-                           </h1>
-                           {dataPaymentStatusFullPieChart !== 0 ? (
-                              <PieChart data={dataPaymentStatusFullPieChart} />
-                           ) : (
-                              <h1 className="graph__alert_noDataFound">
-                                 No data found
-                              </h1>
-                           )}
-                        </div>
+                        <PieChartComponent
+                           name={"Описание статуса платежа (при ошибке)"}
+                           data={dataErrorStatusFullPieChart}
+                        >
+                           <PieChart data={dataErrorStatusFullPieChart} />
+                        </PieChartComponent>
+
+                        <PieChartComponent
+                           name={"Статус платежа"}
+                           data={dataPaymentStatusFullPieChart}
+                        >
+                           <PieChart data={dataPaymentStatusFullPieChart} />
+                        </PieChartComponent>
                      </div>
                   </div>
 
                   <div>
                      <h1>Сессионный свод</h1>
                      <div className="OrdersDashboardComponent__PieChartsContainer">
-                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                           <h1 className="OrdersDashboardComponent__block_header">
-                              Название локации
-                           </h1>
-                           {dataLocationPieChart !== 0 ? (
-                              <PieChart data={dataLocationPieChart} />
-                           ) : (
-                              <h1 className="graph__alert_noDataFound">
-                                 No data found
-                              </h1>
-                           )}
-                        </div>
-                        <div className="OrdersDashboardComponent__PieChartsContainer_PieChart">
-                           <h1 className="OrdersDashboardComponent__block_header">
-                              Название станции
-                           </h1>
-                           {dataStationsPieChart !== 0 ? (
-                              <PieChart data={dataStationsPieChart} />
-                           ) : (
-                              <h1 className="graph__alert_noDataFound">
-                                 No data found
-                              </h1>
-                           )}
-                        </div>
+                        <PieChartComponent
+                           name={"Название локации"}
+                           data={dataLocationPieChart}
+                        >
+                           <PieChart data={dataLocationPieChart} />
+                        </PieChartComponent>
+                        <PieChartComponent
+                           name={"Название станции"}
+                           data={dataStationsPieChart}
+                        >
+                           <PieChart data={dataStationsPieChart} />
+                        </PieChartComponent>
                      </div>
                   </div>
                </div>
