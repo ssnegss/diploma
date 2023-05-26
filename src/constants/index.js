@@ -1,4 +1,5 @@
 export const DATE_COLUMN = ["Дата старта"]
+export const PAYMENT_DATE_COLUMN =["Дата платежа"]
 export const FULL_PRICE = ["Общая стоимость, Р"]
 export const CONSUMED_ENERGY_PRICE = ["Стоимость за потреблённую энергию, Р"]
 export const PAYED_PRICE = ["Оплачено, Р"]

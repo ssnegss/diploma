@@ -48,8 +48,6 @@ export const PieChart = ({ data }) => {
       ],
    };
 
-   console.log(data)
-
    const handleGraphClick = (e, elements) => {
       if (elements && elements.length > 0) {
          const index = elements[0].index;
@@ -126,7 +124,7 @@ export const PieChart = ({ data }) => {
                </thead>
                <tbody>
                   {percentages.map(({ label, percentage, color }, index) => (
-                     <tr key={index} >
+                     <tr key={index}>
                         <td>
                            <div
                               style={{ display: "flex", alignItems: "center" }}

@@ -3,7 +3,7 @@ import { convertDate } from "../../services/convertDate";
 
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
-import { DATE_COLUMN } from "../../constants/index";
+import { DATE_COLUMN, PAYMENT_DATE_COLUMN } from "../../constants/index";
 
 import {
    saveCsvData,
@@ -59,33 +59,31 @@ export const TouchUploadContainer = () => {
       const filteredItems = data.filter((item) => {
          const itemDate = new Date(convertDate(item[DATE_COLUMN])).getTime();
 
-         return itemDate >= dateFrom && itemDate <= dateTo;
-      });
+         const itemPaymentDate = new Date(
+            convertDate(item[PAYMENT_DATE_COLUMN])
+         ).getTime();
 
+         return (
+            (itemDate >= dateFrom && itemDate <= dateTo) ||
+            (itemPaymentDate >= dateFrom && itemPaymentDate <= dateTo)
+         );
+      });
       return filteredItems;
    };
-
-   //    Функция получения данных
-
-   async function fetchData(filename) {
-      const response = await fetchTouchData(
-         `http://localhost:5000/${filename}`
-      );
-      const data = await response;
-      return data;
-   }
 
    //    Обработчик нажатия на кнопку "Загрузить данные"
 
    async function handleClick() {
       if (dropdownTouchOption === 0) {
-         const data = await fetchData("sessions.json");
-         const resultData = removeUndefined(data);
+         const data = await fetchTouchData("/get_sessions_reports");
+         const reports_data = data.data;
+         const resultData = removeUndefined(reports_data);
          dispatch(saveCsvData(filterDataByDate(resultData)));
       }
       if (dropdownTouchOption === 1) {
-         const data = await fetchData("orders.json");
-         const resultData = removeUndefined(data);
+         const data = await fetchTouchData("/get_orders_reports");
+         const reports_data = data.data;
+         const resultData = removeUndefined(reports_data);
          dispatch(saveCsvData(filterDataByDate(resultData)));
       }
       dispatch(showButtonIsPressed(false));

@@ -1,5 +1,10 @@
+import axios from "axios";
+
 export const fetchTouchData = async (path) => {
-   const response = await fetch(path);
-   const json = await response.json();
-   return json;
+   try {
+      const response = await axios.get(`http://localhost:5000${path}`);
+      return response;
+   } catch (error) {
+      console.error("Failed to fetch orders", error);
+   }
 };

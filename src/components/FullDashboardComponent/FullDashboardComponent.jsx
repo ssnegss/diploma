@@ -3,7 +3,7 @@ import { TableComponent } from "../TableComponent/SortableTableComponent";
 import { SessionDashboardComponent } from "../DashboardForSessions/SessionDashboardComponent";
 import { OrdersDashboardComponent } from "../DashboardForOrders/OrdersDashboardComponent";
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
-import { DATE_COLUMN } from "../../constants/index";
+import { DATE_COLUMN, PAYMENT_DATE_COLUMN } from "../../constants/index";
 
 import { convertDate } from "../../services/convertDate";
 
@@ -74,9 +74,13 @@ export const FullDashboardComponent = () => {
             ? new Date(convertDate(item[DATE_COLUMN])).getTime()
             : undefined;
 
+         const itemPaymentDate = item[PAYMENT_DATE_COLUMN]
+            ? new Date(convertDate(item[PAYMENT_DATE_COLUMN])).getTime()
+            : undefined;
+
          return (
             (itemDate >= dateFrom && itemDate <= dateTo) ||
-            itemDate === undefined
+            (itemPaymentDate >= dateFrom && itemPaymentDate <= dateTo)
          );
       });
 
