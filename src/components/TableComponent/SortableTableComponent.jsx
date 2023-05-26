@@ -40,6 +40,7 @@ export const TableComponent = ({ columns, rows }) => {
          <MaterialReactTable
             columns={columns}
             data={rows}
+            initialState={{ density: 'compact' }}
             localization={MRT_Localization_RU}
             renderTopToolbarCustomActions={() => (
                <ButtonComponent
