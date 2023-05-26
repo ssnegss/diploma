@@ -41,6 +41,9 @@ export const TouchUploadContainer = () => {
       (store) => store?.calendarDateReducer?.touchDateTo
    );
 
+   const dateFrom = new Date(getTouchDatefrom).getTime();
+   const dateTo = new Date(getTouchDateTo).getTime();
+
    const removeUndefined = (data) => {
       const result = data.map((item) => {
          if (Object.values(item).every((value) => value === undefined)) {
@@ -52,39 +55,28 @@ export const TouchUploadContainer = () => {
       return result;
    };
 
-   const filterDataByDate = (data) => {
-      const dateFrom = new Date(getTouchDatefrom).getTime();
-      const dateTo = new Date(getTouchDateTo).getTime();
-
-      const filteredItems = data.filter((item) => {
-         const itemDate = new Date(convertDate(item[DATE_COLUMN])).getTime();
-
-         const itemPaymentDate = new Date(
-            convertDate(item[PAYMENT_DATE_COLUMN])
-         ).getTime();
-
-         return (
-            (itemDate >= dateFrom && itemDate <= dateTo) ||
-            (itemPaymentDate >= dateFrom && itemPaymentDate <= dateTo)
-         );
-      });
-      return filteredItems;
-   };
-
    //    Обработчик нажатия на кнопку "Загрузить данные"
 
    async function handleClick() {
       if (dropdownTouchOption === 0) {
-         const data = await fetchTouchData("/get_sessions_reports");
+         const data = await fetchTouchData(
+            "/get_sessions_reports",
+            dateFrom,
+            dateTo
+         );
          const reports_data = data.data;
          const resultData = removeUndefined(reports_data);
-         dispatch(saveCsvData(filterDataByDate(resultData)));
+         dispatch(saveCsvData(resultData));
       }
       if (dropdownTouchOption === 1) {
-         const data = await fetchTouchData("/get_orders_reports");
+         const data = await fetchTouchData(
+            "/get_orders_reports",
+            dateFrom,
+            dateTo
+         );
          const reports_data = data.data;
          const resultData = removeUndefined(reports_data);
-         dispatch(saveCsvData(filterDataByDate(resultData)));
+         dispatch(saveCsvData(resultData));
       }
       dispatch(showButtonIsPressed(false));
       dispatch(dataIsUploaded(true));
