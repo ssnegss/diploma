@@ -139,8 +139,6 @@ export const OrdersDashboardComponent = () => {
    const lineDataPayedPrice = countFullValue(dataPayedPrice);
    const lineDataConsumedEnergy = countFullValue(dataConsumedEnergy);
 
-   console.log(dataErrorStatusFullPieChart)
-
    //    Рендер комппонента если нажата кнока "Отобразить графики"
 
    return (

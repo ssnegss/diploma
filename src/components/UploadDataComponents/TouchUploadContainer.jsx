@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { CalendarComponent } from "../CalendarComponent/CalendarCompoennt";
@@ -16,6 +17,7 @@ import { fetchTouchData } from "../../services/apiInteraction";
 
 export const TouchUploadContainer = () => {
    const dispatch = useDispatch();
+   const [error, setError] = useState("");
 
    const handleTouchDateFrom = (setTouchDateFrom) => {
       dispatch(touchDateFrom(setTouchDateFrom));
@@ -56,30 +58,42 @@ export const TouchUploadContainer = () => {
    //    Обработчик нажатия на кнопку "Загрузить данные"
 
    async function handleClick() {
-      if (dropdownTouchOption === 0) {
-         const data = await fetchTouchData(
-            "/get_sessions_reports",
-            dateFrom,
-            dateTo
-         );
-         const reports_data = data.data;
-         const resultData = removeUndefined(reports_data);
-         dispatch(saveCsvData(resultData));
+      try {
+         if (dropdownTouchOption === 0) {
+            const data = await fetchTouchData(
+               "/get_sessions_reports",
+               dateFrom,
+               dateTo
+            );
+            if (data.error) setError(data.error);
+            else setError("");
+            const reports_data = data.data;
+            const resultData = removeUndefined(reports_data);
+            dispatch(saveCsvData(resultData));
+         }
+         if (dropdownTouchOption === 1) {
+            const data = await fetchTouchData(
+               "/get_orders_reports",
+               dateFrom,
+               dateTo
+            );
+            if (data.error) setError(data.error);
+            else setError("");
+            const reports_data = data.data;
+            const resultData = removeUndefined(reports_data);
+            dispatch(saveCsvData(resultData));
+         }
+         dispatch(showButtonIsPressed(false));
+         dispatch(dataIsUploaded(true));
+         dispatch(tableDateFrom(getTouchDatefrom));
+         dispatch(tableDateTo(getTouchDateTo));
+      } catch {
+         if (error.length < 0) setError("Error");
+         dispatch(showButtonIsPressed(false));
+         dispatch(dataIsUploaded(false));
+         dispatch(tableDateFrom(undefined));
+         dispatch(tableDateTo(undefined));
       }
-      if (dropdownTouchOption === 1) {
-         const data = await fetchTouchData(
-            "/get_orders_reports",
-            dateFrom,
-            dateTo
-         );
-         const reports_data = data.data;
-         const resultData = removeUndefined(reports_data);
-         dispatch(saveCsvData(resultData));
-      }
-      dispatch(showButtonIsPressed(false));
-      dispatch(dataIsUploaded(true));
-      dispatch(tableDateFrom(getTouchDatefrom));
-      dispatch(tableDateTo(getTouchDateTo));
    }
 
    return (
@@ -92,6 +106,7 @@ export const TouchUploadContainer = () => {
                dateFrom={handleTouchDateFrom}
                dateTo={handleTouchDateTo}
             />
+            {error && <p>{error}</p>}
             <div className="TouchUploadContainer__button">
                <ButtonComponent name="Загрузить данные" onClick={handleClick} />
             </div>

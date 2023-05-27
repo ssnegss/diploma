@@ -24,14 +24,18 @@ export const AuthenticationComponent = () => {
    const handleSubmit = async (event) => {
       event.preventDefault();
 
-      try {
-         const data = await login(username, password);
-         if (data.accessToken) {
+      if (username.length > 0 && password.length > 0) {
+         try {
+            const data = await login(username, password);
+            if (data.accessToken) {
+            }
+            dispatch(authenticationCompleted(true));
+         } catch (err) {
+            dispatch(authenticationCompleted(false));
+            err.error ? setError(err.error) : setError("Ошибка авторизации");
          }
-         dispatch(authenticationCompleted(true));
-      } catch (err) {
-         dispatch(authenticationCompleted(false));
-         setError(err.error);
+      } else {
+         setError("Введите логин и пароль");
       }
    };
 

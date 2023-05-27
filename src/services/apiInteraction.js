@@ -7,12 +7,15 @@ export const fetchTouchData = async (path, startDate, endDate) => {
          startDate: startDate,
          endDate: endDate,
       };
-      console.log(`${SERVER_URL}${path}`);
       const response = await axios.get(`${SERVER_URL}${path}`, {
          params: params,
       });
-      return response;
+      if (response.data.length > 0) {
+         return response;
+      }
+      return { error: "Данные не найдены" };
    } catch (error) {
       console.error("Failed to fetch orders", error);
+      return { error: "Ошибка получения данных" };
    }
 };
