@@ -1,7 +1,8 @@
+import moment from 'moment';
 import { useSelector } from "react-redux";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 
-export const SaveToCsvComponent = () => {
+export const SaveToCsvComponent = ({reportType}) => {
    // Получение данных из таблицы
    const csvDataFiltered = useSelector(
       (store) => store?.dataReducer?.filteredCsvData
@@ -37,7 +38,9 @@ export const SaveToCsvComponent = () => {
 
    const handleDownload = () => {
       const csv = convertArrayOfObjectsToCSV(csvDataFiltered);
-      downloadCSV(csv, "data.csv");
+      const currentDate = moment();
+      const formattedDate = currentDate.format('DD-MM-YYYY');
+      downloadCSV(csv, `${formattedDate}_${reportType}_Report`);
    };
 
    return <ButtonComponent name={"Скачать CSV"} onClick={handleDownload} />;

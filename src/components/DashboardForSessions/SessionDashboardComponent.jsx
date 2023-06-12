@@ -166,7 +166,7 @@ export const SessionDashboardComponent = () => {
                </div>
                <div className="downloadButtons">
                   <SaveToPdfComponent />
-                  <SaveToCsvComponent />
+                  <SaveToCsvComponent reportType={"Sessions"}/>
                </div>
             </>
          ) : null}

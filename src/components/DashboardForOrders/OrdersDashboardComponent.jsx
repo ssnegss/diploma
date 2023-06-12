@@ -236,8 +236,10 @@ export const OrdersDashboardComponent = () => {
                      </div>
                   </div>
                </div>
-               <SaveToPdfComponent />
-               <SaveToCsvComponent />
+               <div className="downloadButtons">
+                  <SaveToPdfComponent />
+                  <SaveToCsvComponent reportType={"Orders"} />
+               </div>
             </>
          ) : null}
       </>
