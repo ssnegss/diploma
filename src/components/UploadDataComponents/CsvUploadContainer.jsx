@@ -23,11 +23,11 @@ export const CsvUploadContainer = () => {
 
    const handleOnChange = (e) => {
       const file = e.target.files[0];
-      const filename = e.target.files[0].name;
-
-      setFile(file);
 
       if (file != undefined) {
+         const filename = e.target.files[0].name;
+
+         setFile(file);
          if (
             (filename.substring(
                filename.lastIndexOf(".") + 1,
