@@ -1,12 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Для запуска приложения необходимо:
 
-In the project directory, you can run:
+1. установить [Node.js](https://nodejs.org/en)
+2. скачать и открыть проект в редакторе кода
+3. поставить зависимости через терминал командой `npm install`
+4. локально запустить проект на [http://localhost:3000](http://localhost:3000) командой `npm start`
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
+Версия проекта, находящаяся в открытом доступе, предназначена только для работы с загрузкой отчетов вручную.
