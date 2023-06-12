@@ -15,6 +15,7 @@ import {
    STATION_NAME,
 } from "../../constants/index";
 import { SaveToPdfComponent } from "../SaveToPdfComponent/SaveToPdfComponent";
+import { SaveToCsvComponent } from "../SaveToCsvComponent/SaveToCsvComponent";
 import { PriceComponent } from "../DashboardBlocksComponents/PriceComponent/PriceComponent";
 import { LineChartComponent } from "../DashboardBlocksComponents/ChartComponent/LineChartComponent";
 import { PieChartComponent } from "../DashboardBlocksComponents/ChartComponent/PieChartComponent";
@@ -147,23 +148,26 @@ export const SessionDashboardComponent = () => {
                   </div>
                   <div className="PdfOnePage">
                      {/* <div className="SessionDashboardComponent__PieChartsContainer"> */}
-                        <PieChartComponent
-                           name={"Активность комплексов за период"}
-                           data={dataLocationPieChart}
-                        >
-                           <PieChart data={dataLocationPieChart} />
-                        </PieChartComponent>
+                     <PieChartComponent
+                        name={"Активность комплексов за период"}
+                        data={dataLocationPieChart}
+                     >
+                        <PieChart data={dataLocationPieChart} />
+                     </PieChartComponent>
 
-                        <PieChartComponent
-                           name={"Активность станций за период"}
-                           data={dataStationsPieChart}
-                        >
-                           <PieChart data={dataStationsPieChart} />
-                        </PieChartComponent>
+                     <PieChartComponent
+                        name={"Активность станций за период"}
+                        data={dataStationsPieChart}
+                     >
+                        <PieChart data={dataStationsPieChart} />
+                     </PieChartComponent>
                      {/* </div> */}
                   </div>
                </div>
-               <SaveToPdfComponent />
+               <div className="downloadButtons">
+                  <SaveToPdfComponent />
+                  <SaveToCsvComponent />
+               </div>
             </>
          ) : null}
       </>

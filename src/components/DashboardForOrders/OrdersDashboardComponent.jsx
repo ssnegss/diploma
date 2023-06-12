@@ -20,6 +20,7 @@ import {
 } from "../../constants/index";
 
 import { SaveToPdfComponent } from "../SaveToPdfComponent/SaveToPdfComponent";
+import { SaveToCsvComponent } from "../SaveToCsvComponent/SaveToCsvComponent";
 import { PriceComponent } from "../DashboardBlocksComponents/PriceComponent/PriceComponent";
 import { LineChartComponent } from "../DashboardBlocksComponents/ChartComponent/LineChartComponent";
 import { PieChartComponent } from "../DashboardBlocksComponents/ChartComponent/PieChartComponent";
@@ -236,6 +237,7 @@ export const OrdersDashboardComponent = () => {
                   </div>
                </div>
                <SaveToPdfComponent />
+               <SaveToCsvComponent />
             </>
          ) : null}
       </>

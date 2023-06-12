@@ -4,8 +4,8 @@
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_RU } from "./_locales/ru.ts";
@@ -15,6 +15,8 @@ import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 import {
    saveCsvDataForFiltering,
    showButtonIsPressed,
+   tableDateFrom,
+   tableDateTo,
 } from "../../redux/actions/actionCreator";
 
 import "./SortableTableComponent.css";
@@ -24,11 +26,18 @@ import "./SortableTableComponent.css";
 export const TableComponent = ({ columns, rows }) => {
    const dispatch = useDispatch();
 
+   const getTableDatefrom = useSelector(
+      (store) => store?.calendarDateReducer?.tableDateFrom
+   );
+   const getTableDateTo = useSelector(
+      (store) => store?.calendarDateReducer?.tableDateTo
+   );
+
    const tableInstanceRef = useRef(null);
 
-   //    Отображение графиков по нажатии на кнопку
+   //    Отображение графиков по изменении даты фильтрации
 
-   const showGraphs = () => {
+   useEffect(() => {
       dispatch(showButtonIsPressed(true));
       dispatch(
          saveCsvDataForFiltering(
@@ -37,7 +46,7 @@ export const TableComponent = ({ columns, rows }) => {
                .rows.map((row) => row.original)
          )
       );
-   };
+   }, [getTableDatefrom, getTableDateTo]);
 
    //    Компонент таблицы
 
@@ -48,12 +57,6 @@ export const TableComponent = ({ columns, rows }) => {
             data={rows}
             initialState={{ density: "compact" }}
             localization={MRT_Localization_RU}
-            renderTopToolbarCustomActions={() => (
-               <ButtonComponent
-                  name="Отобразить графики"
-                  onClick={() => showGraphs()}
-               />
-            )}
             tableInstanceRef={tableInstanceRef}
          />
       </>

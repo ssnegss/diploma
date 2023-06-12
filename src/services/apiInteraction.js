@@ -13,6 +13,7 @@ export const fetchTouchData = async (path, startDate, endDate) => {
       if (response.data.length > 0) {
          return response;
       }
+      console.log(response.data)
       return { error: "Данные не найдены" };
    } catch (error) {
       console.error("Failed to fetch orders", error);

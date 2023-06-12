@@ -22,22 +22,32 @@ export const CsvUploadContainer = () => {
    //    Если формат другой, всплывает окно, что файл не загружен.
 
    const handleOnChange = (e) => {
-      setFile(e.target.files[0]);
-      if (
-         (e.target.files[0].name.substring(
-            e.target.files[0].name.lastIndexOf(".") + 1,
-            e.target.files[0].name.length
-         ) || e.target.files[0].name) === "csv"
-      ) {
-         setShowButtonVisible(1);
-         dispatch(dataIsUploaded(false));
-         dispatch(showButtonIsPressed(false));
-         setFileName(e.target.files[0].name);
-      } else {
-         setShowButtonVisible(0);
-         setFileName("");
-         dispatch(dataIsUploaded(false));
-         setTimeout(() => alert("Файл не загружен"), 100);
+      const file = e.target.files[0];
+      const filename = e.target.files[0].name;
+
+      setFile(file);
+
+      if (file != undefined) {
+         if (
+            (filename.substring(
+               filename.lastIndexOf(".") + 1,
+               filename.length
+            ) || filename) === "csv"
+         ) {
+            try {
+               setShowButtonVisible(1);
+               dispatch(dataIsUploaded(false));
+               dispatch(showButtonIsPressed(false));
+               setFileName(filename);
+            } catch {
+               console.log("не загружен");
+            }
+         } else {
+            setShowButtonVisible(0);
+            setFileName("");
+            dispatch(dataIsUploaded(false));
+            setTimeout(() => alert("Файл не загружен"), 100);
+         }
       }
    };
 
