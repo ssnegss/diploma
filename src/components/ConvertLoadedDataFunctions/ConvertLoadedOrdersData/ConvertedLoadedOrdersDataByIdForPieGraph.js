@@ -33,7 +33,7 @@ export const ConvertLoadedOrdersDataByIdForPieGraph = (csvData, id, column) => {
          }
       });
 
-      //    Для формирования графика вохвращаем name
+      //    Для формирования графика возвращаем name
 
       const resultData = removedDuplicateIdData.map((item) => item.name);
 

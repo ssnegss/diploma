@@ -19,6 +19,8 @@ export const TouchUploadContainer = () => {
    const dispatch = useDispatch();
    const [error, setError] = useState("");
 
+   //    Функции для установки начальной и конечной дат загрузки отчетов
+
    const handleTouchDateFrom = (setTouchDateFrom) => {
       dispatch(touchDateFrom(setTouchDateFrom));
    };
@@ -27,11 +29,13 @@ export const TouchUploadContainer = () => {
       dispatch(touchDateTo(setTouchDateTo));
    };
 
+   //    Выбор типа получаемых данных
+
    const dropdownTouchOption = useSelector(
       (store) => store?.dropdownOptionReducer?.touchOption
    );
 
-   //    Даты "С" и "По" для формирования данных
+   //    Даты "С" и "По", которые передаются на серевер для получения данных по корректному диапазону
 
    const getTouchDatefrom = useSelector(
       (store) => store?.calendarDateReducer?.touchDateFrom
@@ -59,6 +63,7 @@ export const TouchUploadContainer = () => {
 
    async function handleClick() {
       try {
+         //    Получение данных по сессиям
          if (dropdownTouchOption === 0) {
             const data = await fetchTouchData(
                "/get_sessions_reports",
@@ -71,6 +76,7 @@ export const TouchUploadContainer = () => {
             const resultData = removeUndefined(reports_data);
             dispatch(saveCsvData(resultData));
          }
+         //    Получение данных по заказам
          if (dropdownTouchOption === 1) {
             const data = await fetchTouchData(
                "/get_orders_reports",

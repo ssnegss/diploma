@@ -142,7 +142,7 @@ export const PieChart = ({ data }) => {
                         </td>
                         <td>{`${counts[index]}`}</td>
                         <td>{`${percentage}%`}</td>
-                        <td>{totalRecords}</td> {/* Добавленная ячейка */}
+                        <td>{totalRecords}</td>
                      </tr>
                   ))}
                </tbody>

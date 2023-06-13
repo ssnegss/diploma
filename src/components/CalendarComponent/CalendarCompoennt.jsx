@@ -16,10 +16,12 @@ export const CalendarComponent = ({ dateFrom, dateTo, isTable }) => {
    const dispatch = useDispatch();
    const csvData = useSelector((store) => store?.dataReducer?.csvData);
 
+   //    Получение начальной и конечной дат для таблиц
+
    const tableStartDate = findStartDate(csvData);
    const tableEndDate = findEndDate(csvData);
 
-   //    Форматирование даты dayjs в стандартный вид (тип - строка)
+   //    Форматирование даты dayjs в стандартный вид (тип - строка YYYY-MM-DD)
 
    const formatDateToStr = (date) => {
       const finalDateDay =

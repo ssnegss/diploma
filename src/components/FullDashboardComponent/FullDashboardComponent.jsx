@@ -14,6 +14,8 @@ import "./DashboardComponent.css";
 export const FullDashboardComponent = () => {
    const dispatch = useDispatch();
 
+   //    Дата, которая отображается в соответствии с начальной и конечной датами таблицы
+
    const handleTableDateFrom = (setTableDateFrom) => {
       dispatch(tableDateFrom(setTableDateFrom));
    };
@@ -64,6 +66,8 @@ export const FullDashboardComponent = () => {
          accessorKey: name,
       };
    });
+
+   //    Функция фильтрации данных таблицы при изменении диапазона дат
 
    const filterDataByDate = (data) => {
       const dateFrom = new Date(getTableDatefrom).getTime();

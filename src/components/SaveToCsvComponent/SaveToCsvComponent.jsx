@@ -36,6 +36,8 @@ export const SaveToCsvComponent = ({reportType}) => {
       return encoder.encode(csvContent);
    };
 
+   //    Главная функция, задающая название файла и скачивающая его
+
    const handleDownload = () => {
       const csv = convertArrayOfObjectsToCSV(csvDataFiltered);
       const currentDate = moment();

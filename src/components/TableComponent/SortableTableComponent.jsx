@@ -35,7 +35,7 @@ export const TableComponent = ({ columns, rows }) => {
 
    const tableInstanceRef = useRef(null);
 
-   //    Отображение графиков по изменении даты фильтрации
+   //    Перезагрузка графиков при изменении даты фильтрации
 
    useEffect(() => {
       dispatch(showButtonIsPressed(true));
